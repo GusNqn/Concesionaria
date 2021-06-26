@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Concesionaria
 {
-    public class clsBase_Datos
+    public class clsBase_Datos 
     {
         List<clsVehiculos> listaVehiculos;
         List<clsDistribuidores> listaDistribuidores;

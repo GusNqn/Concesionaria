@@ -30,24 +30,8 @@ namespace Concesionaria
         private void InitializeComponent()
         {
             this.msPrincipal = new System.Windows.Forms.MenuStrip();
-            this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAgregarAutoNuevo = new System.Windows.Forms.ToolStripMenuItem();
-            this.miModificarAutoNuevo = new System.Windows.Forms.ToolStripMenuItem();
-            this.miEliminarAutoNuevo = new System.Windows.Forms.ToolStripMenuItem();
-            this.usadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAgregarAutoUsado = new System.Windows.Forms.ToolStripMenuItem();
-            this.miModificarAutoUsado = new System.Windows.Forms.ToolStripMenuItem();
-            this.miEliminarAutoUsado = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAgregarAuto = new System.Windows.Forms.ToolStripMenuItem();
             this.camionetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAgregarCamionetaNueva = new System.Windows.Forms.ToolStripMenuItem();
-            this.miModifcarCamionetaNueva = new System.Windows.Forms.ToolStripMenuItem();
-            this.miEliminarCamionetaNueva = new System.Windows.Forms.ToolStripMenuItem();
-            this.usadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAgregarCamionetaUsada = new System.Windows.Forms.ToolStripMenuItem();
-            this.miModifcarCamionetaUsada = new System.Windows.Forms.ToolStripMenuItem();
-            this.miEliminarCamionetaUsada = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miAgregarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
             this.miModificarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +64,12 @@ namespace Concesionaria
             this.lbFiltroDistribuidores = new System.Windows.Forms.ListBox();
             this.checkOrdenarVehiculos = new System.Windows.Forms.CheckBox();
             this.checkOrdenarDistribuidores = new System.Windows.Forms.CheckBox();
+            this.miAgregarAutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.miModificarAutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.miEliminarAutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAgregarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
+            this.miModificarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
+            this.miEliminarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
             this.msPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,7 +80,7 @@ namespace Concesionaria
             // msPrincipal
             // 
             this.msPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarToolStripMenuItem,
+            this.miAgregarAuto,
             this.camionetasToolStripMenuItem,
             this.proveedorToolStripMenuItem,
             this.miSalir,
@@ -101,136 +91,25 @@ namespace Concesionaria
             this.msPrincipal.TabIndex = 0;
             this.msPrincipal.Text = "menuStrip1";
             // 
-            // agregarToolStripMenuItem
+            // miAgregarAuto
             // 
-            this.agregarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem,
-            this.usadosToolStripMenuItem});
-            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.agregarToolStripMenuItem.Text = "&Autos";
-            // 
-            // nuevoToolStripMenuItem
-            // 
-            this.nuevoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miAgregarAutoNuevo,
-            this.miModificarAutoNuevo,
-            this.miEliminarAutoNuevo});
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.nuevoToolStripMenuItem.Text = "&Nuevos";
-            // 
-            // miAgregarAutoNuevo
-            // 
-            this.miAgregarAutoNuevo.Name = "miAgregarAutoNuevo";
-            this.miAgregarAutoNuevo.Size = new System.Drawing.Size(180, 22);
-            this.miAgregarAutoNuevo.Text = "Agregar";
-            this.miAgregarAutoNuevo.Click += new System.EventHandler(this.miAgregarAutoNuevo_Click);
-            // 
-            // miModificarAutoNuevo
-            // 
-            this.miModificarAutoNuevo.Name = "miModificarAutoNuevo";
-            this.miModificarAutoNuevo.Size = new System.Drawing.Size(180, 22);
-            this.miModificarAutoNuevo.Text = "Modificar";
-            // 
-            // miEliminarAutoNuevo
-            // 
-            this.miEliminarAutoNuevo.Name = "miEliminarAutoNuevo";
-            this.miEliminarAutoNuevo.Size = new System.Drawing.Size(180, 22);
-            this.miEliminarAutoNuevo.Text = "Eliminar";
-            // 
-            // usadosToolStripMenuItem
-            // 
-            this.usadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miAgregarAutoUsado,
-            this.miModificarAutoUsado,
-            this.miEliminarAutoUsado});
-            this.usadosToolStripMenuItem.Name = "usadosToolStripMenuItem";
-            this.usadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.usadosToolStripMenuItem.Text = "&Usados";
-            // 
-            // miAgregarAutoUsado
-            // 
-            this.miAgregarAutoUsado.Name = "miAgregarAutoUsado";
-            this.miAgregarAutoUsado.Size = new System.Drawing.Size(125, 22);
-            this.miAgregarAutoUsado.Text = "Agregar";
-            // 
-            // miModificarAutoUsado
-            // 
-            this.miModificarAutoUsado.Name = "miModificarAutoUsado";
-            this.miModificarAutoUsado.Size = new System.Drawing.Size(125, 22);
-            this.miModificarAutoUsado.Text = "Modificar";
-            // 
-            // miEliminarAutoUsado
-            // 
-            this.miEliminarAutoUsado.Name = "miEliminarAutoUsado";
-            this.miEliminarAutoUsado.Size = new System.Drawing.Size(125, 22);
-            this.miEliminarAutoUsado.Text = "Eliminar";
+            this.miAgregarAuto.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miAgregarAutos,
+            this.miModificarAutos,
+            this.miEliminarAutos});
+            this.miAgregarAuto.Name = "miAgregarAuto";
+            this.miAgregarAuto.Size = new System.Drawing.Size(50, 20);
+            this.miAgregarAuto.Text = "&Autos";
             // 
             // camionetasToolStripMenuItem
             // 
             this.camionetasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevasToolStripMenuItem,
-            this.usadasToolStripMenuItem});
+            this.miAgregarCamioneta,
+            this.miModificarCamioneta,
+            this.miEliminarCamioneta});
             this.camionetasToolStripMenuItem.Name = "camionetasToolStripMenuItem";
             this.camionetasToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.camionetasToolStripMenuItem.Text = "&Camionetas";
-            // 
-            // nuevasToolStripMenuItem
-            // 
-            this.nuevasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miAgregarCamionetaNueva,
-            this.miModifcarCamionetaNueva,
-            this.miEliminarCamionetaNueva});
-            this.nuevasToolStripMenuItem.Name = "nuevasToolStripMenuItem";
-            this.nuevasToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.nuevasToolStripMenuItem.Text = "Nuevas";
-            // 
-            // miAgregarCamionetaNueva
-            // 
-            this.miAgregarCamionetaNueva.Name = "miAgregarCamionetaNueva";
-            this.miAgregarCamionetaNueva.Size = new System.Drawing.Size(125, 22);
-            this.miAgregarCamionetaNueva.Text = "Agregar";
-            // 
-            // miModifcarCamionetaNueva
-            // 
-            this.miModifcarCamionetaNueva.Name = "miModifcarCamionetaNueva";
-            this.miModifcarCamionetaNueva.Size = new System.Drawing.Size(125, 22);
-            this.miModifcarCamionetaNueva.Text = "Modificar";
-            // 
-            // miEliminarCamionetaNueva
-            // 
-            this.miEliminarCamionetaNueva.Name = "miEliminarCamionetaNueva";
-            this.miEliminarCamionetaNueva.Size = new System.Drawing.Size(125, 22);
-            this.miEliminarCamionetaNueva.Text = "Eliminar";
-            // 
-            // usadasToolStripMenuItem
-            // 
-            this.usadasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miAgregarCamionetaUsada,
-            this.miModifcarCamionetaUsada,
-            this.miEliminarCamionetaUsada});
-            this.usadasToolStripMenuItem.Name = "usadasToolStripMenuItem";
-            this.usadasToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.usadasToolStripMenuItem.Text = "Usadas";
-            // 
-            // miAgregarCamionetaUsada
-            // 
-            this.miAgregarCamionetaUsada.Name = "miAgregarCamionetaUsada";
-            this.miAgregarCamionetaUsada.Size = new System.Drawing.Size(125, 22);
-            this.miAgregarCamionetaUsada.Text = "Agregar";
-            // 
-            // miModifcarCamionetaUsada
-            // 
-            this.miModifcarCamionetaUsada.Name = "miModifcarCamionetaUsada";
-            this.miModifcarCamionetaUsada.Size = new System.Drawing.Size(125, 22);
-            this.miModifcarCamionetaUsada.Text = "Modificar";
-            // 
-            // miEliminarCamionetaUsada
-            // 
-            this.miEliminarCamionetaUsada.Name = "miEliminarCamionetaUsada";
-            this.miEliminarCamionetaUsada.Size = new System.Drawing.Size(125, 22);
-            this.miEliminarCamionetaUsada.Text = "Eliminar";
             // 
             // proveedorToolStripMenuItem
             // 
@@ -245,19 +124,19 @@ namespace Concesionaria
             // miAgregarDistribuidor
             // 
             this.miAgregarDistribuidor.Name = "miAgregarDistribuidor";
-            this.miAgregarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miAgregarDistribuidor.Text = "Agregar";
             // 
             // miModificarDistribuidor
             // 
             this.miModificarDistribuidor.Name = "miModificarDistribuidor";
-            this.miModificarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miModificarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miModificarDistribuidor.Text = "Modificar";
             // 
             // miEliminarDistribuidor
             // 
             this.miEliminarDistribuidor.Name = "miEliminarDistribuidor";
-            this.miEliminarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miEliminarDistribuidor.Text = "Eliminar";
             // 
             // miSalir
@@ -557,6 +436,44 @@ namespace Concesionaria
             this.checkOrdenarDistribuidores.Text = "Ordenar";
             this.checkOrdenarDistribuidores.UseVisualStyleBackColor = true;
             // 
+            // miAgregarAutos
+            // 
+            this.miAgregarAutos.Name = "miAgregarAutos";
+            this.miAgregarAutos.Size = new System.Drawing.Size(180, 22);
+            this.miAgregarAutos.Text = "Agregar";
+            this.miAgregarAutos.Click += new System.EventHandler(this.miAgregarAutos_Click);
+            // 
+            // miModificarAutos
+            // 
+            this.miModificarAutos.Name = "miModificarAutos";
+            this.miModificarAutos.Size = new System.Drawing.Size(180, 22);
+            this.miModificarAutos.Text = "Modificar";
+            this.miModificarAutos.Click += new System.EventHandler(this.miModificarAutos_Click);
+            // 
+            // miEliminarAutos
+            // 
+            this.miEliminarAutos.Name = "miEliminarAutos";
+            this.miEliminarAutos.Size = new System.Drawing.Size(180, 22);
+            this.miEliminarAutos.Text = "Eliminar";
+            // 
+            // miAgregarCamioneta
+            // 
+            this.miAgregarCamioneta.Name = "miAgregarCamioneta";
+            this.miAgregarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miAgregarCamioneta.Text = "Agregar";
+            // 
+            // miModificarCamioneta
+            // 
+            this.miModificarCamioneta.Name = "miModificarCamioneta";
+            this.miModificarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miModificarCamioneta.Text = "Modificar";
+            // 
+            // miEliminarCamioneta
+            // 
+            this.miEliminarCamioneta.Name = "miEliminarCamioneta";
+            this.miEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miEliminarCamioneta.Text = "Eliminar";
+            // 
             // FConcesionaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,24 +503,8 @@ namespace Concesionaria
         #endregion
 
         private System.Windows.Forms.MenuStrip msPrincipal;
-        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miAgregarAutoNuevo;
-        private System.Windows.Forms.ToolStripMenuItem miModificarAutoNuevo;
-        private System.Windows.Forms.ToolStripMenuItem miEliminarAutoNuevo;
-        private System.Windows.Forms.ToolStripMenuItem usadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miAgregarAutoUsado;
-        private System.Windows.Forms.ToolStripMenuItem miModificarAutoUsado;
-        private System.Windows.Forms.ToolStripMenuItem miEliminarAutoUsado;
+        private System.Windows.Forms.ToolStripMenuItem miAgregarAuto;
         private System.Windows.Forms.ToolStripMenuItem camionetasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nuevasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miAgregarCamionetaNueva;
-        private System.Windows.Forms.ToolStripMenuItem miModifcarCamionetaNueva;
-        private System.Windows.Forms.ToolStripMenuItem miEliminarCamionetaNueva;
-        private System.Windows.Forms.ToolStripMenuItem usadasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miAgregarCamionetaUsada;
-        private System.Windows.Forms.ToolStripMenuItem miModifcarCamionetaUsada;
-        private System.Windows.Forms.ToolStripMenuItem miEliminarCamionetaUsada;
         private System.Windows.Forms.ToolStripMenuItem proveedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miAgregarDistribuidor;
         private System.Windows.Forms.ToolStripMenuItem miModificarDistribuidor;
@@ -636,6 +537,12 @@ namespace Concesionaria
         private System.Windows.Forms.Label lCantListadoDistribuidores;
         private System.Windows.Forms.CheckBox checkOrdenarVehiculos;
         private System.Windows.Forms.CheckBox checkOrdenarDistribuidores;
+        private System.Windows.Forms.ToolStripMenuItem miAgregarAutos;
+        private System.Windows.Forms.ToolStripMenuItem miModificarAutos;
+        private System.Windows.Forms.ToolStripMenuItem miEliminarAutos;
+        private System.Windows.Forms.ToolStripMenuItem miAgregarCamioneta;
+        private System.Windows.Forms.ToolStripMenuItem miModificarCamioneta;
+        private System.Windows.Forms.ToolStripMenuItem miEliminarCamioneta;
     }
 }
 
