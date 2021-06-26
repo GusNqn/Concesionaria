@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Concesionaria
 {
-    public partial class FAutosUsados : Form
+    public partial class FAutos : Form
     {
-        public FAutosUsados()
+        public FAutos()
         {
             InitializeComponent();
         }
