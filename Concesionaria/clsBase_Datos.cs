@@ -142,9 +142,89 @@ namespace Concesionaria
 
             return lista;
         }
+        public List<string> listarVehiculos(string tipo_Vehiculo, string marca, string distribuidor, bool Condicion, bool cuatroXcuatro, string gama)
+        {
+            List<string> lista;
+            lista = new List<string>();
 
+            bool controlTipoVehiculo, controlMarca, controlDistribuidor, controlCondicion, controlCuaXcua, controlGama;
+            
+            foreach (clsVehiculos vehiculos in listaVehiculos)
+            {
+                controlTipoVehiculo = false;
+                controlMarca = false;
+                controlDistribuidor = false;
+                controlCondicion = false;
+                controlCuaXcua = false;
+                controlGama = false;
+
+                if (tipo_Vehiculo == "Todos") //control vehiculo
+                {
+                    controlTipoVehiculo = true;
+                }
+                else if (tipo_Vehiculo == "Auto")
+                {
+                    controlTipoVehiculo = vehiculos.GetType() == typeof(clsAutos);
+                }
+                else if (tipo_Vehiculo == "Camioneta")
+                {
+                    controlTipoVehiculo = vehiculos.GetType() == typeof(clsCamionetas);
+                }
+
+                switch (marca) //control marca
+                {
+                    case "Todos": controlMarca = true; break;
+                    case "Chevrolet": controlMarca = marca == "Chevrolet"; break;
+                    case "Ford": controlMarca = marca == "Ford"; break;
+                    case "Renault": controlMarca = marca == "Renault"; break;
+                    case "Volskwagen": controlMarca = marca == "Volskwagen"; break;
+
+                }
+
+                if (distribuidor == "Todos") //control distribuidor
+                {
+                    controlDistribuidor = true;
+                }
+                else
+                {
+                    clsDistribuidores dist = new clsDistribuidores(); 
+                    controlDistribuidor = dist.Equals(distribuidor);
+                }
+
+                if (vehiculos.GetType() == typeof(clsAutos)) //control condicion y 4x4
+                {
+                    clsAutos auto = (clsAutos)vehiculos;
+                    controlCondicion = auto.USADO == Condicion;
+                    controlCuaXcua = true;                      
+                }
+                else
+                {
+                    clsCamionetas camionetas = (clsCamionetas)vehiculos;
+                    controlCondicion = camionetas.USADO == Condicion;
+                    controlCuaXcua = camionetas.CUATROXCUATRO == cuatroXcuatro;
+                }
+
+                if (gama == "Base") //control gama
+                {
+                    controlGama = true;
+                }
+                else if (gama == "Media")
+                {
+                    controlGama = true;
+                }
+                else if (gama == "Full")
+                {
+                    controlGama = true;
+                }
+
+                if (controlDistribuidor && controlMarca && controlTipoVehiculo && controlCondicion && controlCuaXcua && controlGama)
+                {
+                    lista.Add(vehiculos.ToString());
+                }
+            }
+            return lista;
+        }
         #endregion
-
     }
 
 

@@ -30,5 +30,10 @@ namespace Concesionaria
         {
             MessageBox.Show("Proyecto diseñado por: \n\n - Lucas Boccaccini \n - Juan Esteban Schmidt \n - Gustavo Seguín ", "Créditos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void miAgregarAutoNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
