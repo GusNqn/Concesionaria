@@ -29,6 +29,7 @@ namespace Concesionaria
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tRazonSocial = new System.Windows.Forms.TextBox();
             this.mtCuit = new System.Windows.Forms.MaskedTextBox();
@@ -37,7 +38,9 @@ namespace Concesionaria
             this.label1 = new System.Windows.Forms.Label();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
+            this.epCuit = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epCuit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,6 +71,7 @@ namespace Concesionaria
             this.mtCuit.Size = new System.Drawing.Size(78, 20);
             this.mtCuit.TabIndex = 2;
             this.mtCuit.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.mtCuit.Validating += new System.ComponentModel.CancelEventHandler(this.mtCuit_Validating);
             // 
             // checkInternacional
             // 
@@ -115,6 +119,10 @@ namespace Concesionaria
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             // 
+            // epCuit
+            // 
+            this.epCuit.ContainerControl = this;
+            // 
             // FDistribuidores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,6 +135,7 @@ namespace Concesionaria
             this.Text = "Distribuidores";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epCuit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -141,5 +150,6 @@ namespace Concesionaria
         private System.Windows.Forms.TextBox tRazonSocial;
         private System.Windows.Forms.Button bAceptar;
         private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.ErrorProvider epCuit;
     }
 }

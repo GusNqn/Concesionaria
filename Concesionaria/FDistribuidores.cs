@@ -16,5 +16,12 @@ namespace Concesionaria
         {
             InitializeComponent();
         }
+
+        private void mtCuit_Validating(object sender, CancelEventArgs e)
+        {
+            epCuit.Clear();
+            if (!mtCuit.MaskCompleted)
+                epCuit.SetError(mtCuit, "Debe completar el CUIT correctamente");
+        }
     }
 }

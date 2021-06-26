@@ -56,7 +56,33 @@ namespace Concesionaria
             this.miAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbFiltroVehiculos = new System.Windows.Forms.ListBox();
+            this.lbFiltroDistribuidores = new System.Windows.Forms.ListBox();
+            this.checkFiltroNuevo = new System.Windows.Forms.CheckBox();
+            this.checkFiltro4x4 = new System.Windows.Forms.CheckBox();
+            this.cbFiltroTipo = new System.Windows.Forms.ComboBox();
+            this.cbFiltroMarca = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbBase = new System.Windows.Forms.RadioButton();
+            this.rbMedia = new System.Windows.Forms.RadioButton();
+            this.rbFull = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbFiltroDistribuidor = new System.Windows.Forms.ComboBox();
+            this.lCantListadaVehiculos = new System.Windows.Forms.Label();
+            this.lCantTotalVehiculos = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbFiltroNacional = new System.Windows.Forms.RadioButton();
+            this.rbInternacional = new System.Windows.Forms.RadioButton();
+            this.rbTodos = new System.Windows.Forms.RadioButton();
+            this.lCantListadoDistribuidores = new System.Windows.Forms.Label();
+            this.lCantidadTotalDistribuidores = new System.Windows.Forms.Label();
             this.msPrincipal.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // msPrincipal
@@ -69,7 +95,7 @@ namespace Concesionaria
             this.miAcercaDe});
             this.msPrincipal.Location = new System.Drawing.Point(0, 0);
             this.msPrincipal.Name = "msPrincipal";
-            this.msPrincipal.Size = new System.Drawing.Size(339, 24);
+            this.msPrincipal.Size = new System.Drawing.Size(864, 24);
             this.msPrincipal.TabIndex = 0;
             this.msPrincipal.Text = "menuStrip1";
             // 
@@ -247,23 +273,257 @@ namespace Concesionaria
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.lCantTotalVehiculos);
+            this.panel1.Controls.Add(this.lCantListadaVehiculos);
+            this.panel1.Controls.Add(this.cbFiltroDistribuidor);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbFiltroMarca);
+            this.panel1.Controls.Add(this.cbFiltroTipo);
+            this.panel1.Controls.Add(this.checkFiltro4x4);
+            this.panel1.Controls.Add(this.checkFiltroNuevo);
+            this.panel1.Controls.Add(this.lbFiltroVehiculos);
             this.panel1.Location = new System.Drawing.Point(12, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 210);
+            this.panel1.Size = new System.Drawing.Size(406, 273);
             this.panel1.TabIndex = 1;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(12, 252);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel2.Controls.Add(this.lCantidadTotalDistribuidores);
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Controls.Add(this.lCantListadoDistribuidores);
+            this.panel2.Controls.Add(this.lbFiltroDistribuidores);
+            this.panel2.Location = new System.Drawing.Point(424, 36);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(315, 186);
+            this.panel2.Size = new System.Drawing.Size(424, 273);
             this.panel2.TabIndex = 1;
+            // 
+            // lbFiltroVehiculos
+            // 
+            this.lbFiltroVehiculos.FormattingEnabled = true;
+            this.lbFiltroVehiculos.Location = new System.Drawing.Point(21, 114);
+            this.lbFiltroVehiculos.Name = "lbFiltroVehiculos";
+            this.lbFiltroVehiculos.Size = new System.Drawing.Size(268, 108);
+            this.lbFiltroVehiculos.TabIndex = 0;
+            // 
+            // lbFiltroDistribuidores
+            // 
+            this.lbFiltroDistribuidores.FormattingEnabled = true;
+            this.lbFiltroDistribuidores.Location = new System.Drawing.Point(18, 14);
+            this.lbFiltroDistribuidores.Name = "lbFiltroDistribuidores";
+            this.lbFiltroDistribuidores.Size = new System.Drawing.Size(268, 199);
+            this.lbFiltroDistribuidores.TabIndex = 0;
+            // 
+            // checkFiltroNuevo
+            // 
+            this.checkFiltroNuevo.AutoSize = true;
+            this.checkFiltroNuevo.Location = new System.Drawing.Point(304, 117);
+            this.checkFiltroNuevo.Name = "checkFiltroNuevo";
+            this.checkFiltroNuevo.Size = new System.Drawing.Size(58, 17);
+            this.checkFiltroNuevo.TabIndex = 1;
+            this.checkFiltroNuevo.Text = "Nuevo";
+            this.checkFiltroNuevo.UseVisualStyleBackColor = true;
+            // 
+            // checkFiltro4x4
+            // 
+            this.checkFiltro4x4.AutoSize = true;
+            this.checkFiltro4x4.Location = new System.Drawing.Point(304, 140);
+            this.checkFiltro4x4.Name = "checkFiltro4x4";
+            this.checkFiltro4x4.Size = new System.Drawing.Size(43, 17);
+            this.checkFiltro4x4.TabIndex = 1;
+            this.checkFiltro4x4.Text = "4x4";
+            this.checkFiltro4x4.UseVisualStyleBackColor = true;
+            // 
+            // cbFiltroTipo
+            // 
+            this.cbFiltroTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltroTipo.FormattingEnabled = true;
+            this.cbFiltroTipo.Location = new System.Drawing.Point(168, 16);
+            this.cbFiltroTipo.Name = "cbFiltroTipo";
+            this.cbFiltroTipo.Size = new System.Drawing.Size(175, 21);
+            this.cbFiltroTipo.TabIndex = 2;
+            // 
+            // cbFiltroMarca
+            // 
+            this.cbFiltroMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltroMarca.FormattingEnabled = true;
+            this.cbFiltroMarca.Location = new System.Drawing.Point(168, 43);
+            this.cbFiltroMarca.Name = "cbFiltroMarca";
+            this.cbFiltroMarca.Size = new System.Drawing.Size(175, 21);
+            this.cbFiltroMarca.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(72, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Tipo de Vehiculo:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(122, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Marca:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbFull);
+            this.groupBox1.Controls.Add(this.rbMedia);
+            this.groupBox1.Controls.Add(this.rbBase);
+            this.groupBox1.Location = new System.Drawing.Point(304, 163);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(83, 95);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Gama";
+            // 
+            // rbBase
+            // 
+            this.rbBase.AutoSize = true;
+            this.rbBase.Location = new System.Drawing.Point(18, 20);
+            this.rbBase.Name = "rbBase";
+            this.rbBase.Size = new System.Drawing.Size(49, 17);
+            this.rbBase.TabIndex = 0;
+            this.rbBase.TabStop = true;
+            this.rbBase.Text = "Base";
+            this.rbBase.UseVisualStyleBackColor = true;
+            // 
+            // rbMedia
+            // 
+            this.rbMedia.AutoSize = true;
+            this.rbMedia.Location = new System.Drawing.Point(18, 43);
+            this.rbMedia.Name = "rbMedia";
+            this.rbMedia.Size = new System.Drawing.Size(54, 17);
+            this.rbMedia.TabIndex = 0;
+            this.rbMedia.TabStop = true;
+            this.rbMedia.Text = "Media";
+            this.rbMedia.UseVisualStyleBackColor = true;
+            // 
+            // rbFull
+            // 
+            this.rbFull.AutoSize = true;
+            this.rbFull.Location = new System.Drawing.Point(18, 66);
+            this.rbFull.Name = "rbFull";
+            this.rbFull.Size = new System.Drawing.Size(41, 17);
+            this.rbFull.TabIndex = 0;
+            this.rbFull.TabStop = true;
+            this.rbFull.Text = "Full";
+            this.rbFull.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(100, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Distribuidor:";
+            // 
+            // cbFiltroDistribuidor
+            // 
+            this.cbFiltroDistribuidor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltroDistribuidor.FormattingEnabled = true;
+            this.cbFiltroDistribuidor.Location = new System.Drawing.Point(168, 72);
+            this.cbFiltroDistribuidor.Name = "cbFiltroDistribuidor";
+            this.cbFiltroDistribuidor.Size = new System.Drawing.Size(175, 21);
+            this.cbFiltroDistribuidor.TabIndex = 5;
+            // 
+            // lCantListadaVehiculos
+            // 
+            this.lCantListadaVehiculos.AutoSize = true;
+            this.lCantListadaVehiculos.Location = new System.Drawing.Point(27, 230);
+            this.lCantListadaVehiculos.Name = "lCantListadaVehiculos";
+            this.lCantListadaVehiculos.Size = new System.Drawing.Size(98, 13);
+            this.lCantListadaVehiculos.TabIndex = 6;
+            this.lCantListadaVehiculos.Text = "Cantidad Listado: 0";
+            // 
+            // lCantTotalVehiculos
+            // 
+            this.lCantTotalVehiculos.AutoSize = true;
+            this.lCantTotalVehiculos.Location = new System.Drawing.Point(27, 249);
+            this.lCantTotalVehiculos.Name = "lCantTotalVehiculos";
+            this.lCantTotalVehiculos.Size = new System.Drawing.Size(88, 13);
+            this.lCantTotalVehiculos.TabIndex = 6;
+            this.lCantTotalVehiculos.Text = "Cantidad Total: 0";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbTodos);
+            this.groupBox2.Controls.Add(this.rbInternacional);
+            this.groupBox2.Controls.Add(this.rbFiltroNacional);
+            this.groupBox2.Location = new System.Drawing.Point(296, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(112, 95);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Distribuidores";
+            // 
+            // rbFiltroNacional
+            // 
+            this.rbFiltroNacional.AutoSize = true;
+            this.rbFiltroNacional.Location = new System.Drawing.Point(17, 18);
+            this.rbFiltroNacional.Name = "rbFiltroNacional";
+            this.rbFiltroNacional.Size = new System.Drawing.Size(67, 17);
+            this.rbFiltroNacional.TabIndex = 0;
+            this.rbFiltroNacional.TabStop = true;
+            this.rbFiltroNacional.Text = "Nacional";
+            this.rbFiltroNacional.UseVisualStyleBackColor = true;
+            // 
+            // rbInternacional
+            // 
+            this.rbInternacional.AutoSize = true;
+            this.rbInternacional.Location = new System.Drawing.Point(17, 41);
+            this.rbInternacional.Name = "rbInternacional";
+            this.rbInternacional.Size = new System.Drawing.Size(86, 17);
+            this.rbInternacional.TabIndex = 0;
+            this.rbInternacional.TabStop = true;
+            this.rbInternacional.Text = "Internacional";
+            this.rbInternacional.UseVisualStyleBackColor = true;
+            // 
+            // rbTodos
+            // 
+            this.rbTodos.AutoSize = true;
+            this.rbTodos.Location = new System.Drawing.Point(17, 64);
+            this.rbTodos.Name = "rbTodos";
+            this.rbTodos.Size = new System.Drawing.Size(55, 17);
+            this.rbTodos.TabIndex = 0;
+            this.rbTodos.TabStop = true;
+            this.rbTodos.Text = "Todos";
+            this.rbTodos.UseVisualStyleBackColor = true;
+            // 
+            // lCantListadoDistribuidores
+            // 
+            this.lCantListadoDistribuidores.AutoSize = true;
+            this.lCantListadoDistribuidores.Location = new System.Drawing.Point(25, 230);
+            this.lCantListadoDistribuidores.Name = "lCantListadoDistribuidores";
+            this.lCantListadoDistribuidores.Size = new System.Drawing.Size(98, 13);
+            this.lCantListadoDistribuidores.TabIndex = 6;
+            this.lCantListadoDistribuidores.Text = "Cantidad Listado: 0";
+            // 
+            // lCantidadTotalDistribuidores
+            // 
+            this.lCantidadTotalDistribuidores.AutoSize = true;
+            this.lCantidadTotalDistribuidores.Location = new System.Drawing.Point(25, 249);
+            this.lCantidadTotalDistribuidores.Name = "lCantidadTotalDistribuidores";
+            this.lCantidadTotalDistribuidores.Size = new System.Drawing.Size(88, 13);
+            this.lCantidadTotalDistribuidores.TabIndex = 6;
+            this.lCantidadTotalDistribuidores.Text = "Cantidad Total: 0";
             // 
             // FConcesionaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 450);
+            this.ClientSize = new System.Drawing.Size(864, 330);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.msPrincipal);
@@ -272,6 +532,14 @@ namespace Concesionaria
             this.Text = "Concesionaria";
             this.msPrincipal.ResumeLayout(false);
             this.msPrincipal.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,6 +574,28 @@ namespace Concesionaria
         private System.Windows.Forms.ToolStripMenuItem miAcercaDe;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbFull;
+        private System.Windows.Forms.RadioButton rbMedia;
+        private System.Windows.Forms.RadioButton rbBase;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbFiltroMarca;
+        private System.Windows.Forms.ComboBox cbFiltroTipo;
+        private System.Windows.Forms.CheckBox checkFiltro4x4;
+        private System.Windows.Forms.CheckBox checkFiltroNuevo;
+        private System.Windows.Forms.ListBox lbFiltroVehiculos;
+        private System.Windows.Forms.ListBox lbFiltroDistribuidores;
+        private System.Windows.Forms.ComboBox cbFiltroDistribuidor;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lCantTotalVehiculos;
+        private System.Windows.Forms.Label lCantListadaVehiculos;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbTodos;
+        private System.Windows.Forms.RadioButton rbInternacional;
+        private System.Windows.Forms.RadioButton rbFiltroNacional;
+        private System.Windows.Forms.Label lCantidadTotalDistribuidores;
+        private System.Windows.Forms.Label lCantListadoDistribuidores;
     }
 }
 
