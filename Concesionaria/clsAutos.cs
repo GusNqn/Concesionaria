@@ -142,6 +142,15 @@ namespace Concesionaria
             _precioCosto = 0;
             _porcentajeGanancia = 0;
         }
+        public clsAutos(int codigo): base(codigo)
+        {
+            _marca = string.Empty;
+            _modelo = string.Empty;
+            _fechaFabricacion = new DateTime(1900, 01, 01);
+            _usado = false;
+            _precioCosto = 0;
+            _porcentajeGanancia = 0;
+        }
 
         public clsAutos(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, int codigo, string tipo, clsDistribuidores distribuidor): base(codigo, tipo, distribuidor)
         {

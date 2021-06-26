@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="bcFechas">
-      <HintPath>..\..\bcFechas.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Downloads\bcFechas.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -89,11 +89,23 @@ namespace Concesionaria
         #endregion
 
         #region Constructores
+        
+        
         public clsVehiculos()
         {
             _codigo = 0;
             _tipo = string.Empty;
+            _distribuidor = null;
         }
+
+        public clsVehiculos(int codigo)
+        {
+            if (Math.Abs(codigo) > 0)
+                _codigo = codigo;
+            _tipo = string.Empty;
+            _distribuidor = null;
+        }
+
 
         public clsVehiculos(int codigo, string tipo, clsDistribuidores distribuidor)
         {
