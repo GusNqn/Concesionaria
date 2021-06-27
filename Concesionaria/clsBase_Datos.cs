@@ -23,6 +23,7 @@ namespace Concesionaria
 
     // A entender de la funcionalidad del ejemplo de la profesora:
     // - CantidadVehiculos y CantidadDistribuidores...por que son propiedades?
+    // - En la linea 195...si permitiera agregar mas en el combo...como lo controlo?
 
     public class clsBase_Datos 
     {
@@ -104,7 +105,7 @@ namespace Concesionaria
             return existe;
         }
 
-        public bool esDistribuidorInternacional(string cuit) //no entiendo esta funcion. Si ya tenemos un distribuidor y el equals compara por CUIT...para que el indice?
+        public bool esDistribuidorInternacional(string cuit)
         {
             clsDistribuidores distribuidor = new clsDistribuidores(cuit, "", false);
             int indice = listaDistribuidores.IndexOf(distribuidor);
@@ -126,6 +127,74 @@ namespace Concesionaria
             }
 
             return lista;
+        }
+
+        public int buscarIndice(string valorFiltro, int indiceFiltro)
+        {
+            int contador = -1;
+            int indice = -1;
+            int i = 0;
+            bool encontrado = false;
+
+            if (valorFiltro == "Auto")
+            {
+                while ((i <= listaVehiculos.Count && (!encontrado)))
+                {
+                    if (listaVehiculos[i].GetType() == typeof(clsAutos))
+                    {
+                        contador++;
+                        if (contador == indiceFiltro)
+                        {
+                            encontrado = true;
+                            indice = i;
+                        }
+                    }
+                    i++;
+                }
+            }
+            else if (valorFiltro == "Camioneta")
+            {
+                while ((i <= listaVehiculos.Count && (!encontrado)))
+                {
+                    if (listaVehiculos[i].GetType() == typeof(clsCamionetas))
+                    {
+                        contador++;
+                        if (contador == indiceFiltro)
+                        {
+                            encontrado = true;
+                            indice = i;
+                        }
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                indice = indiceFiltro;
+            }
+            return indice;
+        }
+
+        public bool esAuto(int indice)
+        {
+            return listaVehiculos[indice].GetType() == typeof(clsAutos); 
+        }
+
+        public clsAutos datosAuto(int codigo)
+        {
+            clsAutos autoBuscado = new clsAutos();
+
+            foreach (clsVehiculos vehiculo in listaVehiculos)
+            {
+                if (vehiculo.CODIGO == codigo)
+                {
+                    if (vehiculo.GetType() == typeof(clsAutos))
+                    {
+                        autoBuscado = (clsAutos)vehiculo;
+                    }
+                }
+            }
+            return autoBuscado;
         }
 
         public List<string> listarDistribuidores(string procedencia)
@@ -164,7 +233,7 @@ namespace Concesionaria
 
             return lista;
         }
-        public List<string> listarVehiculos(string tipo_Vehiculo, string marca, string distribuidor, bool Condicion, bool cuatroXcuatro, string gama)
+        public List<string> listarVehiculos(string tipo_Vehiculo, string marca, string cuitDistribuidor, bool Condicion, bool cuatroXcuatro, string gama)
         {
             List<string> lista;
             bool controlTipoVehiculo, controlMarca, controlDistribuidor, controlCondicion, controlCuaXcua, controlGama;
@@ -179,7 +248,7 @@ namespace Concesionaria
                 controlCuaXcua = false;
                 controlGama = false;
 
-                if (tipo_Vehiculo == "Todos") //control vehiculo     ---- Este control vehiculo lo unico que hace es decir que algo marco. Se soluciona con seleccionar uno por defecto.
+                if (tipo_Vehiculo == "Todos") //control vehiculo
                 {
                     controlTipoVehiculo = true;
                 }
@@ -199,20 +268,19 @@ namespace Concesionaria
                     case "Ford": controlMarca = marca == "Ford"; break;
                     case "Renault": controlMarca = marca == "Renault"; break;
                     case "Volskwagen": controlMarca = marca == "Volskwagen"; break;
-
                 }
 
-                if (distribuidor == "Todos") //control distribuidor
+                if (cuitDistribuidor == "Todos") //control distribuidor
                 {
                     controlDistribuidor = true;
                 }
                 else
                 {
-                    clsDistribuidores dist = new clsDistribuidores(); 
-                    controlDistribuidor = dist.Equals(distribuidor);
+                    clsDistribuidores dist = new clsDistribuidores(cuitDistribuidor,"",false); 
+                    controlDistribuidor = vehiculos.DISTRIBUIDOR.Equals(dist);
                 }
 
-                if (vehiculos.GetType() == typeof(clsAutos)) //control condicion y 4x4  ---- Cuatro x cuatro true siendo un auto?
+                if (vehiculos.GetType() == typeof(clsAutos)) //control condicion y 4x4
                 {
                     clsAutos auto = (clsAutos)vehiculos;
                     controlCondicion = auto.USADO == Condicion;
@@ -225,7 +293,7 @@ namespace Concesionaria
                     controlCuaXcua = camionetas.CUATROXCUATRO == cuatroXcuatro;
                 }
 
-                if (gama == "Base") //control gama  -----Siempre me devuelve true. Solo controla lo que viene? No entiendo la funcionalidad. 
+                if (gama == "Base") //control gama
                 {
                     controlGama = true;
                 }
@@ -261,7 +329,7 @@ namespace Concesionaria
             clsDistribuidores distribuidor = new clsDistribuidores(cuit, razon, internacional);
             int posicion;
 
-            posicion = listaDistribuidores.IndexOf(distribuidor); //indexof si no lo encuentra...que devuelve? -1?
+            posicion = listaDistribuidores.IndexOf(distribuidor);
             if (posicion >=0)
             {
                 listaDistribuidores.RemoveAt(posicion);
@@ -284,7 +352,7 @@ namespace Concesionaria
             clsAutos auto = new clsAutos(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
             int posicion;
 
-            posicion = listaVehiculos.IndexOf(auto); //indexof si no lo encuentra...que devuelve? -1?
+            posicion = listaVehiculos.IndexOf(auto);
             if (posicion >= 0)
             {
                 listaVehiculos.RemoveAt(posicion);
@@ -307,7 +375,7 @@ namespace Concesionaria
             clsCamionetas camioneta = new clsCamionetas(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
             int posicion;
 
-            posicion = listaVehiculos.IndexOf(camioneta); //indexof si no lo encuentra...que devuelve? -1?
+            posicion = listaVehiculos.IndexOf(camioneta);
             if (posicion >= 0)
             {
                 listaVehiculos.RemoveAt(posicion);

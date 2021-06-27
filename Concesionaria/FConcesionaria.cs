@@ -28,7 +28,8 @@ namespace Concesionaria
 
             tipo_Vehiculo = cbFiltroTipo.Text;
             marca = cbFiltroMarca.Text;
-            distribuidor = cbFiltroDistribuidor.Text;
+            distribuidor = cbFiltroDistribuidor.Text.Substring(7,11);
+            MessageBox.Show($"Mostarme el cuit {distribuidor}");
             if (rbBase.Checked)
             {
                 gama = rbBase.Text;
@@ -79,9 +80,7 @@ namespace Concesionaria
 
         private void miAgregarAutos_Click(object sender, EventArgs e)
         {
-            FAutos FormAuto = new FAutos(datos); //parametro base de datos?
-            
-
+            FAutos FormAuto = new FAutos(datos); 
 
             if (FormAuto.ShowDialog() == DialogResult.OK)
             {
@@ -95,15 +94,91 @@ namespace Concesionaria
 
         private void miModificarAutos_Click(object sender, EventArgs e)
         {
-            FAutos FormAutos = new FAutos(); //parametro base de datos?
-
-            if (FormAutos.ShowDialog() == DialogResult.OK)
+            if (lbFiltroVehiculos.SelectedIndex == -1)
             {
-                MessageBox.Show("Se ha modificado los datos del auto correctamente", "Modificacion correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Debe seleccionar un vehiculo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Se ha cacelado la modificacion", "Modificacion cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Auto"))
+                {
+                    bool esAuto = datos.esAuto(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                    if (esAuto)
+                    {
+                        int codigo = Convert.ToInt32(lbFiltroVehiculos.SelectedItem.ToString().Substring(9, 4));
+                        FAutos FormAuto = new FAutos(datos, codigo);
+                        if (FormAuto.ShowDialog() == DialogResult.OK)
+                        {
+                            MessageBox.Show("Se ha modificado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se ha cancelado la carga", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usted a seleccionado un auto de la lista pero intenta modificar una camioneta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lbFiltroVehiculos.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Usted a seleccionado un auto de la lista pero intenta modificar una camioneta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbFiltroVehiculos.Focus();
+                }
+            }
+        }
+
+        private void miAgregarCamioneta_Click(object sender, EventArgs e)
+        {
+            FCamionetas FormCamioneta = new FCamionetas(datos);
+
+            if (FormCamioneta.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Se ha cargado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Se ha cancelado la carga", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void miModificarCamioneta_Click(object sender, EventArgs e)
+        {
+            if (lbFiltroVehiculos.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un vehiculo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if ((cbFiltroTipo.Text == "Todos") ||  (cbFiltroTipo.Text == "Camioneta"))
+                {
+                    bool esAuto = datos.esAuto(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                    if (!esAuto)
+                    {
+                        int codigo = Convert.ToInt32(lbFiltroVehiculos.SelectedItem.ToString().Substring(9, 4));
+                        FCamionetas FormCamioneta = new FCamionetas(datos, codigo);
+                        if (FormCamioneta.ShowDialog() == DialogResult.OK)
+                        {
+                            MessageBox.Show("Se ha modificado la camioneta correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se ha cancelado la carga", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usted a seleccionado un auto de la lista pero intenta modificar una camioneta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lbFiltroVehiculos.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Usted a seleccionado un auto de la lista pero intenta modificar una camioneta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbFiltroVehiculos.Focus();
+                }
             }
         }
 
@@ -119,5 +194,7 @@ namespace Concesionaria
         {
             MessageBox.Show("Proyecto diseñado por: \n\n - Lucas Boccaccini \n - Juan Esteban Schmidt \n - Gustavo Seguín ", "Créditos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+       
     }
 }

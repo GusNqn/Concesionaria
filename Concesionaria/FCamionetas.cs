@@ -12,9 +12,25 @@ namespace Concesionaria
 {
     public partial class FCamionetas : Form
     {
-        public FCamionetas()
+        #region Inicializacion Form
+        clsBase_Datos datos;
+        bool agregarVehiculo;
+        int cod;
+        #endregion
+
+        public FCamionetas(clsBase_Datos conexion)
         {
             InitializeComponent();
+            datos = conexion;
+            agregarVehiculo = true;
+        }
+
+        public FCamionetas(clsBase_Datos conexion, int codigo)
+        {
+            InitializeComponent();
+            datos = conexion;
+            agregarVehiculo = false;
+            cod = codigo;
         }
     }
 }

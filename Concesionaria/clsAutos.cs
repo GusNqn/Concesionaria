@@ -98,7 +98,7 @@ namespace Concesionaria
         #region Metodos
         public override string ToString()
         {
-            return $"Marca: {_marca} - Modelo: {_modelo} - Año: {_fechaFabricacion.Year}";
+            return $"{base.ToString()} - Marca: {_marca} - Modelo: {_modelo} - Año: {_fechaFabricacion.Year}";
         }
 
         public override int calculoDescuento() //FALTA HACER

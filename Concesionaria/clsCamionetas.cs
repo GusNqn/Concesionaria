@@ -116,7 +116,7 @@ namespace Concesionaria
             if (_cuatroXcuatro)
                 cuatroXcuatro = "Si";
             else cuatroXcuatro = "No";
-            return $"Marca: {_marca} - Modelo: {_modelo} - Año: {_fechaFabricacion.Year} - Es 4x4: {cuatroXcuatro}";
+            return $"{base.ToString()} - Marca: {_marca} - Modelo: {_modelo} - Año: {_fechaFabricacion.Year} - Es 4x4: {cuatroXcuatro}";
         }
 
         public override int calculoDescuento() //FALTA HACER
