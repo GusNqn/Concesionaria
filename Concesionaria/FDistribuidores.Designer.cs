@@ -109,6 +109,7 @@ namespace Concesionaria
             this.bAceptar.TabIndex = 1;
             this.bAceptar.Text = "button1";
             this.bAceptar.UseVisualStyleBackColor = true;
+            this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
             // 
             // bCancelar
             // 
@@ -133,6 +134,7 @@ namespace Concesionaria
             this.Controls.Add(this.panel1);
             this.Name = "FDistribuidores";
             this.Text = "Distribuidores";
+            this.Load += new System.EventHandler(this.FDistribuidores_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epCuit)).EndInit();

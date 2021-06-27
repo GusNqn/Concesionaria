@@ -41,12 +41,16 @@ namespace Concesionaria
             this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
+            this.cbDistribuidores = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.cbDistribuidores);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.mtPrecioCosto);
             this.panel1.Controls.Add(this.dtFechaFabricacion);
             this.panel1.Controls.Add(this.cbModelo);
@@ -57,12 +61,12 @@ namespace Concesionaria
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(379, 148);
+            this.panel1.Size = new System.Drawing.Size(384, 183);
             this.panel1.TabIndex = 0;
             // 
             // mtPrecioCosto
             // 
-            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 105);
+            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 140);
             this.mtPrecioCosto.Mask = "9999990.99";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
             this.mtPrecioCosto.Size = new System.Drawing.Size(66, 20);
@@ -71,7 +75,7 @@ namespace Concesionaria
             // dtFechaFabricacion
             // 
             this.dtFechaFabricacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaFabricacion.Location = new System.Drawing.Point(133, 79);
+            this.dtFechaFabricacion.Location = new System.Drawing.Point(133, 114);
             this.dtFechaFabricacion.Name = "dtFechaFabricacion";
             this.dtFechaFabricacion.Size = new System.Drawing.Size(97, 20);
             this.dtFechaFabricacion.TabIndex = 3;
@@ -106,7 +110,7 @@ namespace Concesionaria
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 108);
+            this.label4.Location = new System.Drawing.Point(43, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 0;
@@ -115,7 +119,7 @@ namespace Concesionaria
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 81);
+            this.label3.Location = new System.Drawing.Point(14, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 13);
             this.label3.TabIndex = 0;
@@ -142,7 +146,7 @@ namespace Concesionaria
             // checkUsado
             // 
             this.checkUsado.AutoSize = true;
-            this.checkUsado.Location = new System.Drawing.Point(316, 179);
+            this.checkUsado.Location = new System.Drawing.Point(316, 201);
             this.checkUsado.Name = "checkUsado";
             this.checkUsado.Size = new System.Drawing.Size(57, 17);
             this.checkUsado.TabIndex = 1;
@@ -157,6 +161,7 @@ namespace Concesionaria
             this.bAceptar.TabIndex = 2;
             this.bAceptar.Text = "button1";
             this.bAceptar.UseVisualStyleBackColor = true;
+            this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
             // 
             // bCancelar
             // 
@@ -166,6 +171,28 @@ namespace Concesionaria
             this.bCancelar.TabIndex = 2;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            // 
+            // cbDistribuidores
+            // 
+            this.cbDistribuidores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDistribuidores.FormattingEnabled = true;
+            this.cbDistribuidores.Items.AddRange(new object[] {
+            "Gama Base",
+            "Gama Media",
+            "Gama Full"});
+            this.cbDistribuidores.Location = new System.Drawing.Point(133, 79);
+            this.cbDistribuidores.Name = "cbDistribuidores";
+            this.cbDistribuidores.Size = new System.Drawing.Size(228, 21);
+            this.cbDistribuidores.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(54, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Distribuidores:";
             // 
             // FAutos
             // 
@@ -200,5 +227,7 @@ namespace Concesionaria
         private System.Windows.Forms.CheckBox checkUsado;
         private System.Windows.Forms.Button bAceptar;
         private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.ComboBox cbDistribuidores;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -115,6 +115,16 @@ namespace Concesionaria
             }
             return distribuidor.INTERNACIONAL;
         }
+        public string getRazonSocial(string cuit)
+        {
+            clsDistribuidores distribuidor = new clsDistribuidores(cuit, "", false);
+            int indice = listaDistribuidores.IndexOf(distribuidor);
+            if (indice >= 0)
+            {
+                distribuidor = listaDistribuidores[indice];
+            }
+            return distribuidor.RAZONSOCIAL;
+        }
         public List<string> listaRazonDistribuidores()
         {
             List<string> lista;
@@ -183,8 +193,8 @@ namespace Concesionaria
         public clsAutos datosAuto(int codigo)
         {
             clsAutos autoBuscado = new clsAutos();
-
-            foreach (clsVehiculos vehiculo in listaVehiculos)
+        
+           foreach (clsVehiculos vehiculo in listaVehiculos)
             {
                 if (vehiculo.CODIGO == codigo)
                 {
@@ -196,6 +206,81 @@ namespace Concesionaria
             }
             return autoBuscado;
         }
+
+        //public string getMarcaAuto(int codigo)
+        //{
+        //    clsAutos auto = new clsAutos(codigo);
+        //    int pos = listaVehiculos.IndexOf(auto);
+
+        //    if (pos >= 0)
+        //    {
+        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
+        //        {            
+        //            auto = (clsAutos)listaVehiculos[pos];
+        //        }
+        //    }
+        //    return auto.MARCA;
+        //}
+
+        //public string getModeloAuto(int codigo)
+        //{
+        //    clsAutos auto = new clsAutos(codigo);
+        //    int pos = listaVehiculos.IndexOf(auto);
+
+        //    if (pos >= 0)
+        //    {
+        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
+        //        {
+        //            auto = (clsAutos)listaVehiculos[pos];
+        //        }
+        //    }
+        //    return auto.MODELO;
+        //}
+
+        //public DateTime getFechaFabAuto(int codigo)
+        //{
+        //    clsAutos auto = new clsAutos(codigo);
+        //    int pos = listaVehiculos.IndexOf(auto);
+
+        //    if (pos >= 0)
+        //    {
+        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
+        //        {
+        //            auto = (clsAutos)listaVehiculos[pos];
+        //        }
+        //    }
+        //    return auto.FECHAFABRICACION;
+        //}
+
+        //public double getPrecioCostoAuto(int codigo)
+        //{
+        //    clsAutos auto = new clsAutos(codigo);
+        //    int pos = listaVehiculos.IndexOf(auto);
+
+        //    if (pos >= 0)
+        //    {
+        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
+        //        {
+        //            auto = (clsAutos)listaVehiculos[pos];
+        //        }
+        //    }
+        //    return auto.PRECIOCOSTO;
+        //}
+
+        //public bool getUsadoAuto(int codigo)
+        //{
+        //    clsAutos auto = new clsAutos(codigo);
+        //    int pos = listaVehiculos.IndexOf(auto);
+
+        //    if (pos >= 0)
+        //    {
+        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
+        //        {
+        //            auto = (clsAutos)listaVehiculos[pos];
+        //        }
+        //    }
+        //    return auto.USADO;
+        //}
 
         public List<string> listarDistribuidores(string procedencia)
         {

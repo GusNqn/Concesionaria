@@ -7,7 +7,7 @@ using bcFechas;
 
 namespace Concesionaria
 {
-    class clsCamionetas : clsVehiculos
+    public class clsCamionetas : clsVehiculos
     {
         #region Atributos
         private string _marca;

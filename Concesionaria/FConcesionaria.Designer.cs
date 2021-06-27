@@ -104,21 +104,21 @@ namespace Concesionaria
             // miAgregarAutos
             // 
             this.miAgregarAutos.Name = "miAgregarAutos";
-            this.miAgregarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarAutos.Size = new System.Drawing.Size(180, 22);
             this.miAgregarAutos.Text = "Agregar";
             this.miAgregarAutos.Click += new System.EventHandler(this.miAgregarAutos_Click);
             // 
             // miModificarAutos
             // 
             this.miModificarAutos.Name = "miModificarAutos";
-            this.miModificarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miModificarAutos.Size = new System.Drawing.Size(180, 22);
             this.miModificarAutos.Text = "Modificar";
             this.miModificarAutos.Click += new System.EventHandler(this.miModificarAutos_Click);
             // 
             // miEliminarAutos
             // 
             this.miEliminarAutos.Name = "miEliminarAutos";
-            this.miEliminarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarAutos.Size = new System.Drawing.Size(180, 22);
             this.miEliminarAutos.Text = "Eliminar";
             // 
             // camionetasToolStripMenuItem
@@ -134,21 +134,21 @@ namespace Concesionaria
             // miAgregarCamioneta
             // 
             this.miAgregarCamioneta.Name = "miAgregarCamioneta";
-            this.miAgregarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miAgregarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miAgregarCamioneta.Text = "Agregar";
             this.miAgregarCamioneta.Click += new System.EventHandler(this.miAgregarCamioneta_Click);
             // 
             // miModificarCamioneta
             // 
             this.miModificarCamioneta.Name = "miModificarCamioneta";
-            this.miModificarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miModificarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miModificarCamioneta.Text = "Modificar";
             this.miModificarCamioneta.Click += new System.EventHandler(this.miModificarCamioneta_Click);
             // 
             // miEliminarCamioneta
             // 
             this.miEliminarCamioneta.Name = "miEliminarCamioneta";
-            this.miEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miEliminarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miEliminarCamioneta.Text = "Eliminar";
             // 
             // proveedorToolStripMenuItem
@@ -164,19 +164,20 @@ namespace Concesionaria
             // miAgregarDistribuidor
             // 
             this.miAgregarDistribuidor.Name = "miAgregarDistribuidor";
-            this.miAgregarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miAgregarDistribuidor.Text = "Agregar";
+            this.miAgregarDistribuidor.Click += new System.EventHandler(this.miAgregarDistribuidor_Click);
             // 
             // miModificarDistribuidor
             // 
             this.miModificarDistribuidor.Name = "miModificarDistribuidor";
-            this.miModificarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miModificarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miModificarDistribuidor.Text = "Modificar";
             // 
             // miEliminarDistribuidor
             // 
             this.miEliminarDistribuidor.Name = "miEliminarDistribuidor";
-            this.miEliminarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miEliminarDistribuidor.Text = "Eliminar";
             // 
             // miSalir

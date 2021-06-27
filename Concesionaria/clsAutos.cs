@@ -7,7 +7,7 @@ using bcFechas;
 
 namespace Concesionaria
 {
-    class clsAutos : clsVehiculos
+    public class clsAutos : clsVehiculos
     {
         #region Atributos
         private string _marca;
@@ -105,6 +105,8 @@ namespace Concesionaria
         {
             return 1;
         }
+
+
 
         //public override bool Equals(object autoPedido) //podemos usar el equals con el atributo de la clase padre?
         //{

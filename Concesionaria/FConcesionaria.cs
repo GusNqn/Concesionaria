@@ -14,13 +14,12 @@ namespace Concesionaria
     
     public partial class FConcesionaria : Form
     {
-
-        #region Conexion
+        #region InicializacionForm
         clsBase_Datos datos;
+        int codigoVehiculos;
         #endregion
-
         #region Metodos
-        private void acutualizarVehiculos()
+        private void actualizarVehiculos()
         {
             List<string> lista;
             string tipo_Vehiculo, marca, distribuidor, gama = string.Empty;
@@ -76,11 +75,12 @@ namespace Concesionaria
         {
             InitializeComponent();
             datos = new clsBase_Datos();
+            codigoVehiculos = -1;
         }
 
         private void miAgregarAutos_Click(object sender, EventArgs e)
         {
-            FAutos FormAuto = new FAutos(datos); 
+            FAutos FormAuto = new FAutos(datos, codigoVehiculos); 
 
             if (FormAuto.ShowDialog() == DialogResult.OK)
             {
@@ -106,7 +106,7 @@ namespace Concesionaria
                     if (esAuto)
                     {
                         int codigo = Convert.ToInt32(lbFiltroVehiculos.SelectedItem.ToString().Substring(9, 4));
-                        FAutos FormAuto = new FAutos(datos, codigo);
+                        FAutos FormAuto = new FAutos(datos, codigo, codigoVehiculos);
                         if (FormAuto.ShowDialog() == DialogResult.OK)
                         {
                             MessageBox.Show("Se ha modificado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -132,7 +132,7 @@ namespace Concesionaria
 
         private void miAgregarCamioneta_Click(object sender, EventArgs e)
         {
-            FCamionetas FormCamioneta = new FCamionetas(datos);
+            FCamionetas FormCamioneta = new FCamionetas(datos, codigoVehiculos);
 
             if (FormCamioneta.ShowDialog() == DialogResult.OK)
             {
@@ -158,7 +158,7 @@ namespace Concesionaria
                     if (!esAuto)
                     {
                         int codigo = Convert.ToInt32(lbFiltroVehiculos.SelectedItem.ToString().Substring(9, 4));
-                        FCamionetas FormCamioneta = new FCamionetas(datos, codigo);
+                        FCamionetas FormCamioneta = new FCamionetas(datos, codigo, codigoVehiculos);
                         if (FormCamioneta.ShowDialog() == DialogResult.OK)
                         {
                             MessageBox.Show("Se ha modificado la camioneta correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,6 +195,18 @@ namespace Concesionaria
             MessageBox.Show("Proyecto diseñado por: \n\n - Lucas Boccaccini \n - Juan Esteban Schmidt \n - Gustavo Seguín ", "Créditos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-       
+        private void miAgregarDistribuidor_Click(object sender, EventArgs e)
+        {
+            FDistribuidores FormDistri = new FDistribuidores(datos);
+
+            if (FormDistri.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Se ha cargado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Se ha cancelado la carga", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
