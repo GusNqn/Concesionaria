@@ -6,6 +6,24 @@ using System.Threading.Tasks;
 
 namespace Concesionaria
 {
+    //Domingo :
+    // - Comprension de trabajo de sabado
+    // - Redefinicion de Equals - GetHash - ToString de Distribuidores.
+    // - Chequeo de esDistribuidorInternacional. Por que no se utiliza el Equals y se usa un indice?
+    // - Correcion de Equals en clsVehiculos. Segundo argumento con parametro en vez de propiedad.
+    // - Emprolijado de codigo
+    // - Listar vehiculo. Ver comentarios en el codigo. Por que estamos listando en una clase? El listar deberia ir en el form.
+    // - Insertar distribuidor hecho
+    // - Insertar y modificar autos y camionetas hecho
+    // - Actualizar vehiculos hecho
+    // - Actualizar cantidades hecho
+    // - metodo cantidad de vehiculos añadida a clsbase
+    // - metodo cantidad de proveedores añadida a clsbase
+    // - los botones...no son MSI??!?!?!?!?!
+
+    // A entender de la funcionalidad del ejemplo de la profesora:
+    // - CantidadVehiculos y CantidadDistribuidores...por que son propiedades?
+
     public class clsBase_Datos 
     {
         List<clsVehiculos> listaVehiculos;
@@ -52,6 +70,7 @@ namespace Concesionaria
         {
             bool existe = false;
             List<string> razonSocial;
+
             razonSocial = listaRazonDistribuidores();
 
             if (razonSocial.Contains(razon))
@@ -85,7 +104,7 @@ namespace Concesionaria
             return existe;
         }
 
-        public bool esDistribuidorInternacional(string cuit)
+        public bool esDistribuidorInternacional(string cuit) //no entiendo esta funcion. Si ya tenemos un distribuidor y el equals compara por CUIT...para que el indice?
         {
             clsDistribuidores distribuidor = new clsDistribuidores(cuit, "", false);
             int indice = listaDistribuidores.IndexOf(distribuidor);
@@ -98,6 +117,7 @@ namespace Concesionaria
         public List<string> listaRazonDistribuidores()
         {
             List<string> lista;
+            
             lista = new List<string>();
 
             foreach (clsDistribuidores distribuidor in listaDistribuidores)
@@ -111,7 +131,9 @@ namespace Concesionaria
         public List<string> listarDistribuidores(string procedencia)
         {
             List<string> lista;
+
             lista = new List<string>();
+
             if (procedencia == "Internacional")
             {
                 foreach (clsDistribuidores distribuidor in listaDistribuidores)
@@ -145,10 +167,9 @@ namespace Concesionaria
         public List<string> listarVehiculos(string tipo_Vehiculo, string marca, string distribuidor, bool Condicion, bool cuatroXcuatro, string gama)
         {
             List<string> lista;
-            lista = new List<string>();
-
             bool controlTipoVehiculo, controlMarca, controlDistribuidor, controlCondicion, controlCuaXcua, controlGama;
-            
+
+            lista = new List<string>();
             foreach (clsVehiculos vehiculos in listaVehiculos)
             {
                 controlTipoVehiculo = false;
@@ -158,7 +179,7 @@ namespace Concesionaria
                 controlCuaXcua = false;
                 controlGama = false;
 
-                if (tipo_Vehiculo == "Todos") //control vehiculo
+                if (tipo_Vehiculo == "Todos") //control vehiculo     ---- Este control vehiculo lo unico que hace es decir que algo marco. Se soluciona con seleccionar uno por defecto.
                 {
                     controlTipoVehiculo = true;
                 }
@@ -191,7 +212,7 @@ namespace Concesionaria
                     controlDistribuidor = dist.Equals(distribuidor);
                 }
 
-                if (vehiculos.GetType() == typeof(clsAutos)) //control condicion y 4x4
+                if (vehiculos.GetType() == typeof(clsAutos)) //control condicion y 4x4  ---- Cuatro x cuatro true siendo un auto?
                 {
                     clsAutos auto = (clsAutos)vehiculos;
                     controlCondicion = auto.USADO == Condicion;
@@ -204,7 +225,7 @@ namespace Concesionaria
                     controlCuaXcua = camionetas.CUATROXCUATRO == cuatroXcuatro;
                 }
 
-                if (gama == "Base") //control gama
+                if (gama == "Base") //control gama  -----Siempre me devuelve true. Solo controla lo que viene? No entiendo la funcionalidad. 
                 {
                     controlGama = true;
                 }
@@ -223,6 +244,93 @@ namespace Concesionaria
                 }
             }
             return lista;
+        }
+
+        public void insertarDistribuidor(string cuit, string razon, bool internacional)
+        {
+            clsDistribuidores distribuidor = new clsDistribuidores(cuit, razon, internacional);
+
+            if (!listaDistribuidores.Contains(distribuidor))
+            {
+                listaDistribuidores.Add(distribuidor);
+            }
+        }
+
+        public void modificarProveedor(string cuit, string razon, bool internacional)
+        {
+            clsDistribuidores distribuidor = new clsDistribuidores(cuit, razon, internacional);
+            int posicion;
+
+            posicion = listaDistribuidores.IndexOf(distribuidor); //indexof si no lo encuentra...que devuelve? -1?
+            if (posicion >=0)
+            {
+                listaDistribuidores.RemoveAt(posicion);
+                listaDistribuidores.Insert(posicion, distribuidor);
+            }
+        }
+
+        public void insertarAuto(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, int codigo, string tipo, clsDistribuidores distribuidor)
+        {
+            clsAutos auto = new clsAutos(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
+
+            if (!listaVehiculos.Contains(auto))
+            {
+                listaVehiculos.Add(auto);
+            }
+        }
+
+        public void modificarAuto(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, int codigo, string tipo, clsDistribuidores distribuidor)
+        {
+            clsAutos auto = new clsAutos(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
+            int posicion;
+
+            posicion = listaVehiculos.IndexOf(auto); //indexof si no lo encuentra...que devuelve? -1?
+            if (posicion >= 0)
+            {
+                listaVehiculos.RemoveAt(posicion);
+                listaVehiculos.Insert(posicion, auto);
+            }
+        }
+
+        public void insertarCamioneta(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, int codigo, string tipo, clsDistribuidores distribuidor)
+        {
+            clsCamionetas camioneta = new clsCamionetas(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
+
+            if (!listaVehiculos.Contains(camioneta))
+            {
+                listaVehiculos.Add(camioneta);
+            }
+        }
+
+        public void modificarCamioneta(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, int codigo, string tipo, clsDistribuidores distribuidor)
+        {
+            clsCamionetas camioneta = new clsCamionetas(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
+            int posicion;
+
+            posicion = listaVehiculos.IndexOf(camioneta); //indexof si no lo encuentra...que devuelve? -1?
+            if (posicion >= 0)
+            {
+                listaVehiculos.RemoveAt(posicion);
+                listaVehiculos.Insert(posicion, camioneta);
+            }
+        }
+
+        public int cantidadVehiculos()
+        {
+            int cantidad;
+
+            cantidad = listaVehiculos.Count;
+
+            return cantidad;
+        }
+
+        public int cantidadDistribuidores()
+        {
+            int cantidad;
+
+            cantidad = listaDistribuidores.Count;
+
+            return cantidad;
         }
         #endregion
     }

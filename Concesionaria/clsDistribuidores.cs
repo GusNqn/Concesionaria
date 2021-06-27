@@ -55,7 +55,31 @@ namespace Concesionaria
         #endregion
 
         #region Metodos
+        public override string ToString()
+        {
+            return $"CUIT: {_cuit} - Razón Social: {_razonSocial}";
+        }
 
+        public override bool Equals(object distribuidorPedido)
+        {
+            bool igual;
+
+            if (distribuidorPedido == null)
+                igual = this == null;
+            else if (this.GetType() != distribuidorPedido.GetType())
+                igual = false;
+            else
+            {
+                clsDistribuidores distribuidor = (clsDistribuidores)distribuidorPedido;
+                igual = this._cuit == distribuidor.CUIT;
+            }
+            return igual;
+        }
+
+        public override int GetHashCode()
+        {
+            return (Convert.ToInt32(_cuit) * 2);
+        }
         #endregion
 
         #region Metodos Estaticos

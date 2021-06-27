@@ -12,9 +12,29 @@ namespace Concesionaria
 {
     public partial class FAutos : Form
     {
-        public FAutos()
+        clsBase_Datos datos;
+        bool agregarVehiculo;
+
+        public FAutos(clsBase_Datos conexion)
         {
             InitializeComponent();
+            datos = conexion;
+            agregarVehiculo = true;
+        }
+
+        private void FAutos_Load(object sender, EventArgs e)
+        {
+            if (agregarVehiculo)
+            {
+                Text = "Agregar";
+                bAceptar.Text = "Agregar";
+
+
+            }
+            else
+            {
+
+            }
         }
     }
 }

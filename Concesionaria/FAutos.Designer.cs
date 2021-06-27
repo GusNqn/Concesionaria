@@ -30,14 +30,14 @@ namespace Concesionaria
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbMarca = new System.Windows.Forms.ComboBox();
-            this.cbModelo = new System.Windows.Forms.ComboBox();
-            this.dtFechaFabricacion = new System.Windows.Forms.DateTimePicker();
             this.mtPrecioCosto = new System.Windows.Forms.MaskedTextBox();
+            this.dtFechaFabricacion = new System.Windows.Forms.DateTimePicker();
+            this.cbModelo = new System.Windows.Forms.ComboBox();
+            this.cbMarca = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
@@ -60,41 +60,34 @@ namespace Concesionaria
             this.panel1.Size = new System.Drawing.Size(379, 148);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // mtPrecioCosto
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Marca:";
+            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 105);
+            this.mtPrecioCosto.Mask = "9999990.99";
+            this.mtPrecioCosto.Name = "mtPrecioCosto";
+            this.mtPrecioCosto.Size = new System.Drawing.Size(66, 20);
+            this.mtPrecioCosto.TabIndex = 4;
             // 
-            // label2
+            // dtFechaFabricacion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(82, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Modelo:";
+            this.dtFechaFabricacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaFabricacion.Location = new System.Drawing.Point(133, 79);
+            this.dtFechaFabricacion.Name = "dtFechaFabricacion";
+            this.dtFechaFabricacion.Size = new System.Drawing.Size(97, 20);
+            this.dtFechaFabricacion.TabIndex = 3;
             // 
-            // label3
+            // cbModelo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Fecha de Fabricacion:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 108);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Precio de costo:";
+            this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbModelo.FormattingEnabled = true;
+            this.cbModelo.Items.AddRange(new object[] {
+            "Gama Base",
+            "Gama Media",
+            "Gama Full"});
+            this.cbModelo.Location = new System.Drawing.Point(133, 48);
+            this.cbModelo.Name = "cbModelo";
+            this.cbModelo.Size = new System.Drawing.Size(228, 21);
+            this.cbModelo.TabIndex = 2;
             // 
             // cbMarca
             // 
@@ -110,34 +103,41 @@ namespace Concesionaria
             this.cbMarca.Size = new System.Drawing.Size(228, 21);
             this.cbMarca.TabIndex = 1;
             // 
-            // cbModelo
+            // label4
             // 
-            this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbModelo.FormattingEnabled = true;
-            this.cbModelo.Items.AddRange(new object[] {
-            "Gama Base",
-            "Gama Media",
-            "Gama Full"});
-            this.cbModelo.Location = new System.Drawing.Point(133, 48);
-            this.cbModelo.Name = "cbModelo";
-            this.cbModelo.Size = new System.Drawing.Size(228, 21);
-            this.cbModelo.TabIndex = 2;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(43, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Precio de costo:";
             // 
-            // dtFechaFabricacion
+            // label3
             // 
-            this.dtFechaFabricacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaFabricacion.Location = new System.Drawing.Point(133, 79);
-            this.dtFechaFabricacion.Name = "dtFechaFabricacion";
-            this.dtFechaFabricacion.Size = new System.Drawing.Size(97, 20);
-            this.dtFechaFabricacion.TabIndex = 3;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Fecha de Fabricacion:";
             // 
-            // mtPrecioCosto
+            // label2
             // 
-            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 105);
-            this.mtPrecioCosto.Mask = "9999990.99";
-            this.mtPrecioCosto.Name = "mtPrecioCosto";
-            this.mtPrecioCosto.Size = new System.Drawing.Size(66, 20);
-            this.mtPrecioCosto.TabIndex = 4;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(82, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Modelo:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(87, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Marca:";
             // 
             // checkUsado
             // 
@@ -178,6 +178,7 @@ namespace Concesionaria
             this.Controls.Add(this.panel1);
             this.Name = "FAutos";
             this.Text = "Autos";
+            this.Load += new System.EventHandler(this.FAutos_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -70,7 +70,7 @@ namespace Concesionaria
             else
             {
                 clsVehiculos vehiculo = (clsVehiculos)vehiculoPedido;
-                igual = this._codigo == vehiculo._codigo;
+                igual = this._codigo == vehiculo.CODIGO;
             }
             return igual;
         }
