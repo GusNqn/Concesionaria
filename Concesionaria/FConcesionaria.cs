@@ -272,5 +272,29 @@ namespace Concesionaria
         {
             actualizarDistribuidores();
         }
+
+        private void miModificarDistribuidor_Click(object sender, EventArgs e)
+        {
+            if (lbFiltroDistribuidores.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un distribuidor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbFiltroDistribuidores.Focus();
+            }
+            else
+            {
+                string cuitDistribuidor = lbFiltroDistribuidores.SelectedItem.ToString().Substring(6,11);
+                FDistribuidores FormDistribuidores = new FDistribuidores(datos, cuitDistribuidor);
+                if (FormDistribuidores.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show("Se ha modificado el distribuidor correctamete", "Modificacion existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    actualizarVehiculos();
+                }
+                else
+                {
+                    MessageBox.Show("Se ha cancelado la modificacion", "Modificacion cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
+        }
     }
 }

@@ -43,12 +43,16 @@ namespace Concesionaria
             this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
+            this.cbDistribuidores = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.cbDistribuidores);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.rbCuatroXCuatro);
             this.panel1.Controls.Add(this.rbTraccionSimple);
             this.panel1.Controls.Add(this.mtPrecioCosto);
@@ -61,13 +65,13 @@ namespace Concesionaria
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(376, 191);
+            this.panel1.Size = new System.Drawing.Size(376, 201);
             this.panel1.TabIndex = 0;
             // 
             // rbCuatroXCuatro
             // 
             this.rbCuatroXCuatro.AutoSize = true;
-            this.rbCuatroXCuatro.Location = new System.Drawing.Point(209, 144);
+            this.rbCuatroXCuatro.Location = new System.Drawing.Point(209, 171);
             this.rbCuatroXCuatro.Name = "rbCuatroXCuatro";
             this.rbCuatroXCuatro.Size = new System.Drawing.Size(42, 17);
             this.rbCuatroXCuatro.TabIndex = 5;
@@ -78,7 +82,8 @@ namespace Concesionaria
             // rbTraccionSimple
             // 
             this.rbTraccionSimple.AutoSize = true;
-            this.rbTraccionSimple.Location = new System.Drawing.Point(99, 144);
+            this.rbTraccionSimple.Checked = true;
+            this.rbTraccionSimple.Location = new System.Drawing.Point(99, 171);
             this.rbTraccionSimple.Name = "rbTraccionSimple";
             this.rbTraccionSimple.Size = new System.Drawing.Size(101, 17);
             this.rbTraccionSimple.TabIndex = 5;
@@ -88,7 +93,7 @@ namespace Concesionaria
             // 
             // mtPrecioCosto
             // 
-            this.mtPrecioCosto.Location = new System.Drawing.Point(147, 104);
+            this.mtPrecioCosto.Location = new System.Drawing.Point(147, 135);
             this.mtPrecioCosto.Mask = "9999990.99";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
             this.mtPrecioCosto.Size = new System.Drawing.Size(64, 20);
@@ -97,7 +102,7 @@ namespace Concesionaria
             // dtFechaFabricacion
             // 
             this.dtFechaFabricacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaFabricacion.Location = new System.Drawing.Point(147, 72);
+            this.dtFechaFabricacion.Location = new System.Drawing.Point(147, 103);
             this.dtFechaFabricacion.Name = "dtFechaFabricacion";
             this.dtFechaFabricacion.Size = new System.Drawing.Size(104, 20);
             this.dtFechaFabricacion.TabIndex = 3;
@@ -132,7 +137,7 @@ namespace Concesionaria
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(55, 107);
+            this.label4.Location = new System.Drawing.Point(55, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 0;
@@ -141,7 +146,7 @@ namespace Concesionaria
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 77);
+            this.label3.Location = new System.Drawing.Point(28, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 13);
             this.label3.TabIndex = 0;
@@ -194,6 +199,28 @@ namespace Concesionaria
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             // 
+            // cbDistribuidores
+            // 
+            this.cbDistribuidores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDistribuidores.FormattingEnabled = true;
+            this.cbDistribuidores.Items.AddRange(new object[] {
+            "Gama Base",
+            "Gama Media",
+            "Gama Full"});
+            this.cbDistribuidores.Location = new System.Drawing.Point(147, 72);
+            this.cbDistribuidores.Name = "cbDistribuidores";
+            this.cbDistribuidores.Size = new System.Drawing.Size(200, 21);
+            this.cbDistribuidores.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(79, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Distribuidor:";
+            // 
             // FCamionetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,6 +232,7 @@ namespace Concesionaria
             this.Controls.Add(this.panel1);
             this.Name = "FCamionetas";
             this.Text = "Camionetas";
+            this.Load += new System.EventHandler(this.FCamionetas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -228,5 +256,7 @@ namespace Concesionaria
         private System.Windows.Forms.RadioButton rbTraccionSimple;
         private System.Windows.Forms.Button bAceptar;
         private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.ComboBox cbDistribuidores;
+        private System.Windows.Forms.Label label5;
     }
 }

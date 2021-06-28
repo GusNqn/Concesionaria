@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Concesionaria
 {
     //Domingo :
@@ -206,6 +207,21 @@ namespace Concesionaria
             }
             return autoBuscado;
         }
+        public clsCamionetas datosCamionetas(int codigo)
+        {
+            clsCamionetas camionetaBuscada = new clsCamionetas();
+            foreach (clsVehiculos vehiculo in listaVehiculos)
+            {
+                if (vehiculo.CODIGO == codigo)
+                {
+                    if (vehiculo.GetType() == typeof(clsCamionetas))
+                    {
+                        camionetaBuscada = (clsCamionetas)vehiculo;
+                    }
+                }
+            }
+            return camionetaBuscada;
+        }
         public List<string> listarDistribuidores(string procedencia)
         {
             List<string> lista;
@@ -351,7 +367,7 @@ namespace Concesionaria
         }
 
         public void insertarAuto(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, int codigo, string tipo, clsDistribuidores distribuidor)
-        {
+        { 
             clsAutos auto = new clsAutos(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
 
             if (!listaVehiculos.Contains(auto))

@@ -14,11 +14,20 @@ namespace Concesionaria
     {
         clsBase_Datos datos;
         bool agregarProveedor;
+        string cuitDistribuidor;
         public FDistribuidores(clsBase_Datos conexion)
         {
             InitializeComponent();
             datos = conexion;
             agregarProveedor = true;
+        }
+        public FDistribuidores(clsBase_Datos conexion, string cuit)
+        {
+            InitializeComponent();
+            datos = conexion;
+            agregarProveedor = false;
+            cuitDistribuidor = cuit;
+
         }
 
         private void mtCuit_Validating(object sender, CancelEventArgs e)
@@ -38,14 +47,15 @@ namespace Concesionaria
                 checkInternacional.Checked = false;
             }
             else
-            {//INCOMPLETO PASAR VALORES DEL DISTRIBUIDOR.
+            {
                 Text = "Modificar";
                 bAceptar.Text = "Modificar";
-                mtCuit.Clear();
-                tRazonSocial.Text = "";
-                checkInternacional.Checked = false;
+                mtCuit.Text = cuitDistribuidor;
+                mtCuit.Enabled = false;
+                tRazonSocial.Text = datos.getRazonSocial(cuitDistribuidor);
+                checkInternacional.Checked = datos.esDistribuidorInternacional(cuitDistribuidor);
+                
             }
-          
         }
 
         private void bAceptar_Click(object sender, EventArgs e)
@@ -80,6 +90,7 @@ namespace Concesionaria
             }
             else
             { 
+                
             }
         }
 

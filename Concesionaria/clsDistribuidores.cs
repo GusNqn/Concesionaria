@@ -9,9 +9,9 @@ namespace Concesionaria
     public class clsDistribuidores
     {
         #region Atributos
-        private string _cuit;
-        private string _razonSocial;
-        private bool _internacional;
+        protected string _cuit;
+        protected string _razonSocial;
+        protected bool _internacional;
         #endregion
 
         #region Propiedades

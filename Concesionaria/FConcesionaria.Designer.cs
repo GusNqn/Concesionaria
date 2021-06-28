@@ -50,6 +50,7 @@ namespace Concesionaria
             this.lCantListadaVehiculos = new System.Windows.Forms.Label();
             this.cbFiltroDistribuidor = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbGamaTodos = new System.Windows.Forms.RadioButton();
             this.rbFull = new System.Windows.Forms.RadioButton();
             this.rbMedia = new System.Windows.Forms.RadioButton();
             this.rbBase = new System.Windows.Forms.RadioButton();
@@ -70,7 +71,6 @@ namespace Concesionaria
             this.rbNacional = new System.Windows.Forms.RadioButton();
             this.lCantListadoDistribuidores = new System.Windows.Forms.Label();
             this.lbFiltroDistribuidores = new System.Windows.Forms.ListBox();
-            this.rbGamaTodos = new System.Windows.Forms.RadioButton();
             this.msPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -174,6 +174,7 @@ namespace Concesionaria
             this.miModificarDistribuidor.Name = "miModificarDistribuidor";
             this.miModificarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miModificarDistribuidor.Text = "Modificar";
+            this.miModificarDistribuidor.Click += new System.EventHandler(this.miModificarDistribuidor_Click);
             // 
             // miEliminarDistribuidor
             // 
@@ -267,6 +268,18 @@ namespace Concesionaria
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gama";
+            // 
+            // rbGamaTodos
+            // 
+            this.rbGamaTodos.AutoSize = true;
+            this.rbGamaTodos.Checked = true;
+            this.rbGamaTodos.Location = new System.Drawing.Point(6, 19);
+            this.rbGamaTodos.Name = "rbGamaTodos";
+            this.rbGamaTodos.Size = new System.Drawing.Size(55, 17);
+            this.rbGamaTodos.TabIndex = 1;
+            this.rbGamaTodos.TabStop = true;
+            this.rbGamaTodos.Text = "Todos";
+            this.rbGamaTodos.UseVisualStyleBackColor = true;
             // 
             // rbFull
             // 
@@ -477,18 +490,6 @@ namespace Concesionaria
             this.lbFiltroDistribuidores.Name = "lbFiltroDistribuidores";
             this.lbFiltroDistribuidores.Size = new System.Drawing.Size(268, 199);
             this.lbFiltroDistribuidores.TabIndex = 0;
-            // 
-            // rbGamaTodos
-            // 
-            this.rbGamaTodos.AutoSize = true;
-            this.rbGamaTodos.Checked = true;
-            this.rbGamaTodos.Location = new System.Drawing.Point(6, 19);
-            this.rbGamaTodos.Name = "rbGamaTodos";
-            this.rbGamaTodos.Size = new System.Drawing.Size(55, 17);
-            this.rbGamaTodos.TabIndex = 1;
-            this.rbGamaTodos.TabStop = true;
-            this.rbGamaTodos.Text = "Todos";
-            this.rbGamaTodos.UseVisualStyleBackColor = true;
             // 
             // FConcesionaria
             // 
