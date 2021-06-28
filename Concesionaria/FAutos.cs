@@ -38,8 +38,12 @@ namespace Concesionaria
 
         private void FAutos_Load(object sender, EventArgs e)
         {
+            List<string> listaDistribuidores = datos.listarDistribuidores("");
             cbDistribuidores.Items.Clear();
-            cbDistribuidores.Items.Add(datos.listarDistribuidores(""));
+            foreach (string cadena in listaDistribuidores)
+            { 
+                cbDistribuidores.Items.Add(cadena);
+            }
             if (agregarVehiculo)
             {
                 Text = "Agregar";
@@ -72,7 +76,7 @@ namespace Concesionaria
             DateTime nuevaFechaFab = dtFechaFabricacion.Value.Date;
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
             bool usado = checkUsado.Checked;
-            string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(7, 11);
+            string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
             clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
             
             if (nuevaMarca == "")

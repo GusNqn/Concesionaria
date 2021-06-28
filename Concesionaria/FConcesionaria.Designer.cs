@@ -67,9 +67,10 @@ namespace Concesionaria
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbTodos = new System.Windows.Forms.RadioButton();
             this.rbInternacional = new System.Windows.Forms.RadioButton();
-            this.rbFiltroNacional = new System.Windows.Forms.RadioButton();
+            this.rbNacional = new System.Windows.Forms.RadioButton();
             this.lCantListadoDistribuidores = new System.Windows.Forms.Label();
             this.lbFiltroDistribuidores = new System.Windows.Forms.ListBox();
+            this.rbGamaTodos = new System.Windows.Forms.RadioButton();
             this.msPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -134,21 +135,21 @@ namespace Concesionaria
             // miAgregarCamioneta
             // 
             this.miAgregarCamioneta.Name = "miAgregarCamioneta";
-            this.miAgregarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miAgregarCamioneta.Text = "Agregar";
             this.miAgregarCamioneta.Click += new System.EventHandler(this.miAgregarCamioneta_Click);
             // 
             // miModificarCamioneta
             // 
             this.miModificarCamioneta.Name = "miModificarCamioneta";
-            this.miModificarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miModificarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miModificarCamioneta.Text = "Modificar";
             this.miModificarCamioneta.Click += new System.EventHandler(this.miModificarCamioneta_Click);
             // 
             // miEliminarCamioneta
             // 
             this.miEliminarCamioneta.Name = "miEliminarCamioneta";
-            this.miEliminarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miEliminarCamioneta.Text = "Eliminar";
             // 
             // proveedorToolStripMenuItem
@@ -256,12 +257,13 @@ namespace Concesionaria
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbGamaTodos);
             this.groupBox1.Controls.Add(this.rbFull);
             this.groupBox1.Controls.Add(this.rbMedia);
             this.groupBox1.Controls.Add(this.rbBase);
-            this.groupBox1.Location = new System.Drawing.Point(304, 163);
+            this.groupBox1.Location = new System.Drawing.Point(304, 150);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(83, 95);
+            this.groupBox1.Size = new System.Drawing.Size(83, 108);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gama";
@@ -269,33 +271,30 @@ namespace Concesionaria
             // rbFull
             // 
             this.rbFull.AutoSize = true;
-            this.rbFull.Location = new System.Drawing.Point(18, 66);
+            this.rbFull.Location = new System.Drawing.Point(6, 87);
             this.rbFull.Name = "rbFull";
             this.rbFull.Size = new System.Drawing.Size(41, 17);
             this.rbFull.TabIndex = 0;
-            this.rbFull.TabStop = true;
             this.rbFull.Text = "Full";
             this.rbFull.UseVisualStyleBackColor = true;
             // 
             // rbMedia
             // 
             this.rbMedia.AutoSize = true;
-            this.rbMedia.Location = new System.Drawing.Point(18, 43);
+            this.rbMedia.Location = new System.Drawing.Point(6, 64);
             this.rbMedia.Name = "rbMedia";
             this.rbMedia.Size = new System.Drawing.Size(54, 17);
             this.rbMedia.TabIndex = 0;
-            this.rbMedia.TabStop = true;
             this.rbMedia.Text = "Media";
             this.rbMedia.UseVisualStyleBackColor = true;
             // 
             // rbBase
             // 
             this.rbBase.AutoSize = true;
-            this.rbBase.Location = new System.Drawing.Point(18, 20);
+            this.rbBase.Location = new System.Drawing.Point(6, 41);
             this.rbBase.Name = "rbBase";
             this.rbBase.Size = new System.Drawing.Size(49, 17);
             this.rbBase.TabIndex = 0;
-            this.rbBase.TabStop = true;
             this.rbBase.Text = "Base";
             this.rbBase.UseVisualStyleBackColor = true;
             // 
@@ -357,7 +356,7 @@ namespace Concesionaria
             // checkFiltro4x4
             // 
             this.checkFiltro4x4.AutoSize = true;
-            this.checkFiltro4x4.Location = new System.Drawing.Point(304, 140);
+            this.checkFiltro4x4.Location = new System.Drawing.Point(304, 137);
             this.checkFiltro4x4.Name = "checkFiltro4x4";
             this.checkFiltro4x4.Size = new System.Drawing.Size(43, 17);
             this.checkFiltro4x4.TabIndex = 1;
@@ -368,7 +367,7 @@ namespace Concesionaria
             // 
             this.checkFiltroUsado.AutoSize = true;
             this.checkFiltroUsado.Enabled = false;
-            this.checkFiltroUsado.Location = new System.Drawing.Point(304, 117);
+            this.checkFiltroUsado.Location = new System.Drawing.Point(304, 114);
             this.checkFiltroUsado.Name = "checkFiltroUsado";
             this.checkFiltroUsado.Size = new System.Drawing.Size(57, 17);
             this.checkFiltroUsado.TabIndex = 1;
@@ -419,7 +418,7 @@ namespace Concesionaria
             // 
             this.groupBox2.Controls.Add(this.rbTodos);
             this.groupBox2.Controls.Add(this.rbInternacional);
-            this.groupBox2.Controls.Add(this.rbFiltroNacional);
+            this.groupBox2.Controls.Add(this.rbNacional);
             this.groupBox2.Location = new System.Drawing.Point(296, 15);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(112, 95);
@@ -430,35 +429,37 @@ namespace Concesionaria
             // rbTodos
             // 
             this.rbTodos.AutoSize = true;
-            this.rbTodos.Location = new System.Drawing.Point(17, 64);
+            this.rbTodos.Checked = true;
+            this.rbTodos.Location = new System.Drawing.Point(16, 20);
             this.rbTodos.Name = "rbTodos";
             this.rbTodos.Size = new System.Drawing.Size(55, 17);
             this.rbTodos.TabIndex = 0;
             this.rbTodos.TabStop = true;
             this.rbTodos.Text = "Todos";
             this.rbTodos.UseVisualStyleBackColor = true;
+            this.rbTodos.CheckedChanged += new System.EventHandler(this.rbTodos_CheckedChanged);
             // 
             // rbInternacional
             // 
             this.rbInternacional.AutoSize = true;
-            this.rbInternacional.Location = new System.Drawing.Point(17, 41);
+            this.rbInternacional.Location = new System.Drawing.Point(16, 66);
             this.rbInternacional.Name = "rbInternacional";
             this.rbInternacional.Size = new System.Drawing.Size(86, 17);
             this.rbInternacional.TabIndex = 0;
-            this.rbInternacional.TabStop = true;
             this.rbInternacional.Text = "Internacional";
             this.rbInternacional.UseVisualStyleBackColor = true;
+            this.rbInternacional.CheckedChanged += new System.EventHandler(this.rbInternacional_CheckedChanged);
             // 
-            // rbFiltroNacional
+            // rbNacional
             // 
-            this.rbFiltroNacional.AutoSize = true;
-            this.rbFiltroNacional.Location = new System.Drawing.Point(17, 18);
-            this.rbFiltroNacional.Name = "rbFiltroNacional";
-            this.rbFiltroNacional.Size = new System.Drawing.Size(67, 17);
-            this.rbFiltroNacional.TabIndex = 0;
-            this.rbFiltroNacional.TabStop = true;
-            this.rbFiltroNacional.Text = "Nacional";
-            this.rbFiltroNacional.UseVisualStyleBackColor = true;
+            this.rbNacional.AutoSize = true;
+            this.rbNacional.Location = new System.Drawing.Point(16, 43);
+            this.rbNacional.Name = "rbNacional";
+            this.rbNacional.Size = new System.Drawing.Size(67, 17);
+            this.rbNacional.TabIndex = 0;
+            this.rbNacional.Text = "Nacional";
+            this.rbNacional.UseVisualStyleBackColor = true;
+            this.rbNacional.CheckedChanged += new System.EventHandler(this.rbNacional_CheckedChanged);
             // 
             // lCantListadoDistribuidores
             // 
@@ -476,6 +477,18 @@ namespace Concesionaria
             this.lbFiltroDistribuidores.Name = "lbFiltroDistribuidores";
             this.lbFiltroDistribuidores.Size = new System.Drawing.Size(268, 199);
             this.lbFiltroDistribuidores.TabIndex = 0;
+            // 
+            // rbGamaTodos
+            // 
+            this.rbGamaTodos.AutoSize = true;
+            this.rbGamaTodos.Checked = true;
+            this.rbGamaTodos.Location = new System.Drawing.Point(6, 19);
+            this.rbGamaTodos.Name = "rbGamaTodos";
+            this.rbGamaTodos.Size = new System.Drawing.Size(55, 17);
+            this.rbGamaTodos.TabIndex = 1;
+            this.rbGamaTodos.TabStop = true;
+            this.rbGamaTodos.Text = "Todos";
+            this.rbGamaTodos.UseVisualStyleBackColor = true;
             // 
             // FConcesionaria
             // 
@@ -535,7 +548,7 @@ namespace Concesionaria
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbTodos;
         private System.Windows.Forms.RadioButton rbInternacional;
-        private System.Windows.Forms.RadioButton rbFiltroNacional;
+        private System.Windows.Forms.RadioButton rbNacional;
         private System.Windows.Forms.Label lCantidadTotalDistribuidores;
         private System.Windows.Forms.Label lCantListadoDistribuidores;
         private System.Windows.Forms.CheckBox checkOrdenarVehiculos;
@@ -546,6 +559,7 @@ namespace Concesionaria
         private System.Windows.Forms.ToolStripMenuItem miAgregarCamioneta;
         private System.Windows.Forms.ToolStripMenuItem miModificarCamioneta;
         private System.Windows.Forms.ToolStripMenuItem miEliminarCamioneta;
+        private System.Windows.Forms.RadioButton rbGamaTodos;
     }
 }
 

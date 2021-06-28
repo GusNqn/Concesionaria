@@ -96,7 +96,7 @@ namespace Concesionaria
 
         public clsDistribuidores(string cuit, string razonSocial, bool internacional)
         {
-            if ((cuit != string.Empty) && (cuit.Length != 11))
+            if ((cuit != string.Empty) && (cuit.Length == 11))
                 _cuit = cuit;
             else _cuit = "00000000000";
             if (razonSocial != string.Empty)

@@ -11,7 +11,7 @@ using bcFechas;
 
 namespace Concesionaria
 {
-    
+
     public partial class FConcesionaria : Form
     {
         #region InicializacionForm
@@ -19,6 +19,46 @@ namespace Concesionaria
         int codigoVehiculos;
         #endregion
         #region Metodos
+
+        private void actualizarDistribuidores()
+        {
+            List<string> lista;
+            string procedencia = "";
+            if (rbTodos.Checked)
+            {
+                procedencia = "Todos";
+            }
+            else if (rbNacional.Checked)
+            {
+                procedencia = "Nacional";
+            }
+            else if (rbInternacional.Checked)
+            {
+                procedencia = "Internacional";
+            }
+
+            lista = datos.listarDistribuidores(procedencia);
+            lbFiltroDistribuidores.Items.Clear();
+            foreach (string cadena in lista)
+            {
+                lbFiltroDistribuidores.Items.Add(cadena);
+            }
+            ActualizarCantidadesDistribuidores(lista);
+        }
+        private void ActualizarCantidadesDistribuidores(List<string> lista)
+        {
+            lCantListadoDistribuidores.Text = $"Cantidad Listado: {lista.Count}";
+            lCantidadTotalDistribuidores.Text = $"Cantidad Total: {datos.cantidadDistribuidores()}";
+        }
+        private void completarComboDistribuidores()
+        {
+            List<string> listaDistribuidores = datos.listarDistribuidores("");
+            cbFiltroDistribuidor.Items.Clear();
+            foreach (string cadena in listaDistribuidores)
+            {
+                cbFiltroDistribuidor.Items.Add(cadena);
+            }
+        }
         private void actualizarVehiculos()
         {
             List<string> lista;
@@ -29,7 +69,11 @@ namespace Concesionaria
             marca = cbFiltroMarca.Text;
             distribuidor = cbFiltroDistribuidor.Text.Substring(7,11);
             MessageBox.Show($"Mostarme el cuit {distribuidor}");
-            if (rbBase.Checked)
+            if (rbGamaTodos.Checked)
+            {
+                gama = rbTodos.Text;
+            }
+            else if (rbBase.Checked)
             {
                 gama = rbBase.Text;
             }
@@ -41,7 +85,7 @@ namespace Concesionaria
             {
                 gama = rbFull.Text;
             }
-            if (checkFiltroUsado.Checked)
+            if (checkFiltroUsado.Checked) //NO PODEMOS PASAR EL CHECKBOX Y YA? En vez de crear booleanos(Lo mismo 4x4)
             {
                 Condicion = true;
             }
@@ -60,11 +104,11 @@ namespace Concesionaria
             {
                 lbFiltroVehiculos.Items.Add(cadena);
             }
-            actualizarCantidades(lista);
+            actualizarCantidadesVehiculos(lista);
 
         }
 
-        private void actualizarCantidades(List<string> lista)
+        private void actualizarCantidadesVehiculos(List<string> lista)
         {
             lCantListadaVehiculos.Text = $"Cantidad Listado: {lista.Count}";
             lCantTotalVehiculos.Text = $"Cantidad Total: {datos.cantidadVehiculos()}";
@@ -85,6 +129,7 @@ namespace Concesionaria
             if (FormAuto.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Se ha cargado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                actualizarVehiculos();            
             }
             else
             {
@@ -110,6 +155,7 @@ namespace Concesionaria
                         if (FormAuto.ShowDialog() == DialogResult.OK)
                         {
                             MessageBox.Show("Se ha modificado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            actualizarVehiculos();
                         }
                         else
                         {
@@ -137,6 +183,7 @@ namespace Concesionaria
             if (FormCamioneta.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Se ha cargado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                actualizarVehiculos();
             }
             else
             {
@@ -162,6 +209,7 @@ namespace Concesionaria
                         if (FormCamioneta.ShowDialog() == DialogResult.OK)
                         {
                             MessageBox.Show("Se ha modificado la camioneta correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            actualizarVehiculos();
                         }
                         else
                         {
@@ -201,12 +249,28 @@ namespace Concesionaria
 
             if (FormDistri.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Se ha cargado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se ha cargado el distribuidor correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                actualizarDistribuidores();
+                completarComboDistribuidores();
             }
             else
             {
                 MessageBox.Show("Se ha cancelado la carga", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void rbInternacional_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarDistribuidores();
+        }
+
+        private void rbTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarDistribuidores();
+        }
+
+        private void rbNacional_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarDistribuidores();
         }
     }
 }

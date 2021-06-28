@@ -30,6 +30,8 @@ namespace Concesionaria
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbDistribuidores = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.mtPrecioCosto = new System.Windows.Forms.MaskedTextBox();
             this.dtFechaFabricacion = new System.Windows.Forms.DateTimePicker();
             this.cbModelo = new System.Windows.Forms.ComboBox();
@@ -41,8 +43,6 @@ namespace Concesionaria
             this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
-            this.cbDistribuidores = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,28 @@ namespace Concesionaria
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(384, 183);
             this.panel1.TabIndex = 0;
+            // 
+            // cbDistribuidores
+            // 
+            this.cbDistribuidores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDistribuidores.FormattingEnabled = true;
+            this.cbDistribuidores.Items.AddRange(new object[] {
+            "Gama Base",
+            "Gama Media",
+            "Gama Full"});
+            this.cbDistribuidores.Location = new System.Drawing.Point(133, 79);
+            this.cbDistribuidores.Name = "cbDistribuidores";
+            this.cbDistribuidores.Size = new System.Drawing.Size(228, 21);
+            this.cbDistribuidores.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(54, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Distribuidores:";
             // 
             // mtPrecioCosto
             // 
@@ -85,9 +107,9 @@ namespace Concesionaria
             this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbModelo.FormattingEnabled = true;
             this.cbModelo.Items.AddRange(new object[] {
-            "Gama Base",
-            "Gama Media",
-            "Gama Full"});
+            "Base",
+            "Media",
+            "Full"});
             this.cbModelo.Location = new System.Drawing.Point(133, 48);
             this.cbModelo.Name = "cbModelo";
             this.cbModelo.Size = new System.Drawing.Size(228, 21);
@@ -171,28 +193,6 @@ namespace Concesionaria
             this.bCancelar.TabIndex = 2;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
-            // 
-            // cbDistribuidores
-            // 
-            this.cbDistribuidores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDistribuidores.FormattingEnabled = true;
-            this.cbDistribuidores.Items.AddRange(new object[] {
-            "Gama Base",
-            "Gama Media",
-            "Gama Full"});
-            this.cbDistribuidores.Location = new System.Drawing.Point(133, 79);
-            this.cbDistribuidores.Name = "cbDistribuidores";
-            this.cbDistribuidores.Size = new System.Drawing.Size(228, 21);
-            this.cbDistribuidores.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 82);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Distribuidores:";
             // 
             // FAutos
             // 

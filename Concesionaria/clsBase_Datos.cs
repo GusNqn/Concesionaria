@@ -206,82 +206,6 @@ namespace Concesionaria
             }
             return autoBuscado;
         }
-
-        //public string getMarcaAuto(int codigo)
-        //{
-        //    clsAutos auto = new clsAutos(codigo);
-        //    int pos = listaVehiculos.IndexOf(auto);
-
-        //    if (pos >= 0)
-        //    {
-        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
-        //        {            
-        //            auto = (clsAutos)listaVehiculos[pos];
-        //        }
-        //    }
-        //    return auto.MARCA;
-        //}
-
-        //public string getModeloAuto(int codigo)
-        //{
-        //    clsAutos auto = new clsAutos(codigo);
-        //    int pos = listaVehiculos.IndexOf(auto);
-
-        //    if (pos >= 0)
-        //    {
-        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
-        //        {
-        //            auto = (clsAutos)listaVehiculos[pos];
-        //        }
-        //    }
-        //    return auto.MODELO;
-        //}
-
-        //public DateTime getFechaFabAuto(int codigo)
-        //{
-        //    clsAutos auto = new clsAutos(codigo);
-        //    int pos = listaVehiculos.IndexOf(auto);
-
-        //    if (pos >= 0)
-        //    {
-        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
-        //        {
-        //            auto = (clsAutos)listaVehiculos[pos];
-        //        }
-        //    }
-        //    return auto.FECHAFABRICACION;
-        //}
-
-        //public double getPrecioCostoAuto(int codigo)
-        //{
-        //    clsAutos auto = new clsAutos(codigo);
-        //    int pos = listaVehiculos.IndexOf(auto);
-
-        //    if (pos >= 0)
-        //    {
-        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
-        //        {
-        //            auto = (clsAutos)listaVehiculos[pos];
-        //        }
-        //    }
-        //    return auto.PRECIOCOSTO;
-        //}
-
-        //public bool getUsadoAuto(int codigo)
-        //{
-        //    clsAutos auto = new clsAutos(codigo);
-        //    int pos = listaVehiculos.IndexOf(auto);
-
-        //    if (pos >= 0)
-        //    {
-        //        if (listaVehiculos[pos].GetType() == typeof(clsAutos))
-        //        {
-        //            auto = (clsAutos)listaVehiculos[pos];
-        //        }
-        //    }
-        //    return auto.USADO;
-        //}
-
         public List<string> listarDistribuidores(string procedencia)
         {
             List<string> lista;
@@ -378,7 +302,11 @@ namespace Concesionaria
                     controlCuaXcua = camionetas.CUATROXCUATRO == cuatroXcuatro;
                 }
 
-                if (gama == "Base") //control gama
+                if(gama == "Todos") //control gama
+                {
+                    controlGama = true;
+                }
+                else if (gama == "Base")
                 {
                     controlGama = true;
                 }
