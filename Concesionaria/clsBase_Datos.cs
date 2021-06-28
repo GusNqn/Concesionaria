@@ -353,7 +353,7 @@ namespace Concesionaria
             }
         }
 
-        public void modificarProveedor(string cuit, string razon, bool internacional)
+        public void modificarDistribuidor(string cuit, string razon, bool internacional)
         {
             clsDistribuidores distribuidor = new clsDistribuidores(cuit, razon, internacional);
             int posicion;

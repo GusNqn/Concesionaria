@@ -77,10 +77,12 @@ namespace Concesionaria
                 if (datos.existeCuitDistribuidor(nuevoCuit))
                 {
                     MessageBox.Show("El Cuit ya Existe", "Cuit Existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mtCuit.Focus();
                 }
                 else if (datos.existeRazonDistribuidor(nuevaRazSocial))
                 {
                     MessageBox.Show("La Razon Social ya Existe", "Razon Social Existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tRazonSocial.Focus();
                 }
                 else
                 { 
@@ -89,11 +91,19 @@ namespace Concesionaria
                 }
             }
             else
-            { 
-                
+            {
+                string razonModificada = datos.getRazonSocial(cuitDistribuidor);
+                if ((nuevaRazSocial != razonModificada) && (datos.existeRazonDistribuidor(razonModificada)))
+                {
+                    MessageBox.Show("La Razon Social ya Existe", "Razon Social Existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tRazonSocial.Focus();
+                }
+                else
+                {
+                    datos.modificarDistribuidor(cuitDistribuidor, razonModificada, internacional);
+                    DialogResult = DialogResult.OK;
+                }
             }
         }
-
-
     }
 }
