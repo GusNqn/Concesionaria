@@ -139,7 +139,45 @@ namespace Concesionaria
 
             return lista;
         }
+        public int buscarIndiceDist(string valorFiltro, int indiceFiltro)
+        {
+            int contador = -1;
+            int indice = -1;
+            int i = 0;
+            bool encontrado = false;
 
+            if (valorFiltro == "Nacional")
+            {
+                while ((i <= listaDistribuidores.Count && (!encontrado)))
+                {
+                    contador++;
+                    if (contador == indiceFiltro)
+                    {
+                        encontrado = true;
+                        indice = i;
+                    }
+                    i++;
+                }
+            }
+            else if (valorFiltro == "Internacional")
+            {
+                while ((i <= listaDistribuidores.Count && (!encontrado)))
+                {
+                    contador++;
+                    if (contador == indiceFiltro)
+                    {
+                        encontrado = true;
+                        indice = i;
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                indice = indiceFiltro;
+            }
+            return indice;
+        }
         public int buscarIndice(string valorFiltro, int indiceFiltro)
         {
             int contador = -1;
@@ -258,6 +296,19 @@ namespace Concesionaria
 
             return lista;
         }
+        public int cantidadVehiculosDelDistribuidor(string cuitDistribuidor)
+        {
+            int contador = 0;
+            clsDistribuidores distribuidorACompararar = new clsDistribuidores(cuitDistribuidor, getRazonSocial(cuitDistribuidor), esDistribuidorInternacional(cuitDistribuidor));
+            foreach (clsVehiculos vehiculos in listaVehiculos)
+            {
+                if (distribuidorACompararar.Equals(vehiculos.DISTRIBUIDOR))
+                {
+                    contador++;
+                }
+            }
+            return contador;
+        }
         public List<string> listarVehiculos(string tipo_Vehiculo, string marca, string cuitDistribuidor, bool Condicion, bool cuatroXcuatro, string gama)
         {
             List<string> lista;
@@ -347,24 +398,75 @@ namespace Concesionaria
                         controlCuaXcua = camionetas.CUATROXCUATRO == cuatroXcuatro;
                     }
                 }
-                if(gama == "Todos") //control gama
+                if (vehiculos.GetType() == typeof(clsAutos))
                 {
-                    controlGama = true;
+                    clsAutos auto = (clsAutos)vehiculos;
+                    if (gama == "Todos") //control gama
+                    {
+                        controlGama = true;
+                    }
+                    else if (gama == "Base")
+                    {
+                        controlGama = auto.MODELO == gama;
+                    }
+                    else if (gama == "Media")
+                    {
+                        controlGama = auto.MODELO == gama;
+                    }
+                    else if (gama == "Full")
+                    {
+                        controlGama = auto.MODELO == gama;
+                    }
                 }
-                else if (gama == "Base")
+                else if (vehiculos.GetType() == typeof(clsCamionetas))
                 {
-                    controlGama = true;
+                    clsCamionetas camionetas = (clsCamionetas)vehiculos;
+                    if (gama == "Todos") //control gama
+                    {
+                        controlGama = true;
+                    }
+                    else if (gama == "Base")
+                    {
+                        controlGama = camionetas.MODELO == gama;
+                    }
+                    else if (gama == "Media")
+                    {
+                        controlGama = camionetas.MODELO == gama;
+                    }
+                    else if (gama == "Full")
+                    {
+                        controlGama = camionetas.MODELO == gama;
+                    }
                 }
-                else if (gama == "Media")
-                {
-                    controlGama = true;
-                }
-                else if (gama == "Full")
-                {
-                    controlGama = true;
-                }
-                
+           
                 if (controlDistribuidor && controlMarca && controlTipoVehiculo && controlCondicion && controlCuaXcua && controlGama)
+                {
+                    lista.Add(vehiculos.ToString());
+                }
+            }
+            return lista;
+        }
+
+        public List<string> mostrarVehiculosDist(string cuitDistribuidor)
+        {
+            List<string> lista;
+            bool controlDistribuidor;
+
+            lista = new List<string>();
+            foreach (clsVehiculos vehiculos in listaVehiculos)
+            {
+                controlDistribuidor = false;
+
+                if (cuitDistribuidor == "Todos") //control distribuidor
+                {
+                    controlDistribuidor = true;
+                }
+                else
+                {
+                    clsDistribuidores dist = new clsDistribuidores(cuitDistribuidor, "", false);
+                    controlDistribuidor = vehiculos.DISTRIBUIDOR.Equals(dist);
+                }
+                if (controlDistribuidor)
                 {
                     lista.Add(vehiculos.ToString());
                 }
@@ -439,6 +541,15 @@ namespace Concesionaria
                 listaVehiculos.RemoveAt(posicion);
                 listaVehiculos.Insert(posicion, camioneta);
             }
+        }
+        public void eliminarVehiculos(int posicion)
+        {
+            listaVehiculos.RemoveAt(posicion);
+        }
+
+        public void eliminarDistribuidor(int posicion)
+        {
+            listaDistribuidores.RemoveAt(posicion);
         }
 
         public int cantidadVehiculos()

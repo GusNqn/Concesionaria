@@ -49,6 +49,16 @@ namespace Concesionaria
         {
             lCantListadoDistribuidores.Text = $"Cantidad Listado: {lista.Count}";
             lCantidadTotalDistribuidores.Text = $"Cantidad Total: {datos.cantidadDistribuidores()}";
+            if (datos.cantidadDistribuidores() > 0)
+            {
+                msAutos.Enabled = true;
+                msCamioneta.Enabled = true;
+            }
+            else
+            {
+                msAutos.Enabled = false;
+                msCamioneta.Enabled = false;
+            }
         }
         private void completarComboDistribuidores()
         {
@@ -364,6 +374,157 @@ namespace Concesionaria
             cbFiltroDistribuidor.SelectedIndex = 0;
             cbFiltroMarca.SelectedIndex = 0;
             cbFiltroTipo.SelectedIndex = 0;
+        }
+
+        private void miEliminarAutos_Click(object sender, EventArgs e)
+        {
+            if (lbFiltroVehiculos.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un Vehiculo a Eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Camioneta"))
+                {
+                    bool esAuto = datos.esAuto(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                    if (!esAuto)
+                    {
+                        DialogResult eliminarCamioneta;
+                        eliminarCamioneta = MessageBox.Show("Usted selecciono una Camioneta, ¿queria eliminarla?", "¿Eliminar Camioneta?", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
+                        if (eliminarCamioneta == DialogResult.Yes)
+                        {
+                            datos.eliminarVehiculos(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                            MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            actualizarVehiculos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se cancelo el Eliminado", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        datos.eliminarVehiculos(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                        MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        actualizarVehiculos();
+                    }
+                }
+                else
+                {
+                    datos.eliminarVehiculos(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                    MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    actualizarVehiculos();
+                }
+            }
+        }
+
+        private void miEliminarCamioneta_Click(object sender, EventArgs e)
+        {
+            if (lbFiltroVehiculos.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un Vehiculo a Eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Auto"))
+                {
+                    bool esAuto = datos.esAuto(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                    if (esAuto)
+                    {
+                        DialogResult eliminarAuto;
+                        eliminarAuto = MessageBox.Show("Usted selecciono un Auto, ¿queria eliminarlo?", "¿Eliminar Auto?", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
+                        if (eliminarAuto == DialogResult.Yes)
+                        {
+                            datos.eliminarVehiculos(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                            MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            actualizarVehiculos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se cancelo el Eliminado", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        datos.eliminarVehiculos(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                        MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        actualizarVehiculos();
+                    }
+                }
+                else
+                {
+                    datos.eliminarVehiculos(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
+                    MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    actualizarVehiculos();
+                }
+            }
+        }
+
+        private void miEliminarDistribuidor_Click(object sender, EventArgs e)
+        {
+            int cantidadVehiculos;
+            DialogResult verVehiculos;
+            if (lbFiltroDistribuidores.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un Distribuidor a Eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string cuitDistribuidor = lbFiltroDistribuidores.SelectedItem.ToString().Substring(6, 11);
+                cantidadVehiculos = datos.cantidadVehiculosDelDistribuidor(cuitDistribuidor);
+                if (cantidadVehiculos > 0)
+                {
+                    verVehiculos = MessageBox.Show($"No se puede eliminar porque tiene {cantidadVehiculos} vehiculos asociados. \n ¿Desea ver los vehiculos en la Lista?", "¿Listar Vehiculos?", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    if (verVehiculos == DialogResult.Yes)
+                    {
+                        cbFiltroTipo.SelectedIndex = 0;
+                        cbFiltroMarca.SelectedIndex = 0;
+                        if (rbTodos.Checked)
+                        {
+                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbTodos.Text, cbFiltroDistribuidor.SelectedIndex);
+                        }
+                        else if (rbNacional.Checked)
+                        {
+                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbNacional.Text, cbFiltroDistribuidor.SelectedIndex);
+                        }
+                        else if (rbInternacional.Checked)
+                        {
+                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbInternacional.Text, cbFiltroDistribuidor.SelectedIndex);
+                        }
+                        checkFiltroUsado.Checked = false;
+                        checkFiltro4x4.Checked = false;
+                        rbGamaTodos.Checked = true;
+                        List<string> vehiculosDelDistribuidor = new List<string>();
+                        vehiculosDelDistribuidor = datos.mostrarVehiculosDist(lbFiltroDistribuidores.Text.Substring(6, 11));
+                        lbFiltroVehiculos.Items.Clear();
+                        foreach (string cadena in vehiculosDelDistribuidor)
+                        {
+                            lbFiltroVehiculos.Items.Add(cadena);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No se elimino el Distribuidor.", "Eliminado Cancelado", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    if (rbTodos.Checked)
+                    {
+                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbTodos.Text, cbFiltroDistribuidor.SelectedIndex));
+                    }
+                    else if (rbNacional.Checked)
+                    {
+                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbNacional.Text, cbFiltroDistribuidor.SelectedIndex));
+                    }
+                    else if (rbInternacional.Checked)
+                    {
+                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbInternacional.Text, cbFiltroDistribuidor.SelectedIndex));
+                    }
+                    MessageBox.Show($"Se elimino el Distribuidor.", "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    actualizarDistribuidores();
+                }
+            }
         }
     }
 }
