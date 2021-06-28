@@ -54,10 +54,12 @@ namespace Concesionaria
         {
             List<string> listaDistribuidores = datos.listarDistribuidores("");
             cbFiltroDistribuidor.Items.Clear();
+            cbFiltroDistribuidor.Items.Add("Todos");
             foreach (string cadena in listaDistribuidores)
             {
                 cbFiltroDistribuidor.Items.Add(cadena);
             }
+            cbFiltroDistribuidor.SelectedIndex = 0;
         }
         private void actualizarVehiculos()
         {
@@ -67,8 +69,14 @@ namespace Concesionaria
 
             tipo_Vehiculo = cbFiltroTipo.Text;
             marca = cbFiltroMarca.Text;
-            distribuidor = cbFiltroDistribuidor.Text.Substring(7,11);
-            MessageBox.Show($"Mostarme el cuit {distribuidor}");
+            if (cbFiltroDistribuidor.Text != "Todos")
+            {
+                distribuidor = cbFiltroDistribuidor.Text.Substring(6, 11);
+            }
+            else
+            {
+                distribuidor = "Todos";
+            }
             if (rbGamaTodos.Checked)
             {
                 gama = rbTodos.Text;
@@ -124,7 +132,7 @@ namespace Concesionaria
 
         private void miAgregarAutos_Click(object sender, EventArgs e)
         {
-            FAutos FormAuto = new FAutos(datos, codigoVehiculos); 
+            FAutos FormAuto = new FAutos(datos, ++codigoVehiculos); 
 
             if (FormAuto.ShowDialog() == DialogResult.OK)
             {
@@ -178,7 +186,7 @@ namespace Concesionaria
 
         private void miAgregarCamioneta_Click(object sender, EventArgs e)
         {
-            FCamionetas FormCamioneta = new FCamionetas(datos, codigoVehiculos);
+            FCamionetas FormCamioneta = new FCamionetas(datos, ++codigoVehiculos);
 
             if (FormCamioneta.ShowDialog() == DialogResult.OK)
             {
@@ -295,6 +303,67 @@ namespace Concesionaria
                 }
             }
 
+        }
+
+        private void cbFiltroTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+            if (cbFiltroTipo.Text == "Camioneta")
+            {
+                checkFiltro4x4.Enabled = true;
+            }
+            else
+            {
+                checkFiltro4x4.Enabled = false;
+                checkFiltro4x4.Checked = false;
+            }
+        }
+
+        private void cbFiltroMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void cbFiltroDistribuidor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void checkFiltroUsado_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void checkFiltro4x4_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbGamaTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbBase_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbMedia_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbFull_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void FConcesionaria_Load(object sender, EventArgs e)
+        {
+            cbFiltroDistribuidor.SelectedIndex = 0;
+            cbFiltroMarca.SelectedIndex = 0;
+            cbFiltroTipo.SelectedIndex = 0;
         }
     }
 }

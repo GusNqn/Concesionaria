@@ -135,21 +135,21 @@ namespace Concesionaria
             // miAgregarCamioneta
             // 
             this.miAgregarCamioneta.Name = "miAgregarCamioneta";
-            this.miAgregarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miAgregarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miAgregarCamioneta.Text = "Agregar";
             this.miAgregarCamioneta.Click += new System.EventHandler(this.miAgregarCamioneta_Click);
             // 
             // miModificarCamioneta
             // 
             this.miModificarCamioneta.Name = "miModificarCamioneta";
-            this.miModificarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miModificarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miModificarCamioneta.Text = "Modificar";
             this.miModificarCamioneta.Click += new System.EventHandler(this.miModificarCamioneta_Click);
             // 
             // miEliminarCamioneta
             // 
             this.miEliminarCamioneta.Name = "miEliminarCamioneta";
-            this.miEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miEliminarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miEliminarCamioneta.Text = "Eliminar";
             // 
             // proveedorToolStripMenuItem
@@ -165,21 +165,21 @@ namespace Concesionaria
             // miAgregarDistribuidor
             // 
             this.miAgregarDistribuidor.Name = "miAgregarDistribuidor";
-            this.miAgregarDistribuidor.Size = new System.Drawing.Size(180, 22);
+            this.miAgregarDistribuidor.Size = new System.Drawing.Size(125, 22);
             this.miAgregarDistribuidor.Text = "Agregar";
             this.miAgregarDistribuidor.Click += new System.EventHandler(this.miAgregarDistribuidor_Click);
             // 
             // miModificarDistribuidor
             // 
             this.miModificarDistribuidor.Name = "miModificarDistribuidor";
-            this.miModificarDistribuidor.Size = new System.Drawing.Size(180, 22);
+            this.miModificarDistribuidor.Size = new System.Drawing.Size(125, 22);
             this.miModificarDistribuidor.Text = "Modificar";
             this.miModificarDistribuidor.Click += new System.EventHandler(this.miModificarDistribuidor_Click);
             // 
             // miEliminarDistribuidor
             // 
             this.miEliminarDistribuidor.Name = "miEliminarDistribuidor";
-            this.miEliminarDistribuidor.Size = new System.Drawing.Size(180, 22);
+            this.miEliminarDistribuidor.Size = new System.Drawing.Size(125, 22);
             this.miEliminarDistribuidor.Text = "Eliminar";
             // 
             // miSalir
@@ -255,6 +255,7 @@ namespace Concesionaria
             this.cbFiltroDistribuidor.Name = "cbFiltroDistribuidor";
             this.cbFiltroDistribuidor.Size = new System.Drawing.Size(175, 21);
             this.cbFiltroDistribuidor.TabIndex = 5;
+            this.cbFiltroDistribuidor.SelectedIndexChanged += new System.EventHandler(this.cbFiltroDistribuidor_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -280,6 +281,7 @@ namespace Concesionaria
             this.rbGamaTodos.TabStop = true;
             this.rbGamaTodos.Text = "Todos";
             this.rbGamaTodos.UseVisualStyleBackColor = true;
+            this.rbGamaTodos.CheckedChanged += new System.EventHandler(this.rbGamaTodos_CheckedChanged);
             // 
             // rbFull
             // 
@@ -290,6 +292,7 @@ namespace Concesionaria
             this.rbFull.TabIndex = 0;
             this.rbFull.Text = "Full";
             this.rbFull.UseVisualStyleBackColor = true;
+            this.rbFull.CheckedChanged += new System.EventHandler(this.rbFull_CheckedChanged);
             // 
             // rbMedia
             // 
@@ -300,6 +303,7 @@ namespace Concesionaria
             this.rbMedia.TabIndex = 0;
             this.rbMedia.Text = "Media";
             this.rbMedia.UseVisualStyleBackColor = true;
+            this.rbMedia.CheckedChanged += new System.EventHandler(this.rbMedia_CheckedChanged);
             // 
             // rbBase
             // 
@@ -310,6 +314,7 @@ namespace Concesionaria
             this.rbBase.TabIndex = 0;
             this.rbBase.Text = "Base";
             this.rbBase.UseVisualStyleBackColor = true;
+            this.rbBase.CheckedChanged += new System.EventHandler(this.rbBase_CheckedChanged);
             // 
             // label3
             // 
@@ -352,6 +357,7 @@ namespace Concesionaria
             this.cbFiltroMarca.Name = "cbFiltroMarca";
             this.cbFiltroMarca.Size = new System.Drawing.Size(175, 21);
             this.cbFiltroMarca.TabIndex = 2;
+            this.cbFiltroMarca.SelectedIndexChanged += new System.EventHandler(this.cbFiltroMarca_SelectedIndexChanged);
             // 
             // cbFiltroTipo
             // 
@@ -365,27 +371,30 @@ namespace Concesionaria
             this.cbFiltroTipo.Name = "cbFiltroTipo";
             this.cbFiltroTipo.Size = new System.Drawing.Size(175, 21);
             this.cbFiltroTipo.TabIndex = 2;
+            this.cbFiltroTipo.SelectedIndexChanged += new System.EventHandler(this.cbFiltroTipo_SelectedIndexChanged);
             // 
             // checkFiltro4x4
             // 
             this.checkFiltro4x4.AutoSize = true;
-            this.checkFiltro4x4.Location = new System.Drawing.Point(304, 137);
+            this.checkFiltro4x4.Enabled = false;
+            this.checkFiltro4x4.Location = new System.Drawing.Point(304, 127);
             this.checkFiltro4x4.Name = "checkFiltro4x4";
             this.checkFiltro4x4.Size = new System.Drawing.Size(43, 17);
             this.checkFiltro4x4.TabIndex = 1;
             this.checkFiltro4x4.Text = "4x4";
             this.checkFiltro4x4.UseVisualStyleBackColor = true;
+            this.checkFiltro4x4.CheckedChanged += new System.EventHandler(this.checkFiltro4x4_CheckedChanged);
             // 
             // checkFiltroUsado
             // 
             this.checkFiltroUsado.AutoSize = true;
-            this.checkFiltroUsado.Enabled = false;
-            this.checkFiltroUsado.Location = new System.Drawing.Point(304, 114);
+            this.checkFiltroUsado.Location = new System.Drawing.Point(304, 109);
             this.checkFiltroUsado.Name = "checkFiltroUsado";
             this.checkFiltroUsado.Size = new System.Drawing.Size(57, 17);
             this.checkFiltroUsado.TabIndex = 1;
             this.checkFiltroUsado.Text = "Usado";
             this.checkFiltroUsado.UseVisualStyleBackColor = true;
+            this.checkFiltroUsado.CheckedChanged += new System.EventHandler(this.checkFiltroUsado_CheckedChanged);
             // 
             // lbFiltroVehiculos
             // 
@@ -502,6 +511,7 @@ namespace Concesionaria
             this.MainMenuStrip = this.msPrincipal;
             this.Name = "FConcesionaria";
             this.Text = "Concesionaria";
+            this.Load += new System.EventHandler(this.FConcesionaria_Load);
             this.msPrincipal.ResumeLayout(false);
             this.msPrincipal.PerformLayout();
             this.panel1.ResumeLayout(false);

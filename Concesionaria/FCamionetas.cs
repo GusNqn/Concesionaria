@@ -61,7 +61,7 @@ namespace Concesionaria
             }
             else if (agregarVehiculo)
             {
-                datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, 35,cuatroXcuatro, ++codigoVehiculos, "Camioneta", distribuidor);
+                datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, 35,cuatroXcuatro, codigoVehiculos, "Camioneta", distribuidor);
                 DialogResult = DialogResult.OK;
             }
             else

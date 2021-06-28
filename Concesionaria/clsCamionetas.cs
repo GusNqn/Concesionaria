@@ -177,9 +177,9 @@ namespace Concesionaria
         {
             _marca = marca;
             _modelo = modelo;
-            if (clsFecha.esFechaValida(Convert.ToInt32(fechaFabricacion.Day), Convert.ToInt32(fechaFabricacion.Month), Convert.ToInt32(fechaFabricacion.Year)))
+            //if (clsFecha.esFechaValida(Convert.ToInt32(fechaFabricacion.Day), Convert.ToInt32(fechaFabricacion.Month), Convert.ToInt32(fechaFabricacion.Year)))
                 _fechaFabricacion = fechaFabricacion;
-            else _fechaFabricacion = new DateTime(1900, 01, 01);
+            //else _fechaFabricacion = new DateTime(1900, 01, 01);
             _usado = usado;
             if (Math.Abs(precioCosto) > 0)
                 _precioCosto = precioCosto;

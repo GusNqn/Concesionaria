@@ -76,6 +76,8 @@ namespace Concesionaria
             DateTime nuevaFechaFab = dtFechaFabricacion.Value.Date;
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
             bool usado = checkUsado.Checked;
+            string tipoAuto = "Auto";
+            int ganancia = 25;
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
             clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
             
@@ -93,7 +95,8 @@ namespace Concesionaria
             }
             else if (agregarVehiculo)
             {
-                datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, 25, ++codigoVehiculos, "Auto", distribuidor);
+
+                datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, ganancia, codigoVehiculos, tipoAuto, distribuidor);
                 DialogResult = DialogResult.OK;
             }
             else
