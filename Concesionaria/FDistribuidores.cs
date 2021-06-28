@@ -93,14 +93,14 @@ namespace Concesionaria
             else
             {
                 string razonModificada = datos.getRazonSocial(cuitDistribuidor);
-                if ((nuevaRazSocial != razonModificada) && (datos.existeRazonDistribuidor(razonModificada)))
+                if ((nuevaRazSocial != razonModificada) && (datos.existeRazonDistribuidor(nuevaRazSocial)))
                 {
                     MessageBox.Show("La Razon Social ya Existe", "Razon Social Existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tRazonSocial.Focus();
                 }
                 else
                 {
-                    datos.modificarDistribuidor(cuitDistribuidor, razonModificada, internacional);
+                    datos.modificarDistribuidor(cuitDistribuidor, nuevaRazSocial, internacional);
                     DialogResult = DialogResult.OK;
                 }
             }

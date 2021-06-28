@@ -287,7 +287,7 @@ namespace Concesionaria
                 if (FormDistribuidores.ShowDialog() == DialogResult.OK)
                 {
                     MessageBox.Show("Se ha modificado el distribuidor correctamete", "Modificacion existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    actualizarVehiculos();
+                    actualizarDistribuidores();
                 }
                 else
                 {
