@@ -511,15 +511,15 @@ namespace Concesionaria
                 {
                     if (rbTodos.Checked)
                     {
-                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbTodos.Text, cbFiltroDistribuidor.SelectedIndex));
+                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbTodos.Text, lbFiltroDistribuidores.SelectedIndex));
                     }
                     else if (rbNacional.Checked)
                     {
-                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbNacional.Text, cbFiltroDistribuidor.SelectedIndex));
+                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbNacional.Text, lbFiltroDistribuidores.SelectedIndex));
                     }
                     else if (rbInternacional.Checked)
                     {
-                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbInternacional.Text, cbFiltroDistribuidor.SelectedIndex));
+                        datos.eliminarDistribuidor(datos.buscarIndiceDist(rbInternacional.Text, lbFiltroDistribuidores.SelectedIndex));
                     }
                     MessageBox.Show($"Se elimino el Distribuidor.", "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     actualizarDistribuidores();
