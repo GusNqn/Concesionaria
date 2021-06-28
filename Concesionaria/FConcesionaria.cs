@@ -158,7 +158,7 @@ namespace Concesionaria
                     bool esAuto = datos.esAuto(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
                     if (esAuto)
                     {
-                        int codigo = Convert.ToInt32(lbFiltroVehiculos.SelectedItem.ToString().Substring(9, 4));
+                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4);
                         FAutos FormAuto = new FAutos(datos, codigo, codigoVehiculos);
                         if (FormAuto.ShowDialog() == DialogResult.OK)
                         {
@@ -212,7 +212,7 @@ namespace Concesionaria
                     bool esAuto = datos.esAuto(datos.buscarIndice(cbFiltroTipo.Text, lbFiltroVehiculos.SelectedIndex));
                     if (!esAuto)
                     {
-                        int codigo = Convert.ToInt32(lbFiltroVehiculos.SelectedItem.ToString().Substring(9, 4));
+                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4);
                         FCamionetas FormCamioneta = new FCamionetas(datos, codigo, codigoVehiculos);
                         if (FormCamioneta.ShowDialog() == DialogResult.OK)
                         {

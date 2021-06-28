@@ -162,7 +162,7 @@ namespace Concesionaria
             _cuatroXcuatro = false;
         }
 
-        public clsCamionetas(int codigo): base(codigo)
+        public clsCamionetas(string codigo): base(codigo)
         {
             _marca = string.Empty;
             _modelo = string.Empty;
@@ -173,7 +173,7 @@ namespace Concesionaria
             _cuatroXcuatro = false;
         }
 
-        public clsCamionetas(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro , int codigo, string tipo, clsDistribuidores distribuidor) : base(codigo, tipo, distribuidor)
+        public clsCamionetas(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro , string codigo, string tipo, clsDistribuidores distribuidor) : base(codigo, tipo, distribuidor)
         {
             _marca = marca;
             _modelo = modelo;

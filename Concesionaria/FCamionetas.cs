@@ -15,8 +15,9 @@ namespace Concesionaria
         #region Inicializacion Form
         clsBase_Datos datos;
         bool agregarVehiculo;
-        int cod;
-        int codigoVehiculos;
+        string formato = "0000";
+        string cod;
+        string codigoVehiculos;
         #endregion
 
         public FCamionetas(clsBase_Datos conexion, int codVehiculos)
@@ -24,16 +25,16 @@ namespace Concesionaria
             InitializeComponent();
             datos = conexion;
             agregarVehiculo = true;
-            codigoVehiculos = codVehiculos;
+            codigoVehiculos = codVehiculos.ToString(formato);
         }
 
-        public FCamionetas(clsBase_Datos conexion, int codigo, int codVehiculos)
+        public FCamionetas(clsBase_Datos conexion, string codigo, int codVehiculos)
         {
             InitializeComponent();
             datos = conexion;
             agregarVehiculo = false;
             cod = codigo;
-            codigoVehiculos = codVehiculos;
+            codigoVehiculos = codVehiculos.ToString(formato);
         }
 
         private void bAceptar_Click(object sender, EventArgs e)
@@ -98,7 +99,8 @@ namespace Concesionaria
                 cbMarca.Text = camioneta.MARCA;
                 cbModelo.Text = camioneta.MODELO;
                 dtFechaFabricacion.Value = camioneta.FECHAFABRICACION;
-                mtPrecioCosto.Text = Convert.ToString(camioneta.PRECIOCOSTO);
+                string formatoPrecio = "000000000";
+                mtPrecioCosto.Text = Convert.ToString(camioneta.PRECIOCOSTO.ToString(formatoPrecio));
                 checkUsado.Checked = camioneta.USADO;
                 cbDistribuidores.Text = camioneta.DISTRIBUIDOR.ToString();
             }

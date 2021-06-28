@@ -15,25 +15,26 @@ namespace Concesionaria
         #region Inicializacion Form
         clsBase_Datos datos;
         bool agregarVehiculo;
-        int codigoVehiculos;
-        int cod;
+        string codigoVehiculos;
+        string formato = "0000";
+        string cod;
         #endregion
 
         public FAutos(clsBase_Datos conexion, int codVehiculo)
         {
             InitializeComponent();
             datos = conexion;
-            codigoVehiculos = codVehiculo;
+            codigoVehiculos = codVehiculo.ToString(formato);
             agregarVehiculo = true;
         }
 
-        public FAutos(clsBase_Datos conexion, int codigo, int codVehiculo)
+        public FAutos(clsBase_Datos conexion, string codigo, int codVehiculo)
         {
             InitializeComponent();
             datos = conexion;
             agregarVehiculo = false;
             cod = codigo;
-            codigoVehiculos = codVehiculo;
+            codigoVehiculos = codVehiculo.ToString(formato);
         }
 
         private void FAutos_Load(object sender, EventArgs e)
@@ -63,7 +64,8 @@ namespace Concesionaria
                 cbMarca.Text = auto.MARCA;
                 cbModelo.Text = auto.MODELO;
                 dtFechaFabricacion.Value = auto.FECHAFABRICACION;
-                mtPrecioCosto.Text = Convert.ToString(auto.PRECIOCOSTO);
+                string formatoPrecio = "000000000";
+                mtPrecioCosto.Text = Convert.ToString(auto.PRECIOCOSTO.ToString(formatoPrecio));
                 checkUsado.Checked = auto.USADO;
                 cbDistribuidores.Text = auto.DISTRIBUIDOR.ToString();
             }

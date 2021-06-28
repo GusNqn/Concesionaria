@@ -81,7 +81,7 @@ namespace Concesionaria
             }
             return existe;
         }
-        public bool existeAuto(int codigo)
+        public bool existeAuto(string codigo)
         {
             clsAutos auto;
             bool existe = false;
@@ -93,7 +93,7 @@ namespace Concesionaria
             }
             return existe;
         }
-        public bool existeCamioneta(int codigo)
+        public bool existeCamioneta(string codigo)
         {
             clsCamionetas camioneta;
             bool existe = false;
@@ -191,7 +191,7 @@ namespace Concesionaria
             return listaVehiculos[indice].GetType() == typeof(clsAutos); 
         }
 
-        public clsAutos datosAuto(int codigo)
+        public clsAutos datosAuto(string codigo)
         {
             clsAutos autoBuscado = new clsAutos();
         
@@ -207,7 +207,7 @@ namespace Concesionaria
             }
             return autoBuscado;
         }
-        public clsCamionetas datosCamionetas(int codigo)
+        public clsCamionetas datosCamionetas(string codigo)
         {
             clsCamionetas camionetaBuscada = new clsCamionetas();
             foreach (clsVehiculos vehiculo in listaVehiculos)
@@ -395,7 +395,7 @@ namespace Concesionaria
             }
         }
 
-        public void insertarAuto(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, int codigo, string tipo, clsDistribuidores distribuidor)
+        public void insertarAuto(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, clsDistribuidores distribuidor)
         { 
             clsAutos auto = new clsAutos(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
 
@@ -405,7 +405,7 @@ namespace Concesionaria
             }
         }
 
-        public void modificarAuto(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, int codigo, string tipo, clsDistribuidores distribuidor)
+        public void modificarAuto(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, clsDistribuidores distribuidor)
         {
             clsAutos auto = new clsAutos(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
             int posicion;
@@ -418,7 +418,7 @@ namespace Concesionaria
             }
         }
 
-        public void insertarCamioneta(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, int codigo, string tipo, clsDistribuidores distribuidor)
+        public void insertarCamioneta(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, clsDistribuidores distribuidor)
         {
             clsCamionetas camioneta = new clsCamionetas(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
 
@@ -428,17 +428,17 @@ namespace Concesionaria
             }
         }
 
-        public void modificarCamioneta(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, int codigo, string tipo, clsDistribuidores distribuidor)
+        public void modificarCamioneta(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, clsDistribuidores distribuidor)
         {
-            //clsCamionetas camioneta = new clsCamionetas(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
-            //int posicion;
+            clsCamionetas camioneta = new clsCamionetas(marca, modelo, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
+            int posicion;
 
-            //posicion = listaVehiculos.IndexOf(camioneta);
-            //if (posicion >= 0)
-            //{
-            //    listaVehiculos.RemoveAt(posicion);
-            //    listaVehiculos.Insert(posicion, camioneta);
-            //}
+            posicion = listaVehiculos.IndexOf(camioneta);
+            if (posicion >= 0)
+            {
+                listaVehiculos.RemoveAt(posicion);
+                listaVehiculos.Insert(posicion, camioneta);
+            }
         }
 
         public int cantidadVehiculos()

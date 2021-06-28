@@ -144,7 +144,7 @@ namespace Concesionaria
             _precioCosto = 0;
             _porcentajeGanancia = 0;
         }
-        public clsAutos(int codigo): base(codigo)
+        public clsAutos(string codigo): base(codigo)
         {
             _marca = string.Empty;
             _modelo = string.Empty;
@@ -154,7 +154,7 @@ namespace Concesionaria
             _porcentajeGanancia = 0;
         }
 
-        public clsAutos(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, int codigo, string tipo, clsDistribuidores distribuidor): base(codigo, tipo, distribuidor)
+        public clsAutos(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, clsDistribuidores distribuidor): base(codigo, tipo, distribuidor)
         {
             _marca = marca;
             _modelo = modelo;

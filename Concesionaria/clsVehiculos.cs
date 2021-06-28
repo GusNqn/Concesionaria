@@ -9,13 +9,13 @@ namespace Concesionaria
     public abstract class clsVehiculos
     {
         #region Atributos
-        protected int _codigo;
+        protected string _codigo;
         protected string _tipo;
         protected clsDistribuidores _distribuidor;
         #endregion
 
         #region Propiedades
-        public int CODIGO
+        public string CODIGO
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Concesionaria
             }
             set
             {
-                if (Math.Abs(value) > 0)
+                if (_codigo != "")
                     _codigo = value;
             }
         }
@@ -77,7 +77,7 @@ namespace Concesionaria
 
         public override int GetHashCode()
         {
-            return (_codigo * 10);
+            return (Convert.ToInt32(_codigo) * 10);
         }
 
         public abstract int calculoDescuento(); //devolvemos un integer que determina los dias que pasaron desde la adqusicion hasta la venta - HACER EL REDEFINIDO. Cambiamos el porcentaje acorde al tipo de vehiculo
@@ -93,25 +93,25 @@ namespace Concesionaria
         
         public clsVehiculos()
         {
-            _codigo = 0;
+            _codigo = "";
             _tipo = string.Empty;
             _distribuidor = null;
         }
 
-        public clsVehiculos(int codigo)
+        public clsVehiculos(string codigo)
         {
-            if (Math.Abs(codigo) > 0)
+            //if (Math.Abs(codigo) > 0)
                 _codigo = codigo;
             _tipo = string.Empty;
             _distribuidor = null;
         }
 
 
-        public clsVehiculos(int codigo, string tipo, clsDistribuidores distribuidor)
+        public clsVehiculos(string codigo, string tipo, clsDistribuidores distribuidor)
         {
-            if (Math.Abs(codigo) > 0)
+            //if (Math.Abs(codigo) > 0)
                 _codigo = codigo;
-            else _codigo = 0;
+            //else _codigo = 0;
             _tipo = tipo;
             _distribuidor = distribuidor;
         }
