@@ -57,7 +57,7 @@ namespace Concesionaria
         #region Metodos
         public override string ToString()
         {
-            return $"CUIT: {_cuit} - Razón Social: {_razonSocial}";
+            return $"CUIT: {_cuit} - {_razonSocial}";
         }
 
         public override bool Equals(object distribuidorPedido)
@@ -95,7 +95,7 @@ namespace Concesionaria
             cuitaux = cuit2;
 
             cuitaux = cuit2;
-            cuit2 = cuit2 / 10; // div "\"
+            cuit2 = cuit2 / 10; 
             do
             {
                 digito = (int)(cuit2 % 10);
@@ -127,11 +127,8 @@ namespace Concesionaria
             else
                 DigitoVerificador = v3;
 
-
-
             //Obtener el digito verificador del cuit ingresado
             DigitoVerificadorIngresado = (int)(cuitaux % 10);
-
 
             // Comparar el Digito Verificador calculado con el ingresado en el cuit
             if (DigitoVerificador == DigitoVerificadorIngresado)

@@ -56,7 +56,7 @@ namespace Concesionaria
         #region Metodos
         public override string ToString()
         {
-            return $"Codigo: {_codigo} - Tipo: {_tipo}";
+            return $"Codigo: {_codigo} - {_tipo}";
         }
 
         public override bool Equals(object vehiculoPedido)

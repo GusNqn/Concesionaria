@@ -26,7 +26,7 @@ namespace Concesionaria
     // - CantidadVehiculos y CantidadDistribuidores...por que son propiedades?
     // - En la linea 195...si permitiera agregar mas en el combo...como lo controlo?
 
-    public class clsBase_Datos 
+    public class clsBase_Datos
     {
         List<clsVehiculos> listaVehiculos;
         List<clsDistribuidores> listaDistribuidores;
@@ -129,7 +129,7 @@ namespace Concesionaria
         public List<string> listaRazonDistribuidores()
         {
             List<string> lista;
-            
+
             lista = new List<string>();
 
             foreach (clsDistribuidores distribuidor in listaDistribuidores)
@@ -178,51 +178,34 @@ namespace Concesionaria
             }
             return indice;
         }
-        public int buscarIndice(string valorFiltro, int indiceFiltro)
+        public clsVehiculos buscarVehiculo(string codigo)
         {
-            int contador = -1;
-            int indice = -1;
-            int i = 0;
-            bool encontrado = false;
+            int indice = 0;
+            foreach (clsVehiculos vehiculo in listaVehiculos)
+            {
+                if (vehiculo.GetType() == typeof(clsAutos))
+                {
+                    if (existeAuto(codigo))
+                    {
+                        indice = listaVehiculos.IndexOf(vehiculo);
+                    }
+                }
+                else
+                {
+                    if (existeCamioneta(codigo))
+                    {
+                        indice = listaVehiculos.IndexOf(vehiculo);
+                    }
+                }
+            }
 
-            if (valorFiltro == "Auto")
-            {
-                while ((i <= listaVehiculos.Count && (!encontrado)))
-                {
-                    if (listaVehiculos[i].GetType() == typeof(clsAutos))
-                    {
-                        contador++;
-                        if (contador == indiceFiltro)
-                        {
-                            encontrado = true;
-                            indice = i;
-                        }
-                    }
-                    i++;
-                }
-            }
-            else if (valorFiltro == "Camioneta")
-            {
-                while ((i <= listaVehiculos.Count && (!encontrado)))
-                {
-                    if (listaVehiculos[i].GetType() == typeof(clsCamionetas))
-                    {
-                        contador++;
-                        if (contador == indiceFiltro)
-                        {
-                            encontrado = true;
-                            indice = i;
-                        }
-                    }
-                    i++;
-                }
-            }
-            else
-            {
-                indice = indiceFiltro;
-            }
-            return indice;
+            return listaVehiculos[indice];
         }
+        public int buscarIndice(string codigo)
+        {
+            return listaVehiculos.IndexOf(buscarVehiculo(codigo));
+        }
+        
 
         public bool esAuto(int indice)
         {
