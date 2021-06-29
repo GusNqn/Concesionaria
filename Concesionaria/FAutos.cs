@@ -50,7 +50,7 @@ namespace Concesionaria
                 Text = "Agregar";
                 bAceptar.Text = "Agregar";
                 cbMarca.SelectedIndex = 0;
-                cbModelo.SelectedIndex = 0;
+                cbGama.SelectedIndex = 0;
                 dtFechaFabricacion.Value = DateTime.Today;
                 mtPrecioCosto.Clear();
                 checkUsado.Checked = false;
@@ -62,7 +62,7 @@ namespace Concesionaria
                 bAceptar.Text = "Modificar";
                 clsAutos auto = datos.datosAuto(cod);
                 cbMarca.Text = auto.MARCA;
-                cbModelo.Text = auto.MODELO;
+                cbGama.Text = auto.GAMA;
                 dtFechaFabricacion.Value = auto.FECHAFABRICACION;
                 string formatoPrecio = "000000000";
                 mtPrecioCosto.Text = Convert.ToString(auto.PRECIOCOSTO.ToString(formatoPrecio));
@@ -74,6 +74,7 @@ namespace Concesionaria
         private void bAceptar_Click(object sender, EventArgs e)
         {
             string nuevaMarca = cbMarca.SelectedIndex != -1 ? cbMarca.Text : "";
+            string nuevaGama = cbGama.SelectedIndex != -1 ? cbGama.Text : "";
             string nuevoModelo = cbModelo.SelectedIndex != -1 ? cbModelo.Text : "";
             DateTime nuevaFechaFab = dtFechaFabricacion.Value.Date;
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
@@ -98,12 +99,12 @@ namespace Concesionaria
             else if (agregarVehiculo)
             {
 
-                datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, ganancia, codigoVehiculos, tipoAuto, distribuidor);
+                datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, ganancia, codigoVehiculos, tipoAuto, distribuidor);
                 DialogResult = DialogResult.OK;
             }
             else
             {
-                datos.modificarAuto(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, 25, codigoVehiculos, "Auto", distribuidor);
+                datos.modificarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 25, codigoVehiculos, "Auto", distribuidor);
                 DialogResult = DialogResult.OK;
             }
         }

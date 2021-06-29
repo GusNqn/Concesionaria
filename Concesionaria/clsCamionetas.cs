@@ -12,6 +12,7 @@ namespace Concesionaria
         #region Atributos
         private string _marca;
         private string _modelo;
+        private string _gama;
         private DateTime _fechaFabricacion;
         private bool _usado;
         private double _precioCosto;
@@ -41,6 +42,17 @@ namespace Concesionaria
             set
             {
                 _modelo = value;
+            }
+        }
+        public string GAMA
+        {
+            get
+            {
+                return _gama;
+            }
+            set
+            {
+                _gama = value;
             }
         }
 
@@ -155,6 +167,7 @@ namespace Concesionaria
         {
             _marca = string.Empty;
             _modelo = string.Empty;
+            _gama = string.Empty;
             _fechaFabricacion = new DateTime(1900, 01, 01);
             _usado = false;
             _precioCosto = 0;
@@ -166,6 +179,7 @@ namespace Concesionaria
         {
             _marca = string.Empty;
             _modelo = string.Empty;
+            _gama = string.Empty;
             _fechaFabricacion = new DateTime(1900, 01, 01);
             _usado = false;
             _precioCosto = 0;
@@ -173,12 +187,13 @@ namespace Concesionaria
             _cuatroXcuatro = false;
         }
 
-        public clsCamionetas(string marca, string modelo, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro , string codigo, string tipo, clsDistribuidores distribuidor) : base(codigo, tipo, distribuidor)
+        public clsCamionetas(string marca, string modelo,string gama , DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro , string codigo, string tipo, clsDistribuidores distribuidor) : base(codigo, tipo, distribuidor)
         {
             _marca = marca;
             _modelo = modelo;
+            _gama = gama;
             //if (clsFecha.esFechaValida(Convert.ToInt32(fechaFabricacion.Day), Convert.ToInt32(fechaFabricacion.Month), Convert.ToInt32(fechaFabricacion.Year)))
-                _fechaFabricacion = fechaFabricacion;
+            _fechaFabricacion = fechaFabricacion;
             //else _fechaFabricacion = new DateTime(1900, 01, 01);
             _usado = usado;
             if (Math.Abs(precioCosto) > 0)

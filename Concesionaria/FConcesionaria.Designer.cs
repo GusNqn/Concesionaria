@@ -72,6 +72,10 @@ namespace Concesionaria
             this.rbNacional = new System.Windows.Forms.RadioButton();
             this.lCantListadoDistribuidores = new System.Windows.Forms.Label();
             this.lbFiltroDistribuidores = new System.Windows.Forms.ListBox();
+            this.cbFiltroModelo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkFiltroNuevo = new System.Windows.Forms.CheckBox();
+            this.checkFiltroTraccionSimple = new System.Windows.Forms.CheckBox();
             this.msPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -145,7 +149,7 @@ namespace Concesionaria
             // 
             this.miAgregarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarCamioneta.Image")));
             this.miAgregarCamioneta.Name = "miAgregarCamioneta";
-            this.miAgregarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miAgregarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miAgregarCamioneta.Text = "Agregar";
             this.miAgregarCamioneta.Click += new System.EventHandler(this.miAgregarCamioneta_Click);
             // 
@@ -153,7 +157,7 @@ namespace Concesionaria
             // 
             this.miModificarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miModificarCamioneta.Image")));
             this.miModificarCamioneta.Name = "miModificarCamioneta";
-            this.miModificarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miModificarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miModificarCamioneta.Text = "Modificar";
             this.miModificarCamioneta.Click += new System.EventHandler(this.miModificarCamioneta_Click);
             // 
@@ -161,7 +165,7 @@ namespace Concesionaria
             // 
             this.miEliminarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarCamioneta.Image")));
             this.miEliminarCamioneta.Name = "miEliminarCamioneta";
-            this.miEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
+            this.miEliminarCamioneta.Size = new System.Drawing.Size(125, 22);
             this.miEliminarCamioneta.Text = "Eliminar";
             this.miEliminarCamioneta.Click += new System.EventHandler(this.miEliminarCamioneta_Click);
             // 
@@ -179,7 +183,7 @@ namespace Concesionaria
             // 
             this.miAgregarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarDistribuidor.Image")));
             this.miAgregarDistribuidor.Name = "miAgregarDistribuidor";
-            this.miAgregarDistribuidor.Size = new System.Drawing.Size(180, 22);
+            this.miAgregarDistribuidor.Size = new System.Drawing.Size(125, 22);
             this.miAgregarDistribuidor.Text = "Agregar";
             this.miAgregarDistribuidor.Click += new System.EventHandler(this.miAgregarDistribuidor_Click);
             // 
@@ -187,7 +191,7 @@ namespace Concesionaria
             // 
             this.miModificarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miModificarDistribuidor.Image")));
             this.miModificarDistribuidor.Name = "miModificarDistribuidor";
-            this.miModificarDistribuidor.Size = new System.Drawing.Size(180, 22);
+            this.miModificarDistribuidor.Size = new System.Drawing.Size(125, 22);
             this.miModificarDistribuidor.Text = "Modificar";
             this.miModificarDistribuidor.Click += new System.EventHandler(this.miModificarDistribuidor_Click);
             // 
@@ -195,7 +199,7 @@ namespace Concesionaria
             // 
             this.miEliminarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarDistribuidor.Image")));
             this.miEliminarDistribuidor.Name = "miEliminarDistribuidor";
-            this.miEliminarDistribuidor.Size = new System.Drawing.Size(180, 22);
+            this.miEliminarDistribuidor.Size = new System.Drawing.Size(125, 22);
             this.miEliminarDistribuidor.Text = "Eliminar";
             this.miEliminarDistribuidor.Click += new System.EventHandler(this.miEliminarDistribuidor_Click);
             // 
@@ -216,6 +220,8 @@ namespace Concesionaria
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.cbFiltroModelo);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.lCantTotalVehiculos);
@@ -235,10 +241,11 @@ namespace Concesionaria
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.checkFiltroTraccionSimple);
             this.groupBox4.Controls.Add(this.checkFiltro4x4);
             this.groupBox4.Location = new System.Drawing.Point(456, 73);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(118, 50);
+            this.groupBox4.Size = new System.Drawing.Size(118, 83);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Traccion Camioneta";
@@ -247,7 +254,7 @@ namespace Concesionaria
             // 
             this.checkFiltro4x4.AutoSize = true;
             this.checkFiltro4x4.Enabled = false;
-            this.checkFiltro4x4.Location = new System.Drawing.Point(14, 20);
+            this.checkFiltro4x4.Location = new System.Drawing.Point(6, 51);
             this.checkFiltro4x4.Name = "checkFiltro4x4";
             this.checkFiltro4x4.Size = new System.Drawing.Size(43, 17);
             this.checkFiltro4x4.TabIndex = 1;
@@ -257,6 +264,7 @@ namespace Concesionaria
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkFiltroNuevo);
             this.groupBox3.Controls.Add(this.checkFiltroUsado);
             this.groupBox3.Location = new System.Drawing.Point(456, 16);
             this.groupBox3.Name = "groupBox3";
@@ -268,7 +276,9 @@ namespace Concesionaria
             // checkFiltroUsado
             // 
             this.checkFiltroUsado.AutoSize = true;
-            this.checkFiltroUsado.Location = new System.Drawing.Point(14, 21);
+            this.checkFiltroUsado.Checked = true;
+            this.checkFiltroUsado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkFiltroUsado.Location = new System.Drawing.Point(6, 21);
             this.checkFiltroUsado.Name = "checkFiltroUsado";
             this.checkFiltroUsado.Size = new System.Drawing.Size(57, 17);
             this.checkFiltroUsado.TabIndex = 1;
@@ -300,7 +310,7 @@ namespace Concesionaria
             this.cbFiltroDistribuidor.FormattingEnabled = true;
             this.cbFiltroDistribuidor.Items.AddRange(new object[] {
             "Todos"});
-            this.cbFiltroDistribuidor.Location = new System.Drawing.Point(160, 87);
+            this.cbFiltroDistribuidor.Location = new System.Drawing.Point(160, 105);
             this.cbFiltroDistribuidor.Name = "cbFiltroDistribuidor";
             this.cbFiltroDistribuidor.Size = new System.Drawing.Size(175, 21);
             this.cbFiltroDistribuidor.TabIndex = 5;
@@ -368,7 +378,7 @@ namespace Concesionaria
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(92, 90);
+            this.label3.Location = new System.Drawing.Point(92, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 3;
@@ -377,7 +387,7 @@ namespace Concesionaria
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(114, 61);
+            this.label2.Location = new System.Drawing.Point(114, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 3;
@@ -402,7 +412,7 @@ namespace Concesionaria
             "Ford",
             "Renault",
             "Volskwagen"});
-            this.cbFiltroMarca.Location = new System.Drawing.Point(160, 58);
+            this.cbFiltroMarca.Location = new System.Drawing.Point(160, 57);
             this.cbFiltroMarca.Name = "cbFiltroMarca";
             this.cbFiltroMarca.Size = new System.Drawing.Size(175, 21);
             this.cbFiltroMarca.TabIndex = 2;
@@ -515,6 +525,56 @@ namespace Concesionaria
             this.lbFiltroDistribuidores.Size = new System.Drawing.Size(268, 238);
             this.lbFiltroDistribuidores.TabIndex = 0;
             // 
+            // cbFiltroModelo
+            // 
+            this.cbFiltroModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltroModelo.Enabled = false;
+            this.cbFiltroModelo.FormattingEnabled = true;
+            this.cbFiltroModelo.Items.AddRange(new object[] {
+            "Todos",
+            "Chevrolet",
+            "Ford",
+            "Renault",
+            "Volskwagen"});
+            this.cbFiltroModelo.Location = new System.Drawing.Point(160, 81);
+            this.cbFiltroModelo.Name = "cbFiltroModelo";
+            this.cbFiltroModelo.Size = new System.Drawing.Size(175, 21);
+            this.cbFiltroModelo.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(109, 85);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Modelo:";
+            // 
+            // checkFiltroNuevo
+            // 
+            this.checkFiltroNuevo.AutoSize = true;
+            this.checkFiltroNuevo.Checked = true;
+            this.checkFiltroNuevo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkFiltroNuevo.Location = new System.Drawing.Point(61, 21);
+            this.checkFiltroNuevo.Name = "checkFiltroNuevo";
+            this.checkFiltroNuevo.Size = new System.Drawing.Size(58, 17);
+            this.checkFiltroNuevo.TabIndex = 2;
+            this.checkFiltroNuevo.Text = "Nuevo";
+            this.checkFiltroNuevo.UseVisualStyleBackColor = true;
+            this.checkFiltroNuevo.CheckedChanged += new System.EventHandler(this.checkFiltroNuevo_CheckedChanged);
+            // 
+            // checkFiltroTraccionSimple
+            // 
+            this.checkFiltroTraccionSimple.AutoSize = true;
+            this.checkFiltroTraccionSimple.Enabled = false;
+            this.checkFiltroTraccionSimple.Location = new System.Drawing.Point(6, 28);
+            this.checkFiltroTraccionSimple.Name = "checkFiltroTraccionSimple";
+            this.checkFiltroTraccionSimple.Size = new System.Drawing.Size(102, 17);
+            this.checkFiltroTraccionSimple.TabIndex = 2;
+            this.checkFiltroTraccionSimple.Text = "Traccion Simple";
+            this.checkFiltroTraccionSimple.UseVisualStyleBackColor = true;
+            this.checkFiltroTraccionSimple.CheckedChanged += new System.EventHandler(this.checkFiltroTraccionSimple_CheckedChanged);
+            // 
             // FConcesionaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,6 +650,10 @@ namespace Concesionaria
         private System.Windows.Forms.RadioButton rbGamaTodos;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbFiltroModelo;
+        private System.Windows.Forms.CheckBox checkFiltroTraccionSimple;
+        private System.Windows.Forms.CheckBox checkFiltroNuevo;
     }
 }
 

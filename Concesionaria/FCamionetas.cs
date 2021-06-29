@@ -41,6 +41,7 @@ namespace Concesionaria
         {
             string nuevaMarca = cbMarca.SelectedIndex != -1 ? cbMarca.Text : "";
             string nuevoModelo = cbModelo.SelectedIndex != -1 ? cbModelo.Text : "";
+            string nuevaGama = cbGama.SelectedIndex != -1 ? cbGama.Text : "";
             DateTime nuevaFechaFab = dtFechaFabricacion.Value.Date;
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
             bool usado = checkUsado.Checked;
@@ -50,11 +51,15 @@ namespace Concesionaria
 
             if (nuevaMarca == "")
             {
-                MessageBox.Show("Complete la Marca", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione la Marca", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (nuevoModelo == "")
             {
-                MessageBox.Show("Complete el Modelo", "Modelo Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un Modelo", "Modelo Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (nuevaGama == "")
+            {
+                MessageBox.Show("Seleccione una Gama", "Modelo Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (nuevoPrecio == 0)
             {
@@ -62,12 +67,12 @@ namespace Concesionaria
             }
             else if (agregarVehiculo)
             {
-                datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, 35,cuatroXcuatro, codigoVehiculos, "Camioneta", distribuidor);
+                datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta", distribuidor);
                 DialogResult = DialogResult.OK;
             }
             else
             {
-                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaFechaFab, usado, nuevoPrecio, 35,cuatroXcuatro, codigoVehiculos, "Camioneta", distribuidor);
+                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta", distribuidor);
                 DialogResult = DialogResult.OK;
             }
         }
@@ -85,6 +90,7 @@ namespace Concesionaria
                 Text = "Agregar";
                 bAceptar.Text = "Agregar";
                 cbMarca.SelectedIndex = 0;
+                cbGama.SelectedIndex = 0;
                 cbModelo.SelectedIndex = 0;
                 dtFechaFabricacion.Value = DateTime.Today;
                 mtPrecioCosto.Clear();
@@ -97,6 +103,7 @@ namespace Concesionaria
                 bAceptar.Text = "Modificar";
                 clsCamionetas camioneta = datos.datosCamionetas(cod);
                 cbMarca.Text = camioneta.MARCA;
+                cbGama.Text = camioneta.GAMA;
                 cbModelo.Text = camioneta.MODELO;
                 dtFechaFabricacion.Value = camioneta.FECHAFABRICACION;
                 string formatoPrecio = "000000000";

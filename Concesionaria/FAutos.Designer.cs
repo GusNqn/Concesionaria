@@ -34,7 +34,7 @@ namespace Concesionaria
             this.label5 = new System.Windows.Forms.Label();
             this.mtPrecioCosto = new System.Windows.Forms.MaskedTextBox();
             this.dtFechaFabricacion = new System.Windows.Forms.DateTimePicker();
-            this.cbModelo = new System.Windows.Forms.ComboBox();
+            this.cbGama = new System.Windows.Forms.ComboBox();
             this.cbMarca = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,17 +43,23 @@ namespace Concesionaria
             this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
+            this.cbModelo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.cbModelo);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cbDistribuidores);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.mtPrecioCosto);
             this.panel1.Controls.Add(this.dtFechaFabricacion);
-            this.panel1.Controls.Add(this.cbModelo);
+            this.panel1.Controls.Add(this.cbGama);
             this.panel1.Controls.Add(this.cbMarca);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -61,7 +67,7 @@ namespace Concesionaria
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(384, 183);
+            this.panel1.Size = new System.Drawing.Size(384, 243);
             this.panel1.TabIndex = 0;
             // 
             // cbDistribuidores
@@ -72,7 +78,7 @@ namespace Concesionaria
             "Gama Base",
             "Gama Media",
             "Gama Full"});
-            this.cbDistribuidores.Location = new System.Drawing.Point(133, 79);
+            this.cbDistribuidores.Location = new System.Drawing.Point(133, 140);
             this.cbDistribuidores.Name = "cbDistribuidores";
             this.cbDistribuidores.Size = new System.Drawing.Size(228, 21);
             this.cbDistribuidores.TabIndex = 6;
@@ -80,7 +86,7 @@ namespace Concesionaria
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 82);
+            this.label5.Location = new System.Drawing.Point(54, 143);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 5;
@@ -88,7 +94,7 @@ namespace Concesionaria
             // 
             // mtPrecioCosto
             // 
-            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 140);
+            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 201);
             this.mtPrecioCosto.Mask = "9999990.99";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
             this.mtPrecioCosto.Size = new System.Drawing.Size(66, 20);
@@ -97,23 +103,23 @@ namespace Concesionaria
             // dtFechaFabricacion
             // 
             this.dtFechaFabricacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaFabricacion.Location = new System.Drawing.Point(133, 114);
+            this.dtFechaFabricacion.Location = new System.Drawing.Point(133, 175);
             this.dtFechaFabricacion.Name = "dtFechaFabricacion";
             this.dtFechaFabricacion.Size = new System.Drawing.Size(97, 20);
             this.dtFechaFabricacion.TabIndex = 3;
             // 
-            // cbModelo
+            // cbGama
             // 
-            this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbModelo.FormattingEnabled = true;
-            this.cbModelo.Items.AddRange(new object[] {
+            this.cbGama.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGama.FormattingEnabled = true;
+            this.cbGama.Items.AddRange(new object[] {
             "Base",
             "Media",
             "Full"});
-            this.cbModelo.Location = new System.Drawing.Point(133, 48);
-            this.cbModelo.Name = "cbModelo";
-            this.cbModelo.Size = new System.Drawing.Size(228, 21);
-            this.cbModelo.TabIndex = 2;
+            this.cbGama.Location = new System.Drawing.Point(133, 109);
+            this.cbGama.Name = "cbGama";
+            this.cbGama.Size = new System.Drawing.Size(228, 21);
+            this.cbGama.TabIndex = 2;
             // 
             // cbMarca
             // 
@@ -124,7 +130,7 @@ namespace Concesionaria
             "Ford",
             "Renault",
             "Volskwagen"});
-            this.cbMarca.Location = new System.Drawing.Point(133, 22);
+            this.cbMarca.Location = new System.Drawing.Point(133, 53);
             this.cbMarca.Name = "cbMarca";
             this.cbMarca.Size = new System.Drawing.Size(228, 21);
             this.cbMarca.TabIndex = 1;
@@ -132,7 +138,7 @@ namespace Concesionaria
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 143);
+            this.label4.Location = new System.Drawing.Point(43, 204);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 0;
@@ -141,7 +147,7 @@ namespace Concesionaria
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 116);
+            this.label3.Location = new System.Drawing.Point(14, 177);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 13);
             this.label3.TabIndex = 0;
@@ -150,16 +156,16 @@ namespace Concesionaria
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(82, 51);
+            this.label2.Location = new System.Drawing.Point(89, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Modelo:";
+            this.label2.Text = "Gama:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 25);
+            this.label1.Location = new System.Drawing.Point(87, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 0;
@@ -168,7 +174,7 @@ namespace Concesionaria
             // checkUsado
             // 
             this.checkUsado.AutoSize = true;
-            this.checkUsado.Location = new System.Drawing.Point(316, 201);
+            this.checkUsado.Location = new System.Drawing.Point(325, 290);
             this.checkUsado.Name = "checkUsado";
             this.checkUsado.Size = new System.Drawing.Size(57, 17);
             this.checkUsado.TabIndex = 1;
@@ -177,7 +183,7 @@ namespace Concesionaria
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(180, 224);
+            this.bAceptar.Location = new System.Drawing.Point(189, 313);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 2;
@@ -187,18 +193,50 @@ namespace Concesionaria
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(298, 224);
+            this.bCancelar.Location = new System.Drawing.Point(307, 313);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 2;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             // 
+            // cbModelo
+            // 
+            this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbModelo.FormattingEnabled = true;
+            this.cbModelo.Items.AddRange(new object[] {
+            "Chevrolet",
+            "Ford",
+            "Renault",
+            "Volskwagen"});
+            this.cbModelo.Location = new System.Drawing.Point(133, 80);
+            this.cbModelo.Name = "cbModelo";
+            this.cbModelo.Size = new System.Drawing.Size(228, 21);
+            this.cbModelo.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(82, 83);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Modelo:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(80, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Patente:";
+            // 
             // FAutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 267);
+            this.ClientSize = new System.Drawing.Size(412, 353);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.checkUsado);
@@ -221,7 +259,7 @@ namespace Concesionaria
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbMarca;
-        private System.Windows.Forms.ComboBox cbModelo;
+        private System.Windows.Forms.ComboBox cbGama;
         private System.Windows.Forms.DateTimePicker dtFechaFabricacion;
         private System.Windows.Forms.MaskedTextBox mtPrecioCosto;
         private System.Windows.Forms.CheckBox checkUsado;
@@ -229,5 +267,8 @@ namespace Concesionaria
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.ComboBox cbDistribuidores;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbModelo;
+        private System.Windows.Forms.Label label6;
     }
 }

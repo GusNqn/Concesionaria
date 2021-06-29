@@ -20,6 +20,78 @@ namespace Concesionaria
         #endregion
         #region Metodos
 
+        private void completarFiltroModelo()
+        {
+            if (cbFiltroTipo.Text == "Todos" && cbFiltroMarca.Text == "Todos")
+            {
+                //Todos los modelos autos+Camionetas
+            }
+            else if (cbFiltroTipo.Text == "Todos" && cbFiltroMarca.Text != "Todos")
+            {
+                if (cbFiltroMarca.Text == "Chevrolet")
+                {
+                    //Autos y Camionetas Chevrolet
+                }
+                else if (cbFiltroMarca.Text == "Renault")
+                {
+                    //Autos y Camionetas Renault
+                }
+                else if (cbFiltroMarca.Text == "Ford")
+                {
+                    //Autos y Camionetas Ford
+                }
+                else if (cbFiltroMarca.Text == "Volskwagen")
+                {
+                    //Autos y Camionetas Volskwagen
+                }
+            }
+            else if (cbFiltroTipo.Text != "Todos" && cbFiltroMarca.Text == "Todos")
+            {
+                if (cbFiltroTipo.Text == "Auto")
+                {
+                    //Todos los Autos
+                }
+                else if (cbFiltroTipo.Text == "Camioneta")
+                {
+                    //Todas las Camionetas
+                }
+            }
+            else if (cbFiltroTipo.Text != "Todos" && cbFiltroMarca.Text != "Todos")
+            {
+                if (cbFiltroMarca.Text == "Chevrolet" && cbFiltroTipo.Text == "Auto")
+                {
+                    //Autos Chevrolet
+                }
+                else if (cbFiltroMarca.Text == "Chevrolet" && cbFiltroTipo.Text == "Camioneta")
+                { 
+                    //Camioneta Chevrolet
+                }
+                else if (cbFiltroMarca.Text == "Renault" && cbFiltroTipo.Text == "Auto")
+                {
+                    //Autos Renault
+                }
+                else if (cbFiltroMarca.Text == "Renault" && cbFiltroTipo.Text == "Camioneta")
+                {
+                    //Camioneta Renault
+                }
+                if (cbFiltroMarca.Text == "Ford" && cbFiltroTipo.Text == "Auto")
+                {
+                    //Autos Ford
+                }
+                else if (cbFiltroMarca.Text == "Ford" && cbFiltroTipo.Text == "Camioneta")
+                {
+                    //Camioneta Ford
+                }
+                if (cbFiltroMarca.Text == "Volskwagen" && cbFiltroTipo.Text == "Auto")
+                {
+                    //Autos Volskwagen
+                }
+                else if (cbFiltroMarca.Text == "Volskwagen" && cbFiltroTipo.Text == "Camioneta")
+                {
+                    //Camioneta Volskwagen
+                }
+            }
+        }
         private void actualizarDistribuidores()
         {
             List<string> lista;
@@ -74,11 +146,14 @@ namespace Concesionaria
         private void actualizarVehiculos()
         {
             List<string> lista;
-            string tipo_Vehiculo, marca, distribuidor, gama = string.Empty;
-            bool Condicion, cuatroXcuatro = false;
+            string tipo_Vehiculo, marca, distribuidor, modelo, gama = string.Empty;
+            bool usado, nuevo;
+            bool cuatroXcuatro = false;
+            bool tracSimple = false;
 
             tipo_Vehiculo = cbFiltroTipo.Text;
             marca = cbFiltroMarca.Text;
+            modelo = cbFiltroModelo.Text;
             if (cbFiltroDistribuidor.Text != "Todos")
             {
                 distribuidor = cbFiltroDistribuidor.Text.Substring(6, 11);
@@ -103,20 +178,14 @@ namespace Concesionaria
             {
                 gama = rbFull.Text;
             }
-            if (checkFiltroUsado.Checked) //NO PODEMOS PASAR EL CHECKBOX Y YA? En vez de crear booleanos(Lo mismo 4x4)
-            {
-                Condicion = true;
-            }
-            else
-            {
-                Condicion = false;
-            }
+            usado = checkFiltroUsado.Checked;
+            nuevo = checkFiltroNuevo.Checked;
             if (cbFiltroTipo.Text == "Camioneta")
             {
-                if (checkFiltro4x4.Checked)
-                    cuatroXcuatro = true;
+                cuatroXcuatro = checkFiltro4x4.Checked;
+                tracSimple = checkFiltroTraccionSimple.Checked;
             }
-            lista = datos.listarVehiculos(tipo_Vehiculo, marca, distribuidor, Condicion, cuatroXcuatro, gama);
+            lista = datos.listarVehiculos(tipo_Vehiculo, marca, modelo, distribuidor, usado, nuevo, cuatroXcuatro, tracSimple, gama);
             lbFiltroVehiculos.Items.Clear();
             foreach (string cadena in lista)
             {
@@ -139,6 +208,16 @@ namespace Concesionaria
             datos = new clsBase_Datos();
             codigoVehiculos = -1;
         }
+
+        private void FConcesionaria_Load(object sender, EventArgs e)
+        {
+            cbFiltroDistribuidor.SelectedIndex = 0;
+            cbFiltroMarca.SelectedIndex = 0;
+            cbFiltroTipo.SelectedIndex = 0;
+            cbFiltroModelo.SelectedIndex = 0;
+
+        }
+
 
         private void miAgregarAutos_Click(object sender, EventArgs e)
         {
@@ -277,21 +356,7 @@ namespace Concesionaria
                 MessageBox.Show("Se ha cancelado la carga", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private void rbInternacional_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarDistribuidores();
-        }
-
-        private void rbTodos_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarDistribuidores();
-        }
-
-        private void rbNacional_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarDistribuidores();
-        }
-
+   
         private void miModificarDistribuidor_Click(object sender, EventArgs e)
         {
             if (lbFiltroDistribuidores.SelectedIndex == -1)
@@ -314,68 +379,6 @@ namespace Concesionaria
                 }
             }
 
-        }
-
-        private void cbFiltroTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-            if (cbFiltroTipo.Text == "Camioneta")
-            {
-                checkFiltro4x4.Enabled = true;
-            }
-            else
-            {
-                checkFiltro4x4.Enabled = false;
-                checkFiltro4x4.Checked = false;
-            }
-        }
-
-        private void cbFiltroMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-        }
-
-        private void cbFiltroDistribuidor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-            
-        }
-
-        private void checkFiltroUsado_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-        }
-
-        private void checkFiltro4x4_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-        }
-
-        private void rbGamaTodos_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-        }
-
-        private void rbBase_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-        }
-
-        private void rbMedia_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-        }
-
-        private void rbFull_CheckedChanged(object sender, EventArgs e)
-        {
-            actualizarVehiculos();
-        }
-
-        private void FConcesionaria_Load(object sender, EventArgs e)
-        {
-            cbFiltroDistribuidor.SelectedIndex = 0;
-            cbFiltroMarca.SelectedIndex = 0;
-            cbFiltroTipo.SelectedIndex = 0;
         }
 
         private void miEliminarAutos_Click(object sender, EventArgs e)
@@ -531,6 +534,88 @@ namespace Concesionaria
                     completarComboDistribuidores();
                 }
             }
+        }
+
+        private void cbFiltroTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+            if (cbFiltroTipo.Text == "Camioneta")
+            {
+                checkFiltro4x4.Enabled = true;
+            }
+            else
+            {
+                checkFiltro4x4.Enabled = false;
+                checkFiltro4x4.Checked = false;
+            }
+            completarFiltroModelo();
+        }
+
+        private void checkFiltroNuevo_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbInternacional_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarDistribuidores();
+        }
+
+        private void rbTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarDistribuidores();
+        }
+
+        private void rbNacional_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarDistribuidores();
+        }
+
+        private void cbFiltroMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+            completarFiltroModelo();
+        }
+
+        private void cbFiltroDistribuidor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+
+        }
+
+        private void checkFiltroUsado_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void checkFiltro4x4_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbGamaTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbBase_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbMedia_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void rbFull_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void checkFiltroTraccionSimple_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
         }
     }
 }
