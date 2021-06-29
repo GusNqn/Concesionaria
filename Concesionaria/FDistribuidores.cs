@@ -63,11 +63,15 @@ namespace Concesionaria
             string nuevoCuit = mtCuit.MaskCompleted ? mtCuit.Text : "";
             string nuevaRazSocial = tRazonSocial.Text.Trim() != "" ? tRazonSocial.Text : "";
             bool internacional = checkInternacional.Checked;
-
+           
             if (nuevoCuit == "")
             {
                 MessageBox.Show("Complete el Cuit", "Cuit Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //else if (!clsDistribuidores.esCuitValido(nuevoCuit))
+            //{
+            // MessageBox.Show("El cuit ingresado no es valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
             else if (nuevaRazSocial == "")
             {
                 MessageBox.Show("Complete la Razon Social", "Razon Social Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);

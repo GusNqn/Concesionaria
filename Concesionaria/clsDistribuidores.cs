@@ -83,7 +83,62 @@ namespace Concesionaria
         #endregion
 
         #region Metodos Estaticos
+        public static bool esCuitValido(string cuit)
+        {
+            long cuitaux;
+            long cuit2 = Convert.ToInt64(cuit);
+            int v1, v2, v3, pos, digito, DigitoVerificador, DigitoVerificadorIngresado;
+            bool esValido = false;
+            v1 = 0;
+            pos = 1;
 
+            cuitaux = cuit2;
+
+            cuitaux = cuit2;
+            cuit2 = cuit2 / 10; // div "\"
+            do
+            {
+                digito = (int)(cuit2 % 10);
+                pos += 1;
+                switch (pos)
+                {
+                    case 2: v1 += digito * 2; break;
+                    case 3: v1 += digito * 3; break;
+                    case 4: v1 += digito * 4; break;
+                    case 5: v1 += digito * 5; break;
+                    case 6: v1 += digito * 6; break;
+                    case 7: v1 += digito * 7; break;
+                    case 8: v1 += digito * 2; break;
+                    case 9: v1 += digito * 3; break;
+                    case 10: v1 += digito * 4; break;
+                    case 11: v1 += digito * 5; break;
+                }
+                cuit2 /= 10;
+            }
+            while (cuit2 > 0);
+
+            v2 = v1 % 11;
+            v3 = 11 - v2;
+
+            if (v3 == 11)
+                DigitoVerificador = 0;
+            else if (v3 == 10)
+                DigitoVerificador = 9;
+            else
+                DigitoVerificador = v3;
+
+
+
+            //Obtener el digito verificador del cuit ingresado
+            DigitoVerificadorIngresado = (int)(cuitaux % 10);
+
+
+            // Comparar el Digito Verificador calculado con el ingresado en el cuit
+            if (DigitoVerificador == DigitoVerificadorIngresado)
+                esValido = true;
+           
+            return esValido;
+        }
         #endregion
 
         #region Constructores

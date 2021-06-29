@@ -29,6 +29,7 @@ namespace Concesionaria
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FConcesionaria));
             this.msPrincipal = new System.Windows.Forms.MenuStrip();
             this.msAutos = new System.Windows.Forms.ToolStripMenuItem();
             this.miAgregarAutos = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,22 +108,25 @@ namespace Concesionaria
             // 
             // miAgregarAutos
             // 
+            this.miAgregarAutos.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarAutos.Image")));
             this.miAgregarAutos.Name = "miAgregarAutos";
-            this.miAgregarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarAutos.Size = new System.Drawing.Size(180, 22);
             this.miAgregarAutos.Text = "Agregar";
             this.miAgregarAutos.Click += new System.EventHandler(this.miAgregarAutos_Click);
             // 
             // miModificarAutos
             // 
+            this.miModificarAutos.Image = ((System.Drawing.Image)(resources.GetObject("miModificarAutos.Image")));
             this.miModificarAutos.Name = "miModificarAutos";
-            this.miModificarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miModificarAutos.Size = new System.Drawing.Size(180, 22);
             this.miModificarAutos.Text = "Modificar";
             this.miModificarAutos.Click += new System.EventHandler(this.miModificarAutos_Click);
             // 
             // miEliminarAutos
             // 
+            this.miEliminarAutos.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarAutos.Image")));
             this.miEliminarAutos.Name = "miEliminarAutos";
-            this.miEliminarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarAutos.Size = new System.Drawing.Size(180, 22);
             this.miEliminarAutos.Text = "Eliminar";
             this.miEliminarAutos.Click += new System.EventHandler(this.miEliminarAutos_Click);
             // 
@@ -139,22 +143,25 @@ namespace Concesionaria
             // 
             // miAgregarCamioneta
             // 
+            this.miAgregarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarCamioneta.Image")));
             this.miAgregarCamioneta.Name = "miAgregarCamioneta";
-            this.miAgregarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miAgregarCamioneta.Text = "Agregar";
             this.miAgregarCamioneta.Click += new System.EventHandler(this.miAgregarCamioneta_Click);
             // 
             // miModificarCamioneta
             // 
+            this.miModificarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miModificarCamioneta.Image")));
             this.miModificarCamioneta.Name = "miModificarCamioneta";
-            this.miModificarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miModificarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miModificarCamioneta.Text = "Modificar";
             this.miModificarCamioneta.Click += new System.EventHandler(this.miModificarCamioneta_Click);
             // 
             // miEliminarCamioneta
             // 
+            this.miEliminarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarCamioneta.Image")));
             this.miEliminarCamioneta.Name = "miEliminarCamioneta";
-            this.miEliminarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miEliminarCamioneta.Text = "Eliminar";
             this.miEliminarCamioneta.Click += new System.EventHandler(this.miEliminarCamioneta_Click);
             // 
@@ -170,22 +177,25 @@ namespace Concesionaria
             // 
             // miAgregarDistribuidor
             // 
+            this.miAgregarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarDistribuidor.Image")));
             this.miAgregarDistribuidor.Name = "miAgregarDistribuidor";
-            this.miAgregarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miAgregarDistribuidor.Text = "Agregar";
             this.miAgregarDistribuidor.Click += new System.EventHandler(this.miAgregarDistribuidor_Click);
             // 
             // miModificarDistribuidor
             // 
+            this.miModificarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miModificarDistribuidor.Image")));
             this.miModificarDistribuidor.Name = "miModificarDistribuidor";
-            this.miModificarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miModificarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miModificarDistribuidor.Text = "Modificar";
             this.miModificarDistribuidor.Click += new System.EventHandler(this.miModificarDistribuidor_Click);
             // 
             // miEliminarDistribuidor
             // 
+            this.miEliminarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarDistribuidor.Image")));
             this.miEliminarDistribuidor.Name = "miEliminarDistribuidor";
-            this.miEliminarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miEliminarDistribuidor.Text = "Eliminar";
             this.miEliminarDistribuidor.Click += new System.EventHandler(this.miEliminarDistribuidor_Click);
             // 
