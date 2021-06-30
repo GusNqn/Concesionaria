@@ -497,14 +497,14 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Camioneta"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                     if (!esAuto)
                     {
                         DialogResult eliminarCamioneta;
                         eliminarCamioneta = MessageBox.Show("Usted selecciono una Camioneta, ¿queria eliminarla?", "¿Eliminar Camioneta?", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
                         if (eliminarCamioneta == DialogResult.Yes)
                         {
-                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                             MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             actualizarVehiculos();
                         }
@@ -515,14 +515,14 @@ namespace Concesionaria
                     }
                     else
                     {
-                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                         MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         actualizarVehiculos();
                     }
                 }
                 else
                 {
-                    datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                    datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                     MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     actualizarVehiculos();
                 }
@@ -539,14 +539,14 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Auto"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                     if (esAuto)
                     {
                         DialogResult eliminarAuto;
                         eliminarAuto = MessageBox.Show("Usted selecciono un Auto, ¿queria eliminarlo?", "¿Eliminar Auto?", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
                         if (eliminarAuto == DialogResult.Yes)
                         {
-                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                             MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             actualizarVehiculos();
                         }
@@ -557,19 +557,16 @@ namespace Concesionaria
                     }
                     else
                     {
-                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                         MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         actualizarVehiculos();
                     }
                 }
                 else
                 {
-                    
-                    datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8,4)));
-                    
+                    datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                     MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     actualizarVehiculos();
-                    
                 }
             }
         }
@@ -732,6 +729,33 @@ namespace Concesionaria
         private void cbFiltroModelo_SelectedIndexChanged(object sender, EventArgs e)
         {
             actualizarVehiculos();
+        }
+
+        private void gbTraccionCamioneta_MouseHover(object sender, EventArgs e)
+        {
+            if (cbFiltroTipo.Text != "Camioneta")
+            {
+            ttipTraccionCamioneta.SetToolTip(gbTraccionCamioneta, "Estos controles se habilitan solo si selecciona el tipo camioneta");
+            }
+            else
+            {
+                ttipTraccionCamioneta.SetToolTip(gbTraccionCamioneta, string.Empty);
+            }
+        }
+
+        private void mciEliminarAuto_Click(object sender, EventArgs e)
+        {
+            miEliminarAutos.PerformClick();
+        }
+
+        private void mciEliminarCamioneta_Click(object sender, EventArgs e)
+        {
+            miEliminarCamioneta.PerformClick();
+        }
+
+        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            miEliminarDistribuidor.PerformClick();
         }
     }
 }

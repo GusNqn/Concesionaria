@@ -21,6 +21,7 @@ namespace Concesionaria
             datos = conexion;
             agregarDistribuidor = true;
         }
+
         public FDistribuidores(clsBase_Datos conexion, string cuit)
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace Concesionaria
             if (!clsDistribuidores.esCuitValido(mtCuit.Text))
                 epCuit.SetError(mtCuit, "Debe completar el CUIT correctamente");
         }
+
         private void FDistribuidores_Load(object sender, EventArgs e)
         {
             if (agregarDistribuidor)

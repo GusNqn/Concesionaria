@@ -7,24 +7,6 @@ using System.Threading.Tasks;
 
 namespace Concesionaria
 {
-    //Domingo :
-    // - Comprension de trabajo de sabado
-    // - Redefinicion de Equals - GetHash - ToString de Distribuidores.
-    // - Chequeo de esDistribuidorInternacional. Por que no se utiliza el Equals y se usa un indice?
-    // - Correcion de Equals en clsVehiculos. Segundo argumento con parametro en vez de propiedad.
-    // - Emprolijado de codigo
-    // - Listar vehiculo. Ver comentarios en el codigo. Por que estamos listando en una clase? El listar deberia ir en el form.
-    // - Insertar distribuidor hecho
-    // - Insertar y modificar autos y camionetas hecho
-    // - Actualizar vehiculos hecho
-    // - Actualizar cantidades hecho
-    // - metodo cantidad de vehiculos añadida a clsbase
-    // - metodo cantidad de proveedores añadida a clsbase
-    // - los botones...no son MSI??!?!?!?!?!
-
-    // A entender de la funcionalidad del ejemplo de la profesora:
-    // - CantidadVehiculos y CantidadDistribuidores...por que son propiedades?
-    // - En la linea 195...si permitiera agregar mas en el combo...como lo controlo?
 
     public class clsBase_Datos
     {
@@ -51,6 +33,19 @@ namespace Concesionaria
             return existe;
         }
 
+        public bool existePatenteVehiculo(string patente)
+        {
+            bool existe = false;
+            foreach (clsVehiculos vehiculo in listaVehiculos)
+            {
+                if (vehiculo.PATENTE == patente)
+                {
+                    existe = true;
+                }
+            }
+            return existe;
+        }
+
         public bool existeRazonDistribuidor(string razon)
         {
             bool existe = false;
@@ -63,29 +58,7 @@ namespace Concesionaria
                 existe = true;
             }
             return existe;
-        }
-        public bool existeAuto(string patente)
-        {
-            clsAutos auto = new clsAutos(patente);
-            bool existe = false;
-
-            if (listaVehiculos.Contains(auto))
-            {
-                existe = true;
-            }
-            return existe;
-        }
-        public bool existeCamioneta(string patente)
-        {
-            clsCamionetas camioneta = new clsCamionetas(patente);
-            bool existe = false;
-
-            if (listaVehiculos.Contains(camioneta))
-            {
-                existe = true;
-            }
-            return existe;
-        }
+        } 
 
         public bool esDistribuidorInternacional(string cuit)
         {
@@ -97,6 +70,7 @@ namespace Concesionaria
             }
             return distribuidor.INTERNACIONAL;
         }
+
         public string getRazonSocial(string cuit)
         {
             clsDistribuidores distribuidor = new clsDistribuidores(cuit, "", false);
@@ -107,6 +81,7 @@ namespace Concesionaria
             }
             return distribuidor.RAZONSOCIAL;
         }
+
         public List<string> listaRazonDistribuidores()
         {
             List<string> lista;
@@ -120,6 +95,7 @@ namespace Concesionaria
 
             return lista;
         }
+
         public int buscarIndiceDist(string valorFiltro, int indiceFiltro)
         {
             int contador = -1;
@@ -159,34 +135,24 @@ namespace Concesionaria
             }
             return indice;
         }
+
         public clsVehiculos buscarVehiculo(string patente)
         {
             int indice = 0;
             foreach (clsVehiculos vehiculo in listaVehiculos)
             {
-                if (vehiculo.GetType() == typeof(clsAutos))
+                if (vehiculo.PATENTE == patente)
                 {
-                    if (existeAuto(patente))
-                    {
-                        indice = listaVehiculos.IndexOf(vehiculo);
-                    }
-                }
-                else
-                {
-                    if (existeCamioneta(patente))
-                    {
-                        indice = listaVehiculos.IndexOf(vehiculo);
-                    }
+                    indice = listaVehiculos.IndexOf(vehiculo);
                 }
             }
-
             return listaVehiculos[indice];
         }
+
         public int buscarIndice(string patente)
         {
             return listaVehiculos.IndexOf(buscarVehiculo(patente));
         }
-        
 
         public bool esAuto(int indice)
         {
@@ -209,6 +175,7 @@ namespace Concesionaria
             }
             return autoBuscado;
         }
+
         public clsCamionetas datosCamionetas(string patente)
         {
             clsCamionetas camionetaBuscada = new clsCamionetas();
@@ -224,6 +191,7 @@ namespace Concesionaria
             }
             return camionetaBuscada;
         }
+
         public List<string> listarDistribuidores(string procedencia)
         {
             List<string> lista;
@@ -260,6 +228,7 @@ namespace Concesionaria
 
             return lista;
         }
+
         public int cantidadVehiculosDelDistribuidor(string cuitDistribuidor)
         {
             int contador = 0;
@@ -273,6 +242,7 @@ namespace Concesionaria
             }
             return contador;
         }
+
         public List<string> listarVehiculos(string tipo_Vehiculo, string marca, string modelo, string cuitDistribuidor, bool usado, bool nuevo, bool cuatroXcuatro, bool tracSimple, string gama)
         {
             List<string> lista;
@@ -291,7 +261,7 @@ namespace Concesionaria
                 controlNuevo = false;
                 controlTracSimple = false;
 
-                if (tipo_Vehiculo == "Todos") //control vehiculo
+                if (tipo_Vehiculo == "Todos") 
                 {
                     controlTipoVehiculo = true;
                 }
@@ -303,7 +273,7 @@ namespace Concesionaria
                 {
                     controlTipoVehiculo = vehiculos.GetType() == typeof(clsCamionetas);
                 }
-                if (vehiculos.GetType() == typeof(clsAutos))//control marca
+                if (vehiculos.GetType() == typeof(clsAutos))
                 {
                     clsAutos auto = (clsAutos)vehiculos;
                     switch (marca)
@@ -432,7 +402,7 @@ namespace Concesionaria
                     controlMarca = true;
                 }
 
-                if (cuitDistribuidor == "Todos") //control distribuidor
+                if (cuitDistribuidor == "Todos") 
                 {
                     controlDistribuidor = true;
                 }
@@ -441,7 +411,7 @@ namespace Concesionaria
                     clsDistribuidores dist = new clsDistribuidores(cuitDistribuidor,"",false); 
                     controlDistribuidor = vehiculos.DISTRIBUIDOR.Equals(dist);
                 }
-                if (tipo_Vehiculo == "Todos" || tipo_Vehiculo == "Auto")   //control usado y pasa 4x4
+                if (tipo_Vehiculo == "Todos" || tipo_Vehiculo == "Auto")   
                 {
                     if (vehiculos.GetType() == typeof(clsAutos))
                     {
@@ -528,7 +498,7 @@ namespace Concesionaria
                 if (vehiculos.GetType() == typeof(clsAutos))
                 {
                     clsAutos auto = (clsAutos)vehiculos;
-                    if (gama == "Todos") //control gama
+                    if (gama == "Todos") 
                     {
                         controlGama = true;
                     }
@@ -548,7 +518,7 @@ namespace Concesionaria
                 else if (vehiculos.GetType() == typeof(clsCamionetas))
                 {
                     clsCamionetas camionetas = (clsCamionetas)vehiculos;
-                    if (gama == "Todos") //control gama
+                    if (gama == "Todos") 
                     {
                         controlGama = true;
                     }
@@ -584,7 +554,7 @@ namespace Concesionaria
             {
                 controlDistribuidor = false;
 
-                if (cuitDistribuidor == "Todos") //control distribuidor
+                if (cuitDistribuidor == "Todos") 
                 {
                     controlDistribuidor = true;
                 }
@@ -669,6 +639,7 @@ namespace Concesionaria
                 listaVehiculos.Insert(posicion, camioneta);
             }
         }
+
         public void eliminarVehiculos(int posicion)
         {
             listaVehiculos.RemoveAt(posicion);

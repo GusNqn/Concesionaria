@@ -178,7 +178,8 @@ namespace Concesionaria
             }
             else if (agregarVehiculo)
             {
-                if (datos.existeAuto(nuevaPatente))
+
+                if (datos.existePatenteVehiculo(nuevaPatente))
                 {
                     MessageBox.Show("La patente ingresada ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tPatente.Focus();
