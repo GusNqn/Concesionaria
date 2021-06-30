@@ -103,7 +103,7 @@ namespace Concesionaria
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(53, 158);
+            this.bAceptar.Location = new System.Drawing.Point(58, 155);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 4;
@@ -114,7 +114,7 @@ namespace Concesionaria
             // bCancelar
             // 
             this.bCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancelar.Location = new System.Drawing.Point(185, 158);
+            this.bCancelar.Location = new System.Drawing.Point(172, 155);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 5;

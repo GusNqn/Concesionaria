@@ -289,40 +289,7 @@ namespace Concesionaria
                                 controlModelo = modelo == auto.MODELO;
                             }
                             break;
-                        case "Chevrolet": 
-                            controlMarca = marca == auto.MARCA;
-                            if ((modelo == "Todos") || (modelo == string.Empty))
-                            {
-                                controlModelo = true;
-                            }
-                            else
-                            {
-                                controlModelo = modelo == auto.MODELO;
-                            }
-                            break;
-                        case "Ford": 
-                            controlMarca = marca == auto.MARCA;
-                            if ((modelo == "Todos") || (modelo == string.Empty))
-                            {
-                                controlModelo = true;
-                            }
-                            else
-                            {
-                                controlModelo = modelo == auto.MODELO;
-                            }
-                            break;
-                        case "Renault": 
-                            controlMarca = marca == auto.MARCA;
-                            if ((modelo == "Todos") || (modelo == string.Empty))
-                            {
-                                controlModelo = true;
-                            }
-                            else
-                            {
-                                controlModelo = modelo == auto.MODELO;
-                            }
-                            break;
-                        case "Volskwagen": 
+                        default : 
                             controlMarca = marca == auto.MARCA;
                             if ((modelo == "Todos") || (modelo == string.Empty))
                             {
@@ -351,40 +318,7 @@ namespace Concesionaria
                                 controlModelo = modelo == camioneta.MODELO;
                             }
                             break;
-                        case "Chevrolet": 
-                            controlMarca = marca == camioneta.MARCA;
-                            if ((modelo == "Todos") || (modelo == string.Empty))
-                            {
-                                controlModelo = true;
-                            }
-                            else
-                            {
-                                controlModelo = modelo == camioneta.MODELO;
-                            }
-                            break;
-                        case "Ford":
-                            controlMarca = marca == camioneta.MARCA;
-                            if ((modelo == "Todos") || (modelo == string.Empty))
-                            {
-                                controlModelo = true;
-                            }
-                            else
-                            {
-                                controlModelo = modelo == camioneta.MODELO;
-                            }
-                            break;
-                        case "Renault":
-                            controlMarca = marca == camioneta.MARCA;
-                            if ((modelo == "Todos") || (modelo == string.Empty))
-                            {
-                                controlModelo = true;
-                            }
-                            else
-                            {
-                                controlModelo = modelo == camioneta.MODELO;
-                            }
-                            break;
-                        case "Volskwagen":
+                        default : 
                             controlMarca = marca == camioneta.MARCA;
                             if ((modelo == "Todos") || (modelo == string.Empty))
                             {
@@ -426,7 +360,7 @@ namespace Concesionaria
                             controlUsado = auto.USADO == usado;
                             controlNuevo = true;
                         }
-                        else if (nuevo)
+                        else
                         {
                             controlUsado = true;
                             controlNuevo = !auto.USADO == nuevo;
@@ -447,7 +381,7 @@ namespace Concesionaria
                             controlUsado = camionetas.USADO == usado;
                             controlNuevo = true;
                         }
-                        else if (nuevo)
+                        else
                         {
                             controlUsado = true;
                             controlNuevo = !camionetas.USADO == nuevo;
@@ -471,7 +405,7 @@ namespace Concesionaria
                             controlUsado = camionetas.USADO == usado;
                             controlNuevo = true;
                         }
-                        else if (nuevo)
+                        else
                         {
                             controlUsado = true;
                             controlNuevo = !camionetas.USADO == nuevo;
@@ -486,13 +420,11 @@ namespace Concesionaria
                             controlCuaXcua = camionetas.CUATROXCUATRO == cuatroXcuatro;
                             controlTracSimple = true;
                         }
-                        else if (tracSimple)
+                        else
                         {
                             controlCuaXcua = true;
                             controlTracSimple = !camionetas.CUATROXCUATRO == tracSimple;
                         }
-                        
-                        
                     }
                 }
                 if (vehiculos.GetType() == typeof(clsAutos))
@@ -502,15 +434,7 @@ namespace Concesionaria
                     {
                         controlGama = true;
                     }
-                    else if (gama == "Base")
-                    {
-                        controlGama = auto.GAMA == gama;
-                    }
-                    else if (gama == "Media")
-                    {
-                        controlGama = auto.GAMA == gama;
-                    }
-                    else if (gama == "Full")
+                    else
                     {
                         controlGama = auto.GAMA == gama;
                     }
@@ -522,15 +446,7 @@ namespace Concesionaria
                     {
                         controlGama = true;
                     }
-                    else if (gama == "Base")
-                    {
-                        controlGama = camionetas.GAMA == gama;
-                    }
-                    else if (gama == "Media")
-                    {
-                        controlGama = camionetas.GAMA == gama;
-                    }
-                    else if (gama == "Full")
+                    else
                     {
                         controlGama = camionetas.GAMA == gama;
                     }

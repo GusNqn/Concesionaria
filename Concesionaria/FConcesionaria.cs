@@ -640,6 +640,7 @@ namespace Concesionaria
 
         private void cbFiltroTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            completarFiltroModelo();
             actualizarVehiculos();
             if (cbFiltroTipo.Text == "Camioneta")
             {
@@ -655,7 +656,6 @@ namespace Concesionaria
                 checkFiltroTraccionSimple.Enabled = false;
                 checkFiltroTraccionSimple.Checked = false;
             }
-            completarFiltroModelo();
         }
 
         private void checkFiltroNuevo_CheckedChanged(object sender, EventArgs e)
@@ -680,14 +680,13 @@ namespace Concesionaria
 
         private void cbFiltroMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            actualizarVehiculos();
             completarFiltroModelo();
+            actualizarVehiculos();
         }
 
         private void cbFiltroDistribuidor_SelectedIndexChanged(object sender, EventArgs e)
         {
             actualizarVehiculos();
-
         }
 
         private void checkFiltroUsado_CheckedChanged(object sender, EventArgs e)
@@ -813,6 +812,11 @@ namespace Concesionaria
             { 
                 Close();
             }        
+        }
+
+        private void mciVenderVehiculo_Click(object sender, EventArgs e)
+        {
+            msVentas.PerformClick();
         }
     }
 }

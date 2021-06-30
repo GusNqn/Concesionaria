@@ -56,7 +56,7 @@ namespace Concesionaria
             // lVehiculo
             // 
             this.lVehiculo.AutoSize = true;
-            this.lVehiculo.Location = new System.Drawing.Point(47, 18);
+            this.lVehiculo.Location = new System.Drawing.Point(9, 18);
             this.lVehiculo.Name = "lVehiculo";
             this.lVehiculo.Size = new System.Drawing.Size(35, 13);
             this.lVehiculo.TabIndex = 6;
@@ -86,7 +86,7 @@ namespace Concesionaria
             this.dtFechaVenta.Location = new System.Drawing.Point(144, 70);
             this.dtFechaVenta.Name = "dtFechaVenta";
             this.dtFechaVenta.Size = new System.Drawing.Size(114, 20);
-            this.dtFechaVenta.TabIndex = 3;
+            this.dtFechaVenta.TabIndex = 1;
             // 
             // dtFechaCompra
             // 
@@ -99,10 +99,10 @@ namespace Concesionaria
             // 
             // bVender
             // 
-            this.bVender.Location = new System.Drawing.Point(97, 140);
+            this.bVender.Location = new System.Drawing.Point(105, 145);
             this.bVender.Name = "bVender";
             this.bVender.Size = new System.Drawing.Size(75, 23);
-            this.bVender.TabIndex = 1;
+            this.bVender.TabIndex = 2;
             this.bVender.Text = "&Vender";
             this.bVender.UseVisualStyleBackColor = true;
             this.bVender.Click += new System.EventHandler(this.bVender_Click);
@@ -110,10 +110,10 @@ namespace Concesionaria
             // bCancelar
             // 
             this.bCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancelar.Location = new System.Drawing.Point(195, 140);
+            this.bCancelar.Location = new System.Drawing.Point(203, 145);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bCancelar.TabIndex = 2;
+            this.bCancelar.TabIndex = 3;
             this.bCancelar.Text = "&Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
@@ -124,7 +124,7 @@ namespace Concesionaria
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bCancelar;
-            this.ClientSize = new System.Drawing.Size(383, 188);
+            this.ClientSize = new System.Drawing.Size(383, 178);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bVender);
             this.Controls.Add(this.panel1);
