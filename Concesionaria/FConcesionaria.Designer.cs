@@ -40,7 +40,7 @@ namespace Concesionaria
             this.miAgregarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
             this.miModificarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
-            this.proveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
             this.miAgregarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
             this.miModificarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +69,9 @@ namespace Concesionaria
             this.cbFiltroMarca = new System.Windows.Forms.ComboBox();
             this.cbFiltroTipo = new System.Windows.Forms.ComboBox();
             this.lbFiltroVehiculos = new System.Windows.Forms.ListBox();
+            this.mcEliminarVehiculo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mciEliminarAuto = new System.Windows.Forms.ToolStripMenuItem();
+            this.mciEliminarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lCantidadTotalDistribuidores = new System.Windows.Forms.Label();
             this.gbDistribuidores = new System.Windows.Forms.GroupBox();
@@ -77,20 +80,18 @@ namespace Concesionaria
             this.rbNacional = new System.Windows.Forms.RadioButton();
             this.lCantListadoDistribuidores = new System.Windows.Forms.Label();
             this.lbFiltroDistribuidores = new System.Windows.Forms.ListBox();
-            this.ttipTraccionCamioneta = new System.Windows.Forms.ToolTip(this.components);
-            this.mcEliminarVehiculo = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mciEliminarAuto = new System.Windows.Forms.ToolStripMenuItem();
             this.mcEliminarDitribuidor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mciEliminarCamioneta = new System.Windows.Forms.ToolStripMenuItem();
+            this.ttipTraccionCamioneta = new System.Windows.Forms.ToolTip(this.components);
+            this.msVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.msPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbTraccionCamioneta.SuspendLayout();
             this.gbCondicion.SuspendLayout();
             this.gbGama.SuspendLayout();
+            this.mcEliminarVehiculo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbDistribuidores.SuspendLayout();
-            this.mcEliminarVehiculo.SuspendLayout();
             this.mcEliminarDitribuidor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +100,8 @@ namespace Concesionaria
             this.msPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msAutos,
             this.msCamioneta,
-            this.proveedorToolStripMenuItem,
+            this.msDistribuidor,
+            this.msVentas,
             this.miSalir,
             this.miAcercaDe});
             this.msPrincipal.Location = new System.Drawing.Point(0, 0);
@@ -123,7 +125,7 @@ namespace Concesionaria
             // 
             this.miAgregarAutos.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarAutos.Image")));
             this.miAgregarAutos.Name = "miAgregarAutos";
-            this.miAgregarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarAutos.Size = new System.Drawing.Size(180, 22);
             this.miAgregarAutos.Text = "Agregar";
             this.miAgregarAutos.Click += new System.EventHandler(this.miAgregarAutos_Click);
             // 
@@ -131,7 +133,7 @@ namespace Concesionaria
             // 
             this.miModificarAutos.Image = ((System.Drawing.Image)(resources.GetObject("miModificarAutos.Image")));
             this.miModificarAutos.Name = "miModificarAutos";
-            this.miModificarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miModificarAutos.Size = new System.Drawing.Size(180, 22);
             this.miModificarAutos.Text = "Modificar";
             this.miModificarAutos.Click += new System.EventHandler(this.miModificarAutos_Click);
             // 
@@ -139,7 +141,7 @@ namespace Concesionaria
             // 
             this.miEliminarAutos.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarAutos.Image")));
             this.miEliminarAutos.Name = "miEliminarAutos";
-            this.miEliminarAutos.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarAutos.Size = new System.Drawing.Size(180, 22);
             this.miEliminarAutos.Text = "Eliminar";
             this.miEliminarAutos.Click += new System.EventHandler(this.miEliminarAutos_Click);
             // 
@@ -158,7 +160,7 @@ namespace Concesionaria
             // 
             this.miAgregarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarCamioneta.Image")));
             this.miAgregarCamioneta.Name = "miAgregarCamioneta";
-            this.miAgregarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miAgregarCamioneta.Text = "Agregar";
             this.miAgregarCamioneta.Click += new System.EventHandler(this.miAgregarCamioneta_Click);
             // 
@@ -166,7 +168,7 @@ namespace Concesionaria
             // 
             this.miModificarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miModificarCamioneta.Image")));
             this.miModificarCamioneta.Name = "miModificarCamioneta";
-            this.miModificarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miModificarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miModificarCamioneta.Text = "Modificar";
             this.miModificarCamioneta.Click += new System.EventHandler(this.miModificarCamioneta_Click);
             // 
@@ -174,25 +176,25 @@ namespace Concesionaria
             // 
             this.miEliminarCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarCamioneta.Image")));
             this.miEliminarCamioneta.Name = "miEliminarCamioneta";
-            this.miEliminarCamioneta.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
             this.miEliminarCamioneta.Text = "Eliminar";
             this.miEliminarCamioneta.Click += new System.EventHandler(this.miEliminarCamioneta_Click);
             // 
-            // proveedorToolStripMenuItem
+            // msDistribuidor
             // 
-            this.proveedorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msDistribuidor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miAgregarDistribuidor,
             this.miModificarDistribuidor,
             this.miEliminarDistribuidor});
-            this.proveedorToolStripMenuItem.Name = "proveedorToolStripMenuItem";
-            this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.proveedorToolStripMenuItem.Text = "&Distribuidor";
+            this.msDistribuidor.Name = "msDistribuidor";
+            this.msDistribuidor.Size = new System.Drawing.Size(81, 20);
+            this.msDistribuidor.Text = "&Distribuidor";
             // 
             // miAgregarDistribuidor
             // 
             this.miAgregarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miAgregarDistribuidor.Image")));
             this.miAgregarDistribuidor.Name = "miAgregarDistribuidor";
-            this.miAgregarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miAgregarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miAgregarDistribuidor.Text = "Agregar";
             this.miAgregarDistribuidor.Click += new System.EventHandler(this.miAgregarDistribuidor_Click);
             // 
@@ -200,7 +202,7 @@ namespace Concesionaria
             // 
             this.miModificarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miModificarDistribuidor.Image")));
             this.miModificarDistribuidor.Name = "miModificarDistribuidor";
-            this.miModificarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miModificarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miModificarDistribuidor.Text = "Modificar";
             this.miModificarDistribuidor.Click += new System.EventHandler(this.miModificarDistribuidor_Click);
             // 
@@ -208,7 +210,7 @@ namespace Concesionaria
             // 
             this.miEliminarDistribuidor.Image = ((System.Drawing.Image)(resources.GetObject("miEliminarDistribuidor.Image")));
             this.miEliminarDistribuidor.Name = "miEliminarDistribuidor";
-            this.miEliminarDistribuidor.Size = new System.Drawing.Size(125, 22);
+            this.miEliminarDistribuidor.Size = new System.Drawing.Size(180, 22);
             this.miEliminarDistribuidor.Text = "Eliminar";
             this.miEliminarDistribuidor.Click += new System.EventHandler(this.miEliminarDistribuidor_Click);
             // 
@@ -495,6 +497,28 @@ namespace Concesionaria
             this.lbFiltroVehiculos.Size = new System.Drawing.Size(432, 108);
             this.lbFiltroVehiculos.TabIndex = 0;
             // 
+            // mcEliminarVehiculo
+            // 
+            this.mcEliminarVehiculo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mciEliminarAuto,
+            this.mciEliminarCamioneta});
+            this.mcEliminarVehiculo.Name = "mcEliminarVehiculo";
+            this.mcEliminarVehiculo.Size = new System.Drawing.Size(179, 48);
+            // 
+            // mciEliminarAuto
+            // 
+            this.mciEliminarAuto.Name = "mciEliminarAuto";
+            this.mciEliminarAuto.Size = new System.Drawing.Size(178, 22);
+            this.mciEliminarAuto.Text = "Eliminar Auto";
+            this.mciEliminarAuto.Click += new System.EventHandler(this.mciEliminarAuto_Click);
+            // 
+            // mciEliminarCamioneta
+            // 
+            this.mciEliminarCamioneta.Name = "mciEliminarCamioneta";
+            this.mciEliminarCamioneta.Size = new System.Drawing.Size(178, 22);
+            this.mciEliminarCamioneta.Text = "Eliminar Camioneta";
+            this.mciEliminarCamioneta.Click += new System.EventHandler(this.mciEliminarCamioneta_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -581,21 +605,6 @@ namespace Concesionaria
             this.lbFiltroDistribuidores.Size = new System.Drawing.Size(268, 238);
             this.lbFiltroDistribuidores.TabIndex = 0;
             // 
-            // mcEliminarVehiculo
-            // 
-            this.mcEliminarVehiculo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mciEliminarAuto,
-            this.mciEliminarCamioneta});
-            this.mcEliminarVehiculo.Name = "mcEliminarVehiculo";
-            this.mcEliminarVehiculo.Size = new System.Drawing.Size(179, 48);
-            // 
-            // mciEliminarAuto
-            // 
-            this.mciEliminarAuto.Name = "mciEliminarAuto";
-            this.mciEliminarAuto.Size = new System.Drawing.Size(180, 22);
-            this.mciEliminarAuto.Text = "Eliminar Auto";
-            this.mciEliminarAuto.Click += new System.EventHandler(this.mciEliminarAuto_Click);
-            // 
             // mcEliminarDitribuidor
             // 
             this.mcEliminarDitribuidor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -606,16 +615,17 @@ namespace Concesionaria
             // eliminarToolStripMenuItem1
             // 
             this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.eliminarToolStripMenuItem1.Text = "Eliminar";
             this.eliminarToolStripMenuItem1.Click += new System.EventHandler(this.eliminarToolStripMenuItem1_Click);
             // 
-            // mciEliminarCamioneta
+            // msVentas
             // 
-            this.mciEliminarCamioneta.Name = "mciEliminarCamioneta";
-            this.mciEliminarCamioneta.Size = new System.Drawing.Size(180, 22);
-            this.mciEliminarCamioneta.Text = "Eliminar Camioneta";
-            this.mciEliminarCamioneta.Click += new System.EventHandler(this.mciEliminarCamioneta_Click);
+            this.msVentas.Enabled = false;
+            this.msVentas.Name = "msVentas";
+            this.msVentas.Size = new System.Drawing.Size(53, 20);
+            this.msVentas.Text = "Ventas";
+            this.msVentas.Click += new System.EventHandler(this.msVentas_Click);
             // 
             // FConcesionaria
             // 
@@ -639,11 +649,11 @@ namespace Concesionaria
             this.gbCondicion.PerformLayout();
             this.gbGama.ResumeLayout(false);
             this.gbGama.PerformLayout();
+            this.mcEliminarVehiculo.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.gbDistribuidores.ResumeLayout(false);
             this.gbDistribuidores.PerformLayout();
-            this.mcEliminarVehiculo.ResumeLayout(false);
             this.mcEliminarDitribuidor.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -655,7 +665,7 @@ namespace Concesionaria
         private System.Windows.Forms.MenuStrip msPrincipal;
         private System.Windows.Forms.ToolStripMenuItem msAutos;
         private System.Windows.Forms.ToolStripMenuItem msCamioneta;
-        private System.Windows.Forms.ToolStripMenuItem proveedorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msDistribuidor;
         private System.Windows.Forms.ToolStripMenuItem miAgregarDistribuidor;
         private System.Windows.Forms.ToolStripMenuItem miModificarDistribuidor;
         private System.Windows.Forms.ToolStripMenuItem miEliminarDistribuidor;
@@ -704,6 +714,7 @@ namespace Concesionaria
         private System.Windows.Forms.ContextMenuStrip mcEliminarDitribuidor;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mciEliminarCamioneta;
+        private System.Windows.Forms.ToolStripMenuItem msVentas;
     }
 }
 

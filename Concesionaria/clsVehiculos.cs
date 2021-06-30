@@ -94,7 +94,7 @@ namespace Concesionaria
             return (Convert.ToInt32(_codigo) * 10);
         }
 
-        public abstract int calculoDescuento(); //devolvemos un integer que determina los dias que pasaron desde la adqusicion hasta la venta - HACER EL REDEFINIDO. Cambiamos el porcentaje acorde al tipo de vehiculo
+        public abstract double calcularGanancia(DateTime fechaPedida); //devolvemos un integer que determina los dias que pasaron desde la adqusicion hasta la venta - HACER EL REDEFINIDO. Cambiamos el porcentaje acorde al tipo de vehiculo
 
         #endregion
 

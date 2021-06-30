@@ -137,6 +137,7 @@ namespace Concesionaria
                 cbMarca.Text = auto.MARCA;
                 cbGama.Text = auto.GAMA;
                 dtFechaFabricacion.Value = auto.FECHAFABRICACION;
+                dtFechaCompra.Value = auto.FECHACOMPRA;
                 string formatoPrecio = "0000000.00";
                 mtPrecioCosto.Text = Convert.ToString(auto.PRECIOCOSTO.ToString(formatoPrecio));
                 checkUsado.Checked = auto.USADO;
@@ -150,17 +151,17 @@ namespace Concesionaria
             string nuevaGama = cbGama.SelectedIndex != -1 ? cbGama.Text : "";
             string nuevoModelo = cbModelo.SelectedIndex != -1 ? cbModelo.Text : "";
             DateTime nuevaFechaFab = dtFechaFabricacion.Value.Date;
+            DateTime nuevafechaCompra = dtFechaCompra.Value.Date;
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
             bool usado = checkUsado.Checked;
             string tipoAuto = "Auto";
-            int ganancia = 25;
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
             string nuevaPatente = tPatente.Text.Trim().ToUpper();
             clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
             
             if (!clsVehiculos.patenteValida(nuevaPatente))
             {
-                MessageBox.Show("Ingrese una patente valida", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese una patente valida", "Patente Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tPatente.Focus();
             }
             else if (nuevaMarca == "")
@@ -186,13 +187,13 @@ namespace Concesionaria
                 }
                 else
                 {
-                    datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, ganancia, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
+                    datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 35, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
                     DialogResult = DialogResult.OK;
                 }
             }
             else
             {
-                datos.modificarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 25, codigoVehiculos, "Auto", nuevaPatente, distribuidor);
+                datos.modificarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 35, codigoVehiculos, "Auto", nuevaPatente, distribuidor);
                 DialogResult = DialogResult.OK;
             }
         }
@@ -227,6 +228,11 @@ namespace Concesionaria
         private void mtPrecioCosto_MouseHover(object sender, EventArgs e)
         {
             ttipPrecio.SetToolTip(mtPrecioCosto, "Debe ingresar un precio mínimo de $1,00");
+        }
+
+        private void dtFechaFabricacion_ValueChanged(object sender, EventArgs e)
+        {
+            dtFechaCompra.MinDate = dtFechaFabricacion.Value;
         }
     }
 }

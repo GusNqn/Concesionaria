@@ -51,6 +51,8 @@ namespace Concesionaria
             this.epPatente = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttipPatente = new System.Windows.Forms.ToolTip(this.components);
             this.ttipPrecio = new System.Windows.Forms.ToolTip(this.components);
+            this.dtFechaCompra = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPatente)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +60,8 @@ namespace Concesionaria
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.dtFechaCompra);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.tPatente);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.checkUsado);
@@ -75,7 +79,7 @@ namespace Concesionaria
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(384, 243);
+            this.panel1.Size = new System.Drawing.Size(384, 255);
             this.panel1.TabIndex = 0;
             // 
             // tPatente
@@ -102,7 +106,7 @@ namespace Concesionaria
             // checkUsado
             // 
             this.checkUsado.AutoSize = true;
-            this.checkUsado.Location = new System.Drawing.Point(304, 200);
+            this.checkUsado.Location = new System.Drawing.Point(304, 228);
             this.checkUsado.Name = "checkUsado";
             this.checkUsado.Size = new System.Drawing.Size(57, 17);
             this.checkUsado.TabIndex = 8;
@@ -156,7 +160,7 @@ namespace Concesionaria
             // 
             // mtPrecioCosto
             // 
-            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 201);
+            this.mtPrecioCosto.Location = new System.Drawing.Point(133, 225);
             this.mtPrecioCosto.Mask = "9999990.00";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
             this.mtPrecioCosto.PromptChar = '0';
@@ -172,6 +176,7 @@ namespace Concesionaria
             this.dtFechaFabricacion.Name = "dtFechaFabricacion";
             this.dtFechaFabricacion.Size = new System.Drawing.Size(97, 20);
             this.dtFechaFabricacion.TabIndex = 6;
+            this.dtFechaFabricacion.ValueChanged += new System.EventHandler(this.dtFechaFabricacion_ValueChanged);
             // 
             // cbGama
             // 
@@ -204,7 +209,7 @@ namespace Concesionaria
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 204);
+            this.label4.Location = new System.Drawing.Point(43, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 0;
@@ -262,6 +267,23 @@ namespace Concesionaria
             // 
             this.epPatente.ContainerControl = this;
             // 
+            // dtFechaCompra
+            // 
+            this.dtFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaCompra.Location = new System.Drawing.Point(133, 201);
+            this.dtFechaCompra.Name = "dtFechaCompra";
+            this.dtFechaCompra.Size = new System.Drawing.Size(97, 20);
+            this.dtFechaCompra.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(33, 201);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(94, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Fecha de Compra:";
+            // 
             // FAutos
             // 
             this.AcceptButton = this.bAceptar;
@@ -305,5 +327,7 @@ namespace Concesionaria
         private System.Windows.Forms.ErrorProvider epPatente;
         private System.Windows.Forms.ToolTip ttipPatente;
         private System.Windows.Forms.ToolTip ttipPrecio;
+        private System.Windows.Forms.DateTimePicker dtFechaCompra;
+        private System.Windows.Forms.Label label8;
     }
 }

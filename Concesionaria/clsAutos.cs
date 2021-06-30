@@ -14,6 +14,7 @@ namespace Concesionaria
         private string _modelo;
         private string _gama;
         private DateTime _fechaFabricacion;
+        private DateTime _fechaCompra;
         private bool _usado;
         private double _precioCosto;
         private int _porcentajeGanancia;
@@ -63,8 +64,18 @@ namespace Concesionaria
             }
             set
             {
-                if (clsFecha.esFechaValida(Convert.ToInt32(value.Day), Convert.ToInt32(value.Month), Convert.ToInt32(value.Year)))
-                    _fechaFabricacion = value;
+                _fechaFabricacion = value;
+            }
+        }
+        public DateTime FECHACOMPRA
+        {
+            get
+            {
+                return _fechaCompra;
+            }
+            set
+            {
+                _fechaCompra = value;
             }
         }
 
@@ -115,9 +126,36 @@ namespace Concesionaria
             return $"{base.ToString()} - {_marca} - {_modelo} - Año: {_fechaFabricacion.Year}";
         }
 
-        public override int calculoDescuento() //FALTA HACER
+        public override double calcularGanancia(DateTime fechaVenta)
         {
-            return 1;
+            int descuento;
+            double ganancia;
+            int añoCompra = _fechaCompra.Year;
+            int mesCompra = _fechaCompra.Month;
+            int añoVenta = fechaVenta.Year;
+            int mesVenta = fechaVenta.Month;
+            if ((mesVenta - mesCompra < 6) && (añoVenta - añoCompra <= 1))
+            {
+                descuento = 0;
+            }
+            else if ((mesVenta - mesCompra < 11)&& (añoVenta - añoCompra <= 1))
+            {
+                descuento = 3;
+            }
+            else if (añoVenta - añoCompra < 2)
+            {
+                descuento = 5;
+            }
+            else if (añoVenta - añoCompra < 4)
+            {
+                descuento = 10;
+            }
+            else
+            {
+                descuento = 15;
+            }
+            ganancia = (_precioCosto * (_porcentajeGanancia - descuento)/100);
+            return ganancia;
         }
         #endregion
 
@@ -147,12 +185,13 @@ namespace Concesionaria
             _porcentajeGanancia = 0;
         }
 
-        public clsAutos(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor): base(codigo, tipo, patente, distribuidor)
+        public clsAutos(string marca, string modelo, string gama, DateTime fechaFabricacion, DateTime fechaCompra, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor): base(codigo, tipo, patente, distribuidor)
         {
             _marca = marca;
             _modelo = modelo;
             _gama = gama;
             _fechaFabricacion = fechaFabricacion;
+            _fechaCompra = fechaCompra;
             _usado = usado;
             if (Math.Abs(precioCosto) > 0)
                 _precioCosto = precioCosto;

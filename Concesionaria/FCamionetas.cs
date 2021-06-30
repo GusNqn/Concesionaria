@@ -90,6 +90,7 @@ namespace Concesionaria
             string nuevoModelo = cbModelo.SelectedIndex != -1 ? cbModelo.Text : "";
             string nuevaGama = cbGama.SelectedIndex != -1 ? cbGama.Text : "";
             DateTime nuevaFechaFab = dtFechaFabricacion.Value.Date;
+            DateTime nuevafechaCompra = dtFechaCompra.Value.Date;
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
             bool usado = checkUsado.Checked;
             bool cuatroXcuatro = rbCuatroXCuatro.Checked;
@@ -128,14 +129,14 @@ namespace Concesionaria
                 }
                 else
                 {
-                    datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta", nuevaPatente, distribuidor);
+                    datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 45, cuatroXcuatro, codigoVehiculos, "Camioneta", nuevaPatente, distribuidor);
                     DialogResult = DialogResult.OK;
                 }
                 
             }
             else
             {
-                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta",  nuevaPatente, distribuidor);
+                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 45, cuatroXcuatro, codigoVehiculos, "Camioneta",  nuevaPatente, distribuidor);
                 DialogResult = DialogResult.OK;
             }
         }
@@ -173,6 +174,7 @@ namespace Concesionaria
                 cbGama.Text = camioneta.GAMA;
                 cbModelo.Text = camioneta.MODELO;
                 dtFechaFabricacion.Value = camioneta.FECHAFABRICACION;
+                dtFechaCompra.Value = camioneta.FECHACOMPRA;
                 string formatoPrecio = "0000000.00";
                 mtPrecioCosto.Text = Convert.ToString(camioneta.PRECIOCOSTO.ToString(formatoPrecio));
                 checkUsado.Checked = camioneta.USADO;
@@ -210,6 +212,11 @@ namespace Concesionaria
         private void mtPrecioCosto_MouseHover(object sender, EventArgs e)
         {
             ttipPrecio.SetToolTip(mtPrecioCosto, "Debe ingresar un precio mínimo de $1,00");
+        }
+
+        private void dtFechaFabricacion_ValueChanged(object sender, EventArgs e)
+        {
+            dtFechaCompra.MinDate = dtFechaFabricacion.Value;
         }
     }
 }

@@ -594,9 +594,9 @@ namespace Concesionaria
             }
         }
 
-        public void insertarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
+        public void insertarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, DateTime fechaCompra, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         { 
-            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, patente, distribuidor);
+            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, fechaCompra, usado, precioCosto, porcentajeGanancia, codigo, tipo, patente, distribuidor);
 
             if (!listaVehiculos.Contains(auto))
             {
@@ -604,9 +604,9 @@ namespace Concesionaria
             }
         }
 
-        public void modificarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
+        public void modificarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, DateTime fechaCompra, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {
-            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, patente, distribuidor);
+            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, fechaCompra, usado, precioCosto, porcentajeGanancia, codigo, tipo, patente, distribuidor);
             int posicion;
 
             posicion = listaVehiculos.IndexOf(auto);
@@ -617,9 +617,9 @@ namespace Concesionaria
             }
         }
 
-        public void insertarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
+        public void insertarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion, DateTime fechaCompra, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {
-            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, patente, distribuidor);
+            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama, fechaFabricacion, fechaCompra, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, patente, distribuidor);
 
             if (!listaVehiculos.Contains(camioneta))
             {
@@ -627,9 +627,9 @@ namespace Concesionaria
             }
         }
 
-        public void modificarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
+        public void modificarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion,  DateTime fechaCompra, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {
-            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama,  fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, patente, distribuidor);
+            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama, fechaFabricacion, fechaCompra, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, patente, distribuidor);
             int posicion;
 
             posicion = listaVehiculos.IndexOf(camioneta);
@@ -669,8 +669,4 @@ namespace Concesionaria
         }
         #endregion
     }
-
-
-
-
 }

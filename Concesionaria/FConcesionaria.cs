@@ -307,6 +307,14 @@ namespace Concesionaria
         {
             lCantListadaVehiculos.Text = $"Cantidad Listado: {lista.Count}";
             lCantTotalVehiculos.Text = $"Cantidad Total: {datos.cantidadVehiculos()}";
+            if (datos.cantidadVehiculos() > 0)
+            {
+                msVentas.Enabled = true;
+            }
+            else
+            {
+                msVentas.Enabled = false;
+            }
         }
         #endregion
 
@@ -326,12 +334,12 @@ namespace Concesionaria
 
         private void miAgregarAutos_Click(object sender, EventArgs e)
         {
-            FAutos FormAuto = new FAutos(datos, ++codigoVehiculos); 
+            FAutos FormAuto = new FAutos(datos, ++codigoVehiculos);
 
             if (FormAuto.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Se ha cargado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                actualizarVehiculos();            
+                actualizarVehiculos();
             }
             else
             {
@@ -401,7 +409,7 @@ namespace Concesionaria
             }
             else
             {
-                if ((cbFiltroTipo.Text == "Todos") ||  (cbFiltroTipo.Text == "Camioneta"))
+                if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Camioneta"))
                 {
                     bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                     if (!esAuto)
@@ -454,14 +462,14 @@ namespace Concesionaria
                 MessageBox.Show("Se ha cargado el distribuidor correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 actualizarDistribuidores();
                 completarComboDistribuidores();
-                
+
             }
             else
             {
                 MessageBox.Show("Se ha cancelado la carga", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-   
+
         private void miModificarDistribuidor_Click(object sender, EventArgs e)
         {
             if (lbFiltroDistribuidores.SelectedIndex == -1)
@@ -471,7 +479,7 @@ namespace Concesionaria
             }
             else
             {
-                string cuitDistribuidor = lbFiltroDistribuidores.SelectedItem.ToString().Substring(6,11);
+                string cuitDistribuidor = lbFiltroDistribuidores.SelectedItem.ToString().Substring(6, 11);
                 FDistribuidores FormDistribuidores = new FDistribuidores(datos, cuitDistribuidor);
                 if (FormDistribuidores.ShowDialog() == DialogResult.OK)
                 {
@@ -734,7 +742,7 @@ namespace Concesionaria
         {
             if (cbFiltroTipo.Text != "Camioneta")
             {
-            ttipTraccionCamioneta.SetToolTip(gbTraccionCamioneta, "Estos controles se habilitan solo si selecciona el tipo camioneta");
+                ttipTraccionCamioneta.SetToolTip(gbTraccionCamioneta, "Estos controles se habilitan solo si selecciona el tipo camioneta");
             }
             else
             {
@@ -755,6 +763,49 @@ namespace Concesionaria
         private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             miEliminarDistribuidor.PerformClick();
+        }
+
+        private void msVentas_Click(object sender, EventArgs e)
+        {
+            if (lbFiltroVehiculos.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un vehiculo para vender", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
+                if (!esAuto)
+                {
+                    string patente = lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7);
+                    FVentas FormVentas = new FVentas(datos, patente, esAuto);
+                    if (FormVentas.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Se ha vendido el vehiculo", "Venta existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        miEliminarCamioneta.PerformClick();
+                        actualizarVehiculos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se ha cancelado la venta", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    string patente = lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7);
+                    FVentas FormVentas = new FVentas(datos, patente, esAuto);
+                    if (FormVentas.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Se ha vendido el vehiculo", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        miEliminarAutos.PerformClick();
+                        actualizarVehiculos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se ha cancelado la venta", "Carga cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+            }
         }
     }
 }

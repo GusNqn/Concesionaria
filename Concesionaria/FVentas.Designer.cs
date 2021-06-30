@@ -30,11 +30,11 @@ namespace Concesionaria
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dtFechaCompra = new System.Windows.Forms.DateTimePicker();
-            this.dtFechaVenta = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lVehiculo = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtFechaVenta = new System.Windows.Forms.DateTimePicker();
+            this.dtFechaCompra = new System.Windows.Forms.DateTimePicker();
             this.bVender = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -53,30 +53,14 @@ namespace Concesionaria
             this.panel1.Size = new System.Drawing.Size(359, 122);
             this.panel1.TabIndex = 0;
             // 
-            // dtFechaCompra
+            // lVehiculo
             // 
-            this.dtFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaCompra.Location = new System.Drawing.Point(144, 40);
-            this.dtFechaCompra.Name = "dtFechaCompra";
-            this.dtFechaCompra.Size = new System.Drawing.Size(114, 20);
-            this.dtFechaCompra.TabIndex = 1;
-            // 
-            // dtFechaVenta
-            // 
-            this.dtFechaVenta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaVenta.Location = new System.Drawing.Point(144, 70);
-            this.dtFechaVenta.Name = "dtFechaVenta";
-            this.dtFechaVenta.Size = new System.Drawing.Size(114, 20);
-            this.dtFechaVenta.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Fecha Compra:";
+            this.lVehiculo.AutoSize = true;
+            this.lVehiculo.Location = new System.Drawing.Point(156, 13);
+            this.lVehiculo.Name = "lVehiculo";
+            this.lVehiculo.Size = new System.Drawing.Size(35, 13);
+            this.lVehiculo.TabIndex = 6;
+            this.lVehiculo.Text = "label3";
             // 
             // label2
             // 
@@ -87,14 +71,31 @@ namespace Concesionaria
             this.label2.TabIndex = 5;
             this.label2.Text = "Fecha Venta:";
             // 
-            // lVehiculo
+            // label1
             // 
-            this.lVehiculo.AutoSize = true;
-            this.lVehiculo.Location = new System.Drawing.Point(156, 13);
-            this.lVehiculo.Name = "lVehiculo";
-            this.lVehiculo.Size = new System.Drawing.Size(35, 13);
-            this.lVehiculo.TabIndex = 6;
-            this.lVehiculo.Text = "label3";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(59, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Fecha Compra:";
+            // 
+            // dtFechaVenta
+            // 
+            this.dtFechaVenta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaVenta.Location = new System.Drawing.Point(144, 70);
+            this.dtFechaVenta.Name = "dtFechaVenta";
+            this.dtFechaVenta.Size = new System.Drawing.Size(114, 20);
+            this.dtFechaVenta.TabIndex = 3;
+            // 
+            // dtFechaCompra
+            // 
+            this.dtFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaCompra.Location = new System.Drawing.Point(144, 40);
+            this.dtFechaCompra.Name = "dtFechaCompra";
+            this.dtFechaCompra.Size = new System.Drawing.Size(114, 20);
+            this.dtFechaCompra.TabIndex = 1;
+            this.dtFechaCompra.ValueChanged += new System.EventHandler(this.dtFechaCompra_ValueChanged);
             // 
             // bVender
             // 
@@ -128,6 +129,7 @@ namespace Concesionaria
             this.Controls.Add(this.panel1);
             this.Name = "FVentas";
             this.Text = "Ventas";
+            this.Load += new System.EventHandler(this.FVentas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
