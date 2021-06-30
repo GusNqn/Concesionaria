@@ -442,15 +442,7 @@ namespace Concesionaria
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta;
-            respuesta = MessageBox.Show("¿Desea cerrar la aplicacion?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (respuesta == DialogResult.Yes)
-                Close();
-        }
 
-        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Proyecto diseñado por: \n\n - Lucas Boccaccini \n - Juan Esteban Schmidt \n - Gustavo Seguín ", "Créditos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void miAgregarDistribuidor_Click(object sender, EventArgs e)
@@ -806,6 +798,21 @@ namespace Concesionaria
                 }
 
             }
+        }
+
+        private void msAcercaDe_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Proyecto diseñado por: \n\n - Lucas Boccaccini \n - Juan Esteban Schmidt \n - Gustavo Seguín ", "Créditos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void msSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta;
+            respuesta = MessageBox.Show("¿Desea cerrar la aplicacion?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            { 
+                Close();
+            }        
         }
     }
 }

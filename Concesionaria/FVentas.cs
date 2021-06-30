@@ -48,13 +48,15 @@ namespace Concesionaria
             if (esAuto)
             {
                 clsAutos auto = datos.datosAuto(pat);
-                MessageBox.Show($"La ganacia de la venta de este vehiculo fue {auto.calcularGanancia(dtFechaVenta.Value)}");
+                double ganancia = auto.calcularGanancia(dtFechaVenta.Value);
+                MessageBox.Show($"El vehiculo se vendio en: {auto.PRECIOCOSTO + ganancia} \nLa ganancia fue: {ganancia}", "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
             }
             else
             {
                 clsCamionetas camioneta = datos.datosCamionetas(pat);
-                MessageBox.Show($"La ganacia de la venta de este vehiculo fue {camioneta.calcularGanancia(dtFechaVenta.Value)}");
+                double ganancia = camioneta.calcularGanancia(dtFechaVenta.Value);
+                MessageBox.Show($"El vehiculo se vendio en: {camioneta.PRECIOCOSTO + ganancia} \nLa ganancia fue: {ganancia}", "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
             }
         }
@@ -62,6 +64,11 @@ namespace Concesionaria
         private void dtFechaCompra_ValueChanged(object sender, EventArgs e)
         {
             dtFechaVenta.MinDate = dtFechaCompra.Value;
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

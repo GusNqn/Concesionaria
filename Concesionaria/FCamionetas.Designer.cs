@@ -185,10 +185,9 @@ namespace Concesionaria
             this.mtPrecioCosto.Location = new System.Drawing.Point(147, 209);
             this.mtPrecioCosto.Mask = "9999990.00";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
-            this.mtPrecioCosto.PromptChar = '0';
+            this.mtPrecioCosto.PromptChar = '#';
             this.mtPrecioCosto.Size = new System.Drawing.Size(64, 20);
             this.mtPrecioCosto.TabIndex = 7;
-            this.mtPrecioCosto.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.mtPrecioCosto.MouseHover += new System.EventHandler(this.mtPrecioCosto_MouseHover);
             // 
             // dtFechaFabricacion

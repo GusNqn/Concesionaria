@@ -44,8 +44,8 @@ namespace Concesionaria
             this.miAgregarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
             this.miModificarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
             this.miEliminarDistribuidor = new System.Windows.Forms.ToolStripMenuItem();
-            this.miSalir = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
+            this.msSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.msAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.cbFiltroModelo = new System.Windows.Forms.ComboBox();
@@ -102,8 +102,8 @@ namespace Concesionaria
             this.msCamioneta,
             this.msDistribuidor,
             this.msVentas,
-            this.miSalir,
-            this.miAcercaDe});
+            this.msSalir,
+            this.msAcercaDe});
             this.msPrincipal.Location = new System.Drawing.Point(0, 0);
             this.msPrincipal.Name = "msPrincipal";
             this.msPrincipal.Size = new System.Drawing.Size(1049, 24);
@@ -214,19 +214,19 @@ namespace Concesionaria
             this.miEliminarDistribuidor.Text = "Eliminar";
             this.miEliminarDistribuidor.Click += new System.EventHandler(this.miEliminarDistribuidor_Click);
             // 
-            // miSalir
+            // msSalir
             // 
-            this.miSalir.Name = "miSalir";
-            this.miSalir.Size = new System.Drawing.Size(41, 20);
-            this.miSalir.Text = "Salir";
-            this.miSalir.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            this.msSalir.Name = "msSalir";
+            this.msSalir.Size = new System.Drawing.Size(41, 20);
+            this.msSalir.Text = "Salir";
+            this.msSalir.Click += new System.EventHandler(this.msSalir_Click);
             // 
-            // miAcercaDe
+            // msAcercaDe
             // 
-            this.miAcercaDe.Name = "miAcercaDe";
-            this.miAcercaDe.Size = new System.Drawing.Size(71, 20);
-            this.miAcercaDe.Text = "Acerca de";
-            this.miAcercaDe.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            this.msAcercaDe.Name = "msAcercaDe";
+            this.msAcercaDe.Size = new System.Drawing.Size(71, 20);
+            this.msAcercaDe.Text = "Acerca de";
+            this.msAcercaDe.Click += new System.EventHandler(this.msAcercaDe_Click);
             // 
             // panel1
             // 
@@ -669,8 +669,8 @@ namespace Concesionaria
         private System.Windows.Forms.ToolStripMenuItem miAgregarDistribuidor;
         private System.Windows.Forms.ToolStripMenuItem miModificarDistribuidor;
         private System.Windows.Forms.ToolStripMenuItem miEliminarDistribuidor;
-        private System.Windows.Forms.ToolStripMenuItem miSalir;
-        private System.Windows.Forms.ToolStripMenuItem miAcercaDe;
+        private System.Windows.Forms.ToolStripMenuItem msSalir;
+        private System.Windows.Forms.ToolStripMenuItem msAcercaDe;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox gbGama;

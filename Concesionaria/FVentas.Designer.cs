@@ -56,7 +56,7 @@ namespace Concesionaria
             // lVehiculo
             // 
             this.lVehiculo.AutoSize = true;
-            this.lVehiculo.Location = new System.Drawing.Point(156, 13);
+            this.lVehiculo.Location = new System.Drawing.Point(47, 18);
             this.lVehiculo.Name = "lVehiculo";
             this.lVehiculo.Size = new System.Drawing.Size(35, 13);
             this.lVehiculo.TabIndex = 6;
@@ -116,6 +116,7 @@ namespace Concesionaria
             this.bCancelar.TabIndex = 2;
             this.bCancelar.Text = "&Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // FVentas
             // 
