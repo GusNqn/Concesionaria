@@ -20,6 +20,75 @@ namespace Concesionaria
         string cod;
         #endregion
 
+        #region Metodos
+        private void completarFiltroModelo()
+        {
+            cbModelo.Items.Clear();
+
+            if (cbMarca.Text == "Todos")
+            {
+                cbModelo.Enabled = false;
+
+                cbModelo.Items.Add("Agile");
+                cbModelo.Items.Add("Aveo");
+                cbModelo.Items.Add("Camaro");
+                cbModelo.Items.Add("Corsa Classic");
+                cbModelo.Items.Add("Onix");
+                cbModelo.Items.Add("Clio");
+                cbModelo.Items.Add("Fluence");
+                cbModelo.Items.Add("Kwid");
+                cbModelo.Items.Add("Logan");
+                cbModelo.Items.Add("Sandero");
+                cbModelo.Items.Add("Fiesta");
+                cbModelo.Items.Add("Focus");
+                cbModelo.Items.Add("Ka");
+                cbModelo.Items.Add("Mondeo");
+                cbModelo.Items.Add("Mustang");
+                cbModelo.Items.Add("Fox");
+                cbModelo.Items.Add("Gol");
+                cbModelo.Items.Add("Golf");
+                cbModelo.Items.Add("Passat");
+                cbModelo.Items.Add("Polo");
+
+            }
+            else if (cbMarca.Text == "Chevrolet")
+            {
+                cbModelo.Items.Add("Agile");
+                cbModelo.Items.Add("Aveo");
+                cbModelo.Items.Add("Camaro");
+                cbModelo.Items.Add("Corsa Classic");
+                cbModelo.Items.Add("Onix");
+            }
+
+            else if (cbMarca.Text == "Renault")
+            {
+                cbModelo.Items.Add("Clio");
+                cbModelo.Items.Add("Fluence");
+                cbModelo.Items.Add("Kwid");
+                cbModelo.Items.Add("Logan");
+                cbModelo.Items.Add("Sandero");
+            }
+            else if (cbMarca.Text == "Ford")
+            {
+                cbModelo.Items.Add("Fiesta");
+                cbModelo.Items.Add("Focus");
+                cbModelo.Items.Add("Ka");
+                cbModelo.Items.Add("Mondeo");
+                cbModelo.Items.Add("Mustang");
+            }
+            else if (cbMarca.Text == "Volskwagen")
+            {
+                cbModelo.Items.Add("Fox");
+                cbModelo.Items.Add("Gol");
+                cbModelo.Items.Add("Golf");
+                cbModelo.Items.Add("Passat");
+                cbModelo.Items.Add("Polo");
+            }
+
+            cbModelo.SelectedIndex = 0;
+        }
+        #endregion
+
         public FAutos(clsBase_Datos conexion, int codVehiculo)
         {
             InitializeComponent();
@@ -49,6 +118,7 @@ namespace Concesionaria
             {
                 Text = "Agregar";
                 bAceptar.Text = "Agregar";
+                tPatente.Text = "Ingrese patente...";
                 cbMarca.SelectedIndex = 0;
                 cbGama.SelectedIndex = 0;
                 dtFechaFabricacion.Value = DateTime.Today;
@@ -61,6 +131,7 @@ namespace Concesionaria
                 Text = "Modificar";
                 bAceptar.Text = "Modificar";
                 clsAutos auto = datos.datosAuto(cod);
+                tPatente.Text = auto.PATENTE;
                 cbMarca.Text = auto.MARCA;
                 cbGama.Text = auto.GAMA;
                 dtFechaFabricacion.Value = auto.FECHAFABRICACION;
@@ -82,31 +153,67 @@ namespace Concesionaria
             string tipoAuto = "Auto";
             int ganancia = 25;
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
+            string nuevaPatente = tPatente.Text.Trim().ToUpper();
             clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
             
-            if (nuevaMarca == "")
+            if (!clsVehiculos.patenteValida(nuevaPatente))
             {
-                MessageBox.Show("Complete la Marca", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese una patente valida", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tPatente.Focus();
+            }
+            else if (nuevaMarca == "")
+            {
+                MessageBox.Show("Ingrese una marca valida", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (nuevoModelo == "")
             {
-                MessageBox.Show("Complete el Modelo", "Modelo Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese un modelo valido", "Modelo Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (nuevoPrecio == 0)
             {
-                MessageBox.Show("Complete el Precio", "Precio Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese un valor valido para el precio", "Precio Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtPrecioCosto.Focus();
             }
             else if (agregarVehiculo)
             {
-
-                datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, ganancia, codigoVehiculos, tipoAuto, distribuidor);
-                DialogResult = DialogResult.OK;
+                if (datos.existeAuto(nuevaPatente))
+                {
+                    MessageBox.Show("La patente ingresada ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tPatente.Focus();
+                }
+                else
+                {
+                    datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, ganancia, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
+                    DialogResult = DialogResult.OK;
+                }
             }
             else
             {
-                datos.modificarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 25, codigoVehiculos, "Auto", distribuidor);
+                datos.modificarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 25, codigoVehiculos, "Auto", nuevaPatente, distribuidor);
                 DialogResult = DialogResult.OK;
             }
+        }
+
+        private void cbMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            completarFiltroModelo();
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tPatente_Validating(object sender, CancelEventArgs e)
+        {
+            epPatente.Clear();
+            if (!clsVehiculos.patenteValida(tPatente.Text.Trim()))
+                epPatente.SetError(tPatente, "La patente no es valida. Complete correctamente la misma");
+        }
+
+        private void tPatente_MouseClick(object sender, MouseEventArgs e)
+        {
+            tPatente.Clear();
         }
     }
 }

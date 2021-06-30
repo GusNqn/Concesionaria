@@ -119,6 +119,7 @@ namespace Concesionaria
             this.bCancelar.TabIndex = 1;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // epCuit
             // 
@@ -126,8 +127,10 @@ namespace Concesionaria
             // 
             // FDistribuidores
             // 
+            this.AcceptButton = this.bAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.bCancelar;
             this.ClientSize = new System.Drawing.Size(315, 197);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);

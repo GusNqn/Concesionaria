@@ -11,85 +11,193 @@ using bcFechas;
 
 namespace Concesionaria
 {
-
     public partial class FConcesionaria : Form
     {
         #region InicializacionForm
         clsBase_Datos datos;
         int codigoVehiculos;
         #endregion
+
         #region Metodos
 
         private void completarFiltroModelo()
         {
-            if (cbFiltroTipo.Text == "Todos" && cbFiltroMarca.Text == "Todos")
+            cbFiltroModelo.Items.Clear();
+
+            if ((cbFiltroTipo.Text == string.Empty) || (cbFiltroMarca.Text == string.Empty))
             {
-                //Todos los modelos autos+Camionetas
+                cbFiltroModelo.Enabled = false;
             }
-            else if (cbFiltroTipo.Text == "Todos" && cbFiltroMarca.Text != "Todos")
+            else if (cbFiltroTipo.Text == "Todos" && cbFiltroMarca.Text == "Todos")
             {
+                cbFiltroModelo.Enabled = false;
+            }
+            else if (cbFiltroTipo.Text == "Todos")
+            {
+                cbFiltroModelo.Enabled = true;
+
                 if (cbFiltroMarca.Text == "Chevrolet")
                 {
-                    //Autos y Camionetas Chevrolet
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Agile");
+                    cbFiltroModelo.Items.Add("Aveo");
+                    cbFiltroModelo.Items.Add("Camaro");
+                    cbFiltroModelo.Items.Add("Corsa Classic");
+                    cbFiltroModelo.Items.Add("Onix");
+                    cbFiltroModelo.Items.Add("Avalanche");
+                    cbFiltroModelo.Items.Add("Blazer");
+                    cbFiltroModelo.Items.Add("Montana");
+
                 }
                 else if (cbFiltroMarca.Text == "Renault")
                 {
-                    //Autos y Camionetas Renault
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Clio");
+                    cbFiltroModelo.Items.Add("Fluence");
+                    cbFiltroModelo.Items.Add("Kwid");
+                    cbFiltroModelo.Items.Add("Logan");
+                    cbFiltroModelo.Items.Add("Sandero");
+                    cbFiltroModelo.Items.Add("Alaskan");
+                    cbFiltroModelo.Items.Add("Oroch");
                 }
                 else if (cbFiltroMarca.Text == "Ford")
                 {
-                    //Autos y Camionetas Ford
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Fiesta");
+                    cbFiltroModelo.Items.Add("Focus");
+                    cbFiltroModelo.Items.Add("Ka");
+                    cbFiltroModelo.Items.Add("Mondeo");
+                    cbFiltroModelo.Items.Add("Mustang");
+                    cbFiltroModelo.Items.Add("Bronco");
+                    cbFiltroModelo.Items.Add("F-100");
+                    cbFiltroModelo.Items.Add("F-150");
+
                 }
                 else if (cbFiltroMarca.Text == "Volskwagen")
                 {
-                    //Autos y Camionetas Volskwagen
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Fox");
+                    cbFiltroModelo.Items.Add("Gol");
+                    cbFiltroModelo.Items.Add("Golf");
+                    cbFiltroModelo.Items.Add("Passat");
+                    cbFiltroModelo.Items.Add("Polo");
+                    cbFiltroModelo.Items.Add("Amarok");
                 }
+
+                cbFiltroModelo.SelectedIndex = 0;
+
             }
-            else if (cbFiltroTipo.Text != "Todos" && cbFiltroMarca.Text == "Todos")
+            else if (cbFiltroMarca.Text == "Todos")
             {
+                cbFiltroModelo.Enabled = true;
+
                 if (cbFiltroTipo.Text == "Auto")
                 {
-                    //Todos los Autos
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Agile");
+                    cbFiltroModelo.Items.Add("Aveo");
+                    cbFiltroModelo.Items.Add("Camaro");
+                    cbFiltroModelo.Items.Add("Corsa Classic");
+                    cbFiltroModelo.Items.Add("Onix");
+                    cbFiltroModelo.Items.Add("Clio");
+                    cbFiltroModelo.Items.Add("Fluence");
+                    cbFiltroModelo.Items.Add("Kwid");
+                    cbFiltroModelo.Items.Add("Logan");
+                    cbFiltroModelo.Items.Add("Sandero");
+                    cbFiltroModelo.Items.Add("Fiesta");
+                    cbFiltroModelo.Items.Add("Focus");
+                    cbFiltroModelo.Items.Add("Ka");
+                    cbFiltroModelo.Items.Add("Mondeo");
+                    cbFiltroModelo.Items.Add("Mustang");
+                    cbFiltroModelo.Items.Add("Fox");
+                    cbFiltroModelo.Items.Add("Gol");
+                    cbFiltroModelo.Items.Add("Golf");
+                    cbFiltroModelo.Items.Add("Passat");
+                    cbFiltroModelo.Items.Add("Polo");
                 }
                 else if (cbFiltroTipo.Text == "Camioneta")
                 {
-                    //Todas las Camionetas
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Avalanche");
+                    cbFiltroModelo.Items.Add("Blazer");
+                    cbFiltroModelo.Items.Add("Montana");
+                    cbFiltroModelo.Items.Add("Alaskan");
+                    cbFiltroModelo.Items.Add("Oroch");
+                    cbFiltroModelo.Items.Add("Bronco");
+                    cbFiltroModelo.Items.Add("F-100");
+                    cbFiltroModelo.Items.Add("F-150");
+                    cbFiltroModelo.Items.Add("Amarok");
                 }
+
+                cbFiltroModelo.SelectedIndex = 0;
             }
-            else if (cbFiltroTipo.Text != "Todos" && cbFiltroMarca.Text != "Todos")
+            else
             {
+                cbFiltroModelo.Enabled = true;
+
                 if (cbFiltroMarca.Text == "Chevrolet" && cbFiltroTipo.Text == "Auto")
                 {
-                    //Autos Chevrolet
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Agile");
+                    cbFiltroModelo.Items.Add("Aveo");
+                    cbFiltroModelo.Items.Add("Camaro");
+                    cbFiltroModelo.Items.Add("Corsa Classic");
+                    cbFiltroModelo.Items.Add("Onix");
                 }
                 else if (cbFiltroMarca.Text == "Chevrolet" && cbFiltroTipo.Text == "Camioneta")
-                { 
-                    //Camioneta Chevrolet
+                {
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Avalanche");
+                    cbFiltroModelo.Items.Add("Blazer");
+                    cbFiltroModelo.Items.Add("Montana");
                 }
                 else if (cbFiltroMarca.Text == "Renault" && cbFiltroTipo.Text == "Auto")
                 {
-                    //Autos Renault
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Clio");
+                    cbFiltroModelo.Items.Add("Fluence");
+                    cbFiltroModelo.Items.Add("Kwid");
+                    cbFiltroModelo.Items.Add("Logan");
+                    cbFiltroModelo.Items.Add("Sandero");
                 }
                 else if (cbFiltroMarca.Text == "Renault" && cbFiltroTipo.Text == "Camioneta")
                 {
-                    //Camioneta Renault
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Alaskan");
+                    cbFiltroModelo.Items.Add("Oroch");
                 }
                 if (cbFiltroMarca.Text == "Ford" && cbFiltroTipo.Text == "Auto")
                 {
-                    //Autos Ford
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Fiesta");
+                    cbFiltroModelo.Items.Add("Focus");
+                    cbFiltroModelo.Items.Add("Ka");
+                    cbFiltroModelo.Items.Add("Mondeo");
+                    cbFiltroModelo.Items.Add("Mustang");
                 }
                 else if (cbFiltroMarca.Text == "Ford" && cbFiltroTipo.Text == "Camioneta")
                 {
-                    //Camioneta Ford
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Bronco");
+                    cbFiltroModelo.Items.Add("F-100");
+                    cbFiltroModelo.Items.Add("F-150");
                 }
                 if (cbFiltroMarca.Text == "Volskwagen" && cbFiltroTipo.Text == "Auto")
                 {
-                    //Autos Volskwagen
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Fox");
+                    cbFiltroModelo.Items.Add("Gol");
+                    cbFiltroModelo.Items.Add("Golf");
+                    cbFiltroModelo.Items.Add("Passat");
+                    cbFiltroModelo.Items.Add("Polo");
                 }
                 else if (cbFiltroMarca.Text == "Volskwagen" && cbFiltroTipo.Text == "Camioneta")
                 {
-                    //Camioneta Volskwagen
+                    cbFiltroModelo.Items.Add("Todos");
+                    cbFiltroModelo.Items.Add("Amarok");
                 }
+
+                cbFiltroModelo.SelectedIndex = 0;
             }
         }
         private void actualizarDistribuidores()
@@ -212,10 +320,8 @@ namespace Concesionaria
         private void FConcesionaria_Load(object sender, EventArgs e)
         {
             cbFiltroDistribuidor.SelectedIndex = 0;
-            cbFiltroMarca.SelectedIndex = 0;
             cbFiltroTipo.SelectedIndex = 0;
-            cbFiltroModelo.SelectedIndex = 0;
-
+            cbFiltroMarca.SelectedIndex = 0;
         }
 
 
@@ -244,10 +350,10 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Auto"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                     if (esAuto)
                     {
-                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4);
+                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7);
                         FAutos FormAuto = new FAutos(datos, codigo, codigoVehiculos);
                         if (FormAuto.ShowDialog() == DialogResult.OK)
                         {
@@ -298,10 +404,10 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") ||  (cbFiltroTipo.Text == "Camioneta"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                     if (!esAuto)
                     {
-                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4);
+                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7);
                         FCamionetas FormCamioneta = new FCamionetas(datos, codigo, codigoVehiculos);
                         if (FormCamioneta.ShowDialog() == DialogResult.OK)
                         {
@@ -391,14 +497,14 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Camioneta"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                     if (!esAuto)
                     {
                         DialogResult eliminarCamioneta;
                         eliminarCamioneta = MessageBox.Show("Usted selecciono una Camioneta, ¿queria eliminarla?", "¿Eliminar Camioneta?", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
                         if (eliminarCamioneta == DialogResult.Yes)
                         {
-                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                             MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             actualizarVehiculos();
                         }
@@ -409,14 +515,14 @@ namespace Concesionaria
                     }
                     else
                     {
-                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                         MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         actualizarVehiculos();
                     }
                 }
                 else
                 {
-                    datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                    datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                     MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     actualizarVehiculos();
                 }
@@ -433,14 +539,14 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Auto"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                     if (esAuto)
                     {
                         DialogResult eliminarAuto;
                         eliminarAuto = MessageBox.Show("Usted selecciono un Auto, ¿queria eliminarlo?", "¿Eliminar Auto?", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
                         if (eliminarAuto == DialogResult.Yes)
                         {
-                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                            datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                             MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             actualizarVehiculos();
                         }
@@ -451,7 +557,7 @@ namespace Concesionaria
                     }
                     else
                     {
-                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(8, 4)));
+                        datos.eliminarVehiculos(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
                         MessageBox.Show("Se elimino el Vehiculo", "Vehiculo Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         actualizarVehiculos();
                     }
@@ -614,6 +720,11 @@ namespace Concesionaria
         }
 
         private void checkFiltroTraccionSimple_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarVehiculos();
+        }
+
+        private void cbFiltroModelo_SelectedIndexChanged(object sender, EventArgs e)
         {
             actualizarVehiculos();
         }

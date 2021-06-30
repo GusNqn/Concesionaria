@@ -12,6 +12,7 @@ namespace Concesionaria
         protected string _codigo;
         protected string _tipo;
         protected clsDistribuidores _distribuidor;
+        protected string _patente;
         #endregion
 
         #region Propiedades
@@ -51,12 +52,25 @@ namespace Concesionaria
                 _distribuidor = value;
             }
         }
+
+        public string PATENTE
+        {
+            get
+            {
+                return _patente;
+            }
+            set
+            {
+                if (patenteValida(value.Trim()))
+                    _patente = value;
+            }
+        }
         #endregion
 
         #region Metodos
         public override string ToString()
         {
-            return $"Codigo: {_codigo} - {_tipo}";
+            return $"Codigo: {_codigo} - {_patente} - {_tipo}";
         }
 
         public override bool Equals(object vehiculoPedido)
@@ -70,7 +84,7 @@ namespace Concesionaria
             else
             {
                 clsVehiculos vehiculo = (clsVehiculos)vehiculoPedido;
-                igual = this._codigo == vehiculo.CODIGO;
+                igual = (this._patente == vehiculo.PATENTE);
             }
             return igual;
         }
@@ -85,7 +99,22 @@ namespace Concesionaria
         #endregion
 
         #region Metodos Estaticos
+        public static bool patenteValida(string patente)
+        {
+            bool esValida = false;
 
+            if (patente.Length == 7)
+            {
+                if ((Char.IsLetter(Convert.ToChar(patente.Substring(0, 1)))) && (Char.IsLetter(Convert.ToChar(patente.Substring(1, 1)))) && (Char.IsDigit(Convert.ToChar(patente.Substring(2, 1))))
+                        && (Char.IsDigit(Convert.ToChar(patente.Substring(3, 1)))) && (Char.IsDigit(Convert.ToChar(patente.Substring(4, 1)))) && (Char.IsLetter(Convert.ToChar(patente.Substring(5, 1))))
+                        && (Char.IsLetter(Convert.ToChar(patente.Substring(6, 1)))))
+                {
+                    esValida = true;
+                }
+            }
+        
+            return esValida;
+        }
         #endregion
 
         #region Constructores
@@ -96,24 +125,26 @@ namespace Concesionaria
             _codigo = "";
             _tipo = string.Empty;
             _distribuidor = null;
+            _patente = string.Empty;
         }
 
-        public clsVehiculos(string codigo)
+        public clsVehiculos(string patente)
         {
-            //if (Math.Abs(codigo) > 0)
-                _codigo = codigo;
+            _codigo = string.Empty;
             _tipo = string.Empty;
             _distribuidor = null;
+            _patente = patente;
         }
 
 
-        public clsVehiculos(string codigo, string tipo, clsDistribuidores distribuidor)
+        public clsVehiculos(string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {
-            //if (Math.Abs(codigo) > 0)
-                _codigo = codigo;
-            //else _codigo = 0;
+            _codigo = codigo;
             _tipo = tipo;
             _distribuidor = distribuidor;
+            if (patenteValida(patente.Trim()))
+                _patente = patente;
+            else _patente = string.Empty;
         }
         #endregion
     }

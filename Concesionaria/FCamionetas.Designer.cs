@@ -29,7 +29,12 @@ namespace Concesionaria
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tPatente = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbModelo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.cbDistribuidores = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.rbCuatroXCuatro = new System.Windows.Forms.RadioButton();
@@ -45,16 +50,17 @@ namespace Concesionaria
             this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbModelo = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.epPatente = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epPatente)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.tPatente);
             this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.checkUsado);
             this.panel1.Controls.Add(this.cbModelo);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cbDistribuidores);
@@ -73,6 +79,48 @@ namespace Concesionaria
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(376, 256);
             this.panel1.TabIndex = 0;
+            // 
+            // tPatente
+            // 
+            this.tPatente.Location = new System.Drawing.Point(147, 16);
+            this.tPatente.Name = "tPatente";
+            this.tPatente.Size = new System.Drawing.Size(100, 20);
+            this.tPatente.TabIndex = 11;
+            this.tPatente.Text = "Ingrese patente...";
+            this.tPatente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tPatente_MouseClick);
+            this.tPatente.Validating += new System.ComponentModel.CancelEventHandler(this.tPatente_Validating);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(87, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Patente:";
+            // 
+            // cbModelo
+            // 
+            this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbModelo.FormattingEnabled = true;
+            this.cbModelo.Items.AddRange(new object[] {
+            "Chevrolet",
+            "Ford",
+            "Renault",
+            "Volskwagen"});
+            this.cbModelo.Location = new System.Drawing.Point(147, 72);
+            this.cbModelo.Name = "cbModelo";
+            this.cbModelo.Size = new System.Drawing.Size(200, 21);
+            this.cbModelo.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(89, 75);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Modelo:";
             // 
             // cbDistribuidores
             // 
@@ -201,7 +249,7 @@ namespace Concesionaria
             // checkUsado
             // 
             this.checkUsado.AutoSize = true;
-            this.checkUsado.Location = new System.Drawing.Point(324, 274);
+            this.checkUsado.Location = new System.Drawing.Point(290, 192);
             this.checkUsado.Name = "checkUsado";
             this.checkUsado.Size = new System.Drawing.Size(57, 17);
             this.checkUsado.TabIndex = 1;
@@ -210,7 +258,7 @@ namespace Concesionaria
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(194, 297);
+            this.bAceptar.Location = new System.Drawing.Point(194, 286);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 2;
@@ -220,61 +268,36 @@ namespace Concesionaria
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(306, 297);
+            this.bCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.bCancelar.Location = new System.Drawing.Point(306, 286);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 3;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
-            // label6
+            // epPatente
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(89, 75);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Modelo:";
-            // 
-            // cbModelo
-            // 
-            this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbModelo.FormattingEnabled = true;
-            this.cbModelo.Items.AddRange(new object[] {
-            "Chevrolet",
-            "Ford",
-            "Renault",
-            "Volskwagen"});
-            this.cbModelo.Location = new System.Drawing.Point(147, 72);
-            this.cbModelo.Name = "cbModelo";
-            this.cbModelo.Size = new System.Drawing.Size(200, 21);
-            this.cbModelo.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(87, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Patente:";
+            this.epPatente.ContainerControl = this;
             // 
             // FCamionetas
             // 
+            this.AcceptButton = this.bAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 343);
+            this.CancelButton = this.bCancelar;
+            this.ClientSize = new System.Drawing.Size(417, 329);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);
-            this.Controls.Add(this.checkUsado);
             this.Controls.Add(this.panel1);
             this.Name = "FCamionetas";
             this.Text = "Camionetas";
             this.Load += new System.EventHandler(this.FCamionetas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epPatente)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -299,5 +322,7 @@ namespace Concesionaria
         private System.Windows.Forms.ComboBox cbModelo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tPatente;
+        private System.Windows.Forms.ErrorProvider epPatente;
     }
 }

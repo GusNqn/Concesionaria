@@ -105,6 +105,8 @@ namespace Concesionaria
                     _porcentajeGanancia = value;
             }
         }
+
+       
         #endregion
 
         #region Metodos
@@ -117,29 +119,6 @@ namespace Concesionaria
         {
             return 1;
         }
-
-
-
-        //public override bool Equals(object autoPedido) //podemos usar el equals con el atributo de la clase padre?
-        //{
-        //    bool igual;
-
-        //    if (autoPedido == null)
-        //        igual = this == null;
-        //    else if (this.GetType() != autoPedido.GetType())
-        //        igual = false;
-        //    else
-        //    {
-        //        clsAutos auto = (clsAutos)autoPedido;
-        //        igual = this._codigo == auto._codigo;
-        //    }
-        //    return igual;
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    return (_codigo * 2);
-        //}
         #endregion
 
         #region Metodos Estaticos
@@ -157,7 +136,7 @@ namespace Concesionaria
             _precioCosto = 0;
             _porcentajeGanancia = 0;
         }
-        public clsAutos(string codigo): base(codigo)
+        public clsAutos(string patente): base(patente)
         {
             _marca = string.Empty;
             _modelo = string.Empty;
@@ -168,7 +147,7 @@ namespace Concesionaria
             _porcentajeGanancia = 0;
         }
 
-        public clsAutos(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, clsDistribuidores distribuidor): base(codigo, tipo, distribuidor)
+        public clsAutos(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor): base(codigo, tipo, patente, distribuidor)
         {
             _marca = marca;
             _modelo = modelo;

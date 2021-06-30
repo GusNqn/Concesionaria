@@ -47,9 +47,15 @@ namespace Concesionaria
             bool usado = checkUsado.Checked;
             bool cuatroXcuatro = rbCuatroXCuatro.Checked;
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
+            string nuevaPatente = tPatente.Text.Trim().ToUpper();
             clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
 
-            if (nuevaMarca == "")
+            if (!clsVehiculos.patenteValida(nuevaPatente))
+            {
+                MessageBox.Show("Ingrese una patente valida", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tPatente.Focus();
+            }
+            else if (nuevaMarca == "")
             {
                 MessageBox.Show("Seleccione la Marca", "Marca Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -64,15 +70,25 @@ namespace Concesionaria
             else if (nuevoPrecio == 0)
             {
                 MessageBox.Show("Complete el Precio", "Precio Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtPrecioCosto.Focus();
             }
             else if (agregarVehiculo)
             {
-                datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta", distribuidor);
-                DialogResult = DialogResult.OK;
+                if (datos.existeCamioneta(nuevaPatente))
+                {
+                    MessageBox.Show("La patente ingresada ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tPatente.Focus();
+                }
+                else
+                {
+                    datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta", nuevaPatente, distribuidor);
+                    DialogResult = DialogResult.OK;
+                }
+                
             }
             else
             {
-                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta", distribuidor);
+                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, usado, nuevoPrecio, 35, cuatroXcuatro, codigoVehiculos, "Camioneta",  nuevaPatente, distribuidor);
                 DialogResult = DialogResult.OK;
             }
         }
@@ -89,6 +105,7 @@ namespace Concesionaria
             {
                 Text = "Agregar";
                 bAceptar.Text = "Agregar";
+                tPatente.Text = "Ingrese patente...";
                 cbMarca.SelectedIndex = 0;
                 cbGama.SelectedIndex = 0;
                 cbModelo.SelectedIndex = 0;
@@ -102,6 +119,7 @@ namespace Concesionaria
                 Text = "Modificar";
                 bAceptar.Text = "Modificar";
                 clsCamionetas camioneta = datos.datosCamionetas(cod);
+                tPatente.Text = camioneta.PATENTE;
                 cbMarca.Text = camioneta.MARCA;
                 cbGama.Text = camioneta.GAMA;
                 cbModelo.Text = camioneta.MODELO;
@@ -111,6 +129,23 @@ namespace Concesionaria
                 checkUsado.Checked = camioneta.USADO;
                 cbDistribuidores.Text = camioneta.DISTRIBUIDOR.ToString();
             }
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tPatente_Validating(object sender, CancelEventArgs e)
+        {
+            epPatente.Clear();
+            if (!clsVehiculos.patenteValida(tPatente.Text.Trim()))
+                epPatente.SetError(tPatente, "La patente no es valida. Complete correctamente la misma");
+        }
+
+        private void tPatente_MouseClick(object sender, MouseEventArgs e)
+        {
+            tPatente.Clear();
         }
     }
 }

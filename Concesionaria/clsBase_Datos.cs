@@ -81,24 +81,24 @@ namespace Concesionaria
             }
             return existe;
         }
-        public bool existeAuto(string codigo)
+        public bool existeAuto(string patente)
         {
             clsAutos auto;
             bool existe = false;
 
-            auto = new clsAutos(codigo);
+            auto = new clsAutos(patente);
             if (listaVehiculos.Contains(auto))
             {
                 existe = true;
             }
             return existe;
         }
-        public bool existeCamioneta(string codigo)
+        public bool existeCamioneta(string patente)
         {
             clsCamionetas camioneta;
             bool existe = false;
 
-            camioneta = new clsCamionetas(codigo);
+            camioneta = new clsCamionetas(patente);
             if (listaVehiculos.Contains(camioneta))
             {
                 existe = true;
@@ -178,21 +178,21 @@ namespace Concesionaria
             }
             return indice;
         }
-        public clsVehiculos buscarVehiculo(string codigo)
+        public clsVehiculos buscarVehiculo(string patente)
         {
             int indice = 0;
             foreach (clsVehiculos vehiculo in listaVehiculos)
             {
                 if (vehiculo.GetType() == typeof(clsAutos))
                 {
-                    if (existeAuto(codigo))
+                    if (existeAuto(patente))
                     {
                         indice = listaVehiculos.IndexOf(vehiculo);
                     }
                 }
                 else
                 {
-                    if (existeCamioneta(codigo))
+                    if (existeCamioneta(patente))
                     {
                         indice = listaVehiculos.IndexOf(vehiculo);
                     }
@@ -201,9 +201,9 @@ namespace Concesionaria
 
             return listaVehiculos[indice];
         }
-        public int buscarIndice(string codigo)
+        public int buscarIndice(string patente)
         {
-            return listaVehiculos.IndexOf(buscarVehiculo(codigo));
+            return listaVehiculos.IndexOf(buscarVehiculo(patente));
         }
         
 
@@ -329,7 +329,7 @@ namespace Concesionaria
                     {
                         case "Todos": 
                             controlMarca = true;
-                            if (modelo == "Todos")
+                            if ((modelo == "Todos") || (modelo == string.Empty))
                             {
                                 controlModelo = true;
                             }
@@ -340,19 +340,47 @@ namespace Concesionaria
                             break;
                         case "Chevrolet": 
                             controlMarca = marca == auto.MARCA;
-                            controlModelo = modelo == auto.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == auto.MODELO;
+                            }
                             break;
                         case "Ford": 
                             controlMarca = marca == auto.MARCA;
-                            controlModelo = modelo == auto.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == auto.MODELO;
+                            }
                             break;
                         case "Renault": 
                             controlMarca = marca == auto.MARCA;
-                            controlModelo = modelo == auto.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == auto.MODELO;
+                            }
                             break;
                         case "Volskwagen": 
                             controlMarca = marca == auto.MARCA;
-                            controlModelo = modelo == auto.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == auto.MODELO;
+                            }
                             break;
                     }
                 }
@@ -363,7 +391,7 @@ namespace Concesionaria
                     {
                         case "Todos": 
                             controlMarca = true;
-                            if (modelo == "Todos")
+                            if ((modelo == "Todos") || (modelo == string.Empty))
                             {
                                 controlModelo = true;
                             }
@@ -374,19 +402,47 @@ namespace Concesionaria
                             break;
                         case "Chevrolet": 
                             controlMarca = marca == camioneta.MARCA;
-                            controlModelo = modelo == camioneta.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == camioneta.MODELO;
+                            }
                             break;
                         case "Ford":
                             controlMarca = marca == camioneta.MARCA;
-                            controlModelo = modelo == camioneta.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == camioneta.MODELO;
+                            }
                             break;
                         case "Renault":
                             controlMarca = marca == camioneta.MARCA;
-                            controlModelo = modelo == camioneta.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == camioneta.MODELO;
+                            }
                             break;
                         case "Volskwagen":
                             controlMarca = marca == camioneta.MARCA;
-                            controlModelo = modelo == camioneta.MODELO;
+                            if ((modelo == "Todos") || (modelo == string.Empty))
+                            {
+                                controlModelo = true;
+                            }
+                            else
+                            {
+                                controlModelo = modelo == camioneta.MODELO;
+                            }
                             break;
                     }
                 }
@@ -587,9 +643,9 @@ namespace Concesionaria
             }
         }
 
-        public void insertarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, clsDistribuidores distribuidor)
+        public void insertarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         { 
-            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
+            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, patente, distribuidor);
 
             if (!listaVehiculos.Contains(auto))
             {
@@ -597,9 +653,9 @@ namespace Concesionaria
             }
         }
 
-        public void modificarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, clsDistribuidores distribuidor)
+        public void modificarAuto(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {
-            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, distribuidor);
+            clsAutos auto = new clsAutos(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, codigo, tipo, patente, distribuidor);
             int posicion;
 
             posicion = listaVehiculos.IndexOf(auto);
@@ -610,9 +666,9 @@ namespace Concesionaria
             }
         }
 
-        public void insertarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, clsDistribuidores distribuidor)
+        public void insertarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {
-            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
+            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama, fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, patente, distribuidor);
 
             if (!listaVehiculos.Contains(camioneta))
             {
@@ -620,9 +676,9 @@ namespace Concesionaria
             }
         }
 
-        public void modificarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, clsDistribuidores distribuidor)
+        public void modificarCamioneta(string marca, string modelo, string gama, DateTime fechaFabricacion, bool usado, double precioCosto, int porcentajeGanancia, bool cuatroXcuatro, string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {
-            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama,  fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, distribuidor);
+            clsCamionetas camioneta = new clsCamionetas(marca, modelo, gama,  fechaFabricacion, usado, precioCosto, porcentajeGanancia, cuatroXcuatro, codigo, tipo, patente, distribuidor);
             int posicion;
 
             posicion = listaVehiculos.IndexOf(camioneta);
