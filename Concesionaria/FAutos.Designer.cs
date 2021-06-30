@@ -49,6 +49,8 @@ namespace Concesionaria
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.epPatente = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ttipPatente = new System.Windows.Forms.ToolTip(this.components);
+            this.ttipPrecio = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPatente)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +87,7 @@ namespace Concesionaria
             this.tPatente.TabIndex = 1;
             this.tPatente.Text = "Ingrese patente...";
             this.tPatente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tPatente_MouseClick);
+            this.tPatente.MouseHover += new System.EventHandler(this.tPatente_MouseHover);
             this.tPatente.Validating += new System.ComponentModel.CancelEventHandler(this.tPatente_Validating);
             // 
             // label7
@@ -154,12 +157,13 @@ namespace Concesionaria
             // mtPrecioCosto
             // 
             this.mtPrecioCosto.Location = new System.Drawing.Point(133, 201);
-            this.mtPrecioCosto.Mask = "9999990.99";
+            this.mtPrecioCosto.Mask = "9999990.00";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
             this.mtPrecioCosto.PromptChar = '0';
             this.mtPrecioCosto.Size = new System.Drawing.Size(66, 20);
             this.mtPrecioCosto.TabIndex = 7;
             this.mtPrecioCosto.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.mtPrecioCosto.MouseHover += new System.EventHandler(this.mtPrecioCosto_MouseHover);
             // 
             // dtFechaFabricacion
             // 
@@ -299,5 +303,7 @@ namespace Concesionaria
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tPatente;
         private System.Windows.Forms.ErrorProvider epPatente;
+        private System.Windows.Forms.ToolTip ttipPatente;
+        private System.Windows.Forms.ToolTip ttipPrecio;
     }
 }

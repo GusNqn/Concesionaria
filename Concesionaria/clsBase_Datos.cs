@@ -35,23 +35,6 @@ namespace Concesionaria
             listaVehiculos = new List<clsVehiculos>();
             listaDistribuidores = new List<clsDistribuidores>();
         }
-        #region Propiedades
-
-        public int CantidadVehiculos
-        {
-            get
-            {
-                return listaVehiculos.Count;
-            }
-        }
-        public int CantidadDistribuidores
-        {
-            get
-            {
-                return listaDistribuidores.Count;
-            }
-        }
-        #endregion
 
         #region Metodos
 

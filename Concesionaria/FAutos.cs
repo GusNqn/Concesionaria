@@ -217,5 +217,15 @@ namespace Concesionaria
         {
             tPatente.Clear();
         }
+
+        private void tPatente_MouseHover(object sender, EventArgs e)
+        {
+            ttipPatente.SetToolTip(tPatente, "Formato de patente: <AA123AA>");
+        }
+
+        private void mtPrecioCosto_MouseHover(object sender, EventArgs e)
+        {
+            ttipPrecio.SetToolTip(mtPrecioCosto, "Debe ingresar un precio mínimo de $1,00");
+        }
     }
 }
