@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="bcFechas">
-      <HintPath>..\..\..\..\..\Google Drive\UNS\Diseño y desarrollo\C#\Proyecto Final\bcFechas.dll</HintPath>
+    <Reference Include="bcLibreriaConsecionaria">
+      <HintPath>..\..\bcLibreriaConsecionaria\bcLibreriaConsecionaria\bin\Debug\bcLibreriaConsecionaria.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,11 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsAutos.cs" />
-    <Compile Include="clsBase_Datos.cs" />
-    <Compile Include="clsCamionetas.cs" />
-    <Compile Include="clsDistribuidores.cs" />
-    <Compile Include="clsVehiculos.cs" />
     <Compile Include="FAutos.cs">
       <SubType>Form</SubType>
     </Compile>
