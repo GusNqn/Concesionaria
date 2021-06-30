@@ -91,11 +91,8 @@ namespace Concesionaria
             bool esValido = false;
             v1 = 0;
             pos = 1;
-
             cuitaux = cuit2;
-
-            cuitaux = cuit2;
-            cuit2 = cuit2 / 10; 
+            cuit2 = cuit2 / 10;
             do
             {
                 digito = (int)(cuit2 % 10);
@@ -121,18 +118,23 @@ namespace Concesionaria
             v3 = 11 - v2;
 
             if (v3 == 11)
+            {
                 DigitoVerificador = 0;
+            }
             else if (v3 == 10)
+            {
                 DigitoVerificador = 9;
+            }
             else
+            {
                 DigitoVerificador = v3;
+            }
 
-            //Obtener el digito verificador del cuit ingresado
-            DigitoVerificadorIngresado = (int)(cuitaux % 10);
-
-            // Comparar el Digito Verificador calculado con el ingresado en el cuit
-            if (DigitoVerificador == DigitoVerificadorIngresado)
+            DigitoVerificadorIngresado = (int)(cuitaux % 10); //Obtener el digito verificador del cuit ingresado
+            if (DigitoVerificador == DigitoVerificadorIngresado) // Comparar el Digito Verificador calculado con el ingresado en el cuit
+            {
                 esValido = true;
+            }
            
             return esValido;
         }

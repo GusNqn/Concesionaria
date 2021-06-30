@@ -16,10 +16,57 @@ namespace Concesionaria
         clsBase_Datos datos;
         bool agregarVehiculo;
         string formato = "0000";
-        string cod;
+        string pat;
         string codigoVehiculos;
         #endregion
 
+        #region Metodos
+        private void completarFiltroModelo()
+        {
+            cbModelo.Items.Clear();
+
+            if (cbMarca.Text == "Todos")
+            {
+                cbModelo.Enabled = false;
+
+                cbModelo.Items.Add("Todos");
+                cbModelo.Items.Add("Avalanche");
+                cbModelo.Items.Add("Blazer");
+                cbModelo.Items.Add("Montana");
+                cbModelo.Items.Add("Alaskan");
+                cbModelo.Items.Add("Oroch");
+                cbModelo.Items.Add("Bronco");
+                cbModelo.Items.Add("F-100");
+                cbModelo.Items.Add("F-150");
+                cbModelo.Items.Add("Amarok");
+
+            }
+            else if (cbMarca.Text == "Chevrolet")
+            {
+                cbModelo.Items.Add("Avalanche");
+                cbModelo.Items.Add("Blazer");
+                cbModelo.Items.Add("Montana");
+            }
+
+            else if (cbMarca.Text == "Renault")
+            {
+                cbModelo.Items.Add("Alaskan");
+                cbModelo.Items.Add("Oroch");
+            }
+            else if (cbMarca.Text == "Ford")
+            {
+                cbModelo.Items.Add("Bronco");
+                cbModelo.Items.Add("F-100");
+                cbModelo.Items.Add("F-150");
+            }
+            else if (cbMarca.Text == "Volskwagen")
+            {
+                cbModelo.Items.Add("Amarok");
+            }
+
+            cbModelo.SelectedIndex = 0;
+        }
+        #endregion
         public FCamionetas(clsBase_Datos conexion, int codVehiculos)
         {
             InitializeComponent();
@@ -28,12 +75,12 @@ namespace Concesionaria
             codigoVehiculos = codVehiculos.ToString(formato);
         }
 
-        public FCamionetas(clsBase_Datos conexion, string codigo, int codVehiculos)
+        public FCamionetas(clsBase_Datos conexion, string patente, int codVehiculos)
         {
             InitializeComponent();
             datos = conexion;
             agregarVehiculo = false;
-            cod = codigo;
+            pat = patente;
             codigoVehiculos = codVehiculos.ToString(formato);
         }
 
@@ -105,6 +152,7 @@ namespace Concesionaria
             {
                 Text = "Agregar";
                 bAceptar.Text = "Agregar";
+                tPatente.Focus();
                 tPatente.Text = "Ingrese patente...";
                 cbMarca.SelectedIndex = 0;
                 cbGama.SelectedIndex = 0;
@@ -118,13 +166,14 @@ namespace Concesionaria
             {
                 Text = "Modificar";
                 bAceptar.Text = "Modificar";
-                clsCamionetas camioneta = datos.datosCamionetas(cod);
+                clsCamionetas camioneta = datos.datosCamionetas(pat);
                 tPatente.Text = camioneta.PATENTE;
+                tPatente.Enabled = false;
                 cbMarca.Text = camioneta.MARCA;
                 cbGama.Text = camioneta.GAMA;
                 cbModelo.Text = camioneta.MODELO;
                 dtFechaFabricacion.Value = camioneta.FECHAFABRICACION;
-                string formatoPrecio = "000000000";
+                string formatoPrecio = "0000000.00";
                 mtPrecioCosto.Text = Convert.ToString(camioneta.PRECIOCOSTO.ToString(formatoPrecio));
                 checkUsado.Checked = camioneta.USADO;
                 cbDistribuidores.Text = camioneta.DISTRIBUIDOR.ToString();
@@ -146,6 +195,11 @@ namespace Concesionaria
         private void tPatente_MouseClick(object sender, MouseEventArgs e)
         {
             tPatente.Clear();
+        }
+
+        private void cbMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            completarFiltroModelo();
         }
     }
 }

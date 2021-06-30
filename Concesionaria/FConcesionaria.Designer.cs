@@ -273,7 +273,6 @@ namespace Concesionaria
             // checkFiltroTraccionSimple
             // 
             this.checkFiltroTraccionSimple.AutoSize = true;
-            this.checkFiltroTraccionSimple.Enabled = false;
             this.checkFiltroTraccionSimple.Location = new System.Drawing.Point(11, 28);
             this.checkFiltroTraccionSimple.Name = "checkFiltroTraccionSimple";
             this.checkFiltroTraccionSimple.Size = new System.Drawing.Size(102, 17);

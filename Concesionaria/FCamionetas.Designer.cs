@@ -33,6 +33,7 @@ namespace Concesionaria
             this.panel1 = new System.Windows.Forms.Panel();
             this.tPatente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.checkUsado = new System.Windows.Forms.CheckBox();
             this.cbModelo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbDistribuidores = new System.Windows.Forms.ComboBox();
@@ -47,7 +48,6 @@ namespace Concesionaria
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.epPatente = new System.Windows.Forms.ErrorProvider(this.components);
@@ -83,9 +83,10 @@ namespace Concesionaria
             // tPatente
             // 
             this.tPatente.Location = new System.Drawing.Point(147, 16);
+            this.tPatente.MaxLength = 7;
             this.tPatente.Name = "tPatente";
             this.tPatente.Size = new System.Drawing.Size(100, 20);
-            this.tPatente.TabIndex = 11;
+            this.tPatente.TabIndex = 1;
             this.tPatente.Text = "Ingrese patente...";
             this.tPatente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tPatente_MouseClick);
             this.tPatente.Validating += new System.ComponentModel.CancelEventHandler(this.tPatente_Validating);
@@ -99,19 +100,24 @@ namespace Concesionaria
             this.label7.TabIndex = 10;
             this.label7.Text = "Patente:";
             // 
+            // checkUsado
+            // 
+            this.checkUsado.AutoSize = true;
+            this.checkUsado.Location = new System.Drawing.Point(290, 192);
+            this.checkUsado.Name = "checkUsado";
+            this.checkUsado.Size = new System.Drawing.Size(57, 17);
+            this.checkUsado.TabIndex = 8;
+            this.checkUsado.Text = "Usado";
+            this.checkUsado.UseVisualStyleBackColor = true;
+            // 
             // cbModelo
             // 
             this.cbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbModelo.FormattingEnabled = true;
-            this.cbModelo.Items.AddRange(new object[] {
-            "Chevrolet",
-            "Ford",
-            "Renault",
-            "Volskwagen"});
             this.cbModelo.Location = new System.Drawing.Point(147, 72);
             this.cbModelo.Name = "cbModelo";
             this.cbModelo.Size = new System.Drawing.Size(200, 21);
-            this.cbModelo.TabIndex = 9;
+            this.cbModelo.TabIndex = 3;
             // 
             // label6
             // 
@@ -133,7 +139,7 @@ namespace Concesionaria
             this.cbDistribuidores.Location = new System.Drawing.Point(147, 126);
             this.cbDistribuidores.Name = "cbDistribuidores";
             this.cbDistribuidores.Size = new System.Drawing.Size(200, 21);
-            this.cbDistribuidores.TabIndex = 7;
+            this.cbDistribuidores.TabIndex = 5;
             // 
             // label5
             // 
@@ -150,7 +156,7 @@ namespace Concesionaria
             this.rbCuatroXCuatro.Location = new System.Drawing.Point(209, 225);
             this.rbCuatroXCuatro.Name = "rbCuatroXCuatro";
             this.rbCuatroXCuatro.Size = new System.Drawing.Size(42, 17);
-            this.rbCuatroXCuatro.TabIndex = 5;
+            this.rbCuatroXCuatro.TabIndex = 10;
             this.rbCuatroXCuatro.TabStop = true;
             this.rbCuatroXCuatro.Text = "4x4";
             this.rbCuatroXCuatro.UseVisualStyleBackColor = true;
@@ -162,7 +168,7 @@ namespace Concesionaria
             this.rbTraccionSimple.Location = new System.Drawing.Point(99, 225);
             this.rbTraccionSimple.Name = "rbTraccionSimple";
             this.rbTraccionSimple.Size = new System.Drawing.Size(101, 17);
-            this.rbTraccionSimple.TabIndex = 5;
+            this.rbTraccionSimple.TabIndex = 9;
             this.rbTraccionSimple.TabStop = true;
             this.rbTraccionSimple.Text = "Traccion Simple";
             this.rbTraccionSimple.UseVisualStyleBackColor = true;
@@ -172,8 +178,10 @@ namespace Concesionaria
             this.mtPrecioCosto.Location = new System.Drawing.Point(147, 189);
             this.mtPrecioCosto.Mask = "9999990.99";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
+            this.mtPrecioCosto.PromptChar = '0';
             this.mtPrecioCosto.Size = new System.Drawing.Size(64, 20);
-            this.mtPrecioCosto.TabIndex = 4;
+            this.mtPrecioCosto.TabIndex = 7;
+            this.mtPrecioCosto.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
             // dtFechaFabricacion
             // 
@@ -181,20 +189,20 @@ namespace Concesionaria
             this.dtFechaFabricacion.Location = new System.Drawing.Point(147, 157);
             this.dtFechaFabricacion.Name = "dtFechaFabricacion";
             this.dtFechaFabricacion.Size = new System.Drawing.Size(104, 20);
-            this.dtFechaFabricacion.TabIndex = 3;
+            this.dtFechaFabricacion.TabIndex = 6;
             // 
             // cbGama
             // 
             this.cbGama.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGama.FormattingEnabled = true;
             this.cbGama.Items.AddRange(new object[] {
-            "Gama Base",
-            "Gama Media",
-            "Gama Full"});
+            "Base",
+            "Media",
+            "Full"});
             this.cbGama.Location = new System.Drawing.Point(147, 99);
             this.cbGama.Name = "cbGama";
             this.cbGama.Size = new System.Drawing.Size(200, 21);
-            this.cbGama.TabIndex = 2;
+            this.cbGama.TabIndex = 4;
             // 
             // cbMarca
             // 
@@ -208,7 +216,8 @@ namespace Concesionaria
             this.cbMarca.Location = new System.Drawing.Point(147, 42);
             this.cbMarca.Name = "cbMarca";
             this.cbMarca.Size = new System.Drawing.Size(200, 21);
-            this.cbMarca.TabIndex = 1;
+            this.cbMarca.TabIndex = 2;
+            this.cbMarca.SelectedIndexChanged += new System.EventHandler(this.cbMarca_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -246,22 +255,12 @@ namespace Concesionaria
             this.label1.TabIndex = 0;
             this.label1.Text = "Marca:";
             // 
-            // checkUsado
-            // 
-            this.checkUsado.AutoSize = true;
-            this.checkUsado.Location = new System.Drawing.Point(290, 192);
-            this.checkUsado.Name = "checkUsado";
-            this.checkUsado.Size = new System.Drawing.Size(57, 17);
-            this.checkUsado.TabIndex = 1;
-            this.checkUsado.Text = "Usado";
-            this.checkUsado.UseVisualStyleBackColor = true;
-            // 
             // bAceptar
             // 
             this.bAceptar.Location = new System.Drawing.Point(194, 286);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bAceptar.TabIndex = 2;
+            this.bAceptar.TabIndex = 11;
             this.bAceptar.Text = "button1";
             this.bAceptar.UseVisualStyleBackColor = true;
             this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
@@ -272,7 +271,7 @@ namespace Concesionaria
             this.bCancelar.Location = new System.Drawing.Point(306, 286);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bCancelar.TabIndex = 3;
+            this.bCancelar.TabIndex = 12;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);

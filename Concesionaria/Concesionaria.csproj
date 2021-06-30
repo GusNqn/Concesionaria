@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="bcFechas">
-      <HintPath>..\..\..\..\..\..\Downloads\bcFechas.dll</HintPath>
+      <HintPath>..\..\..\..\..\Google Drive\UNS\Diseño y desarrollo\C#\Proyecto Final\bcFechas.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

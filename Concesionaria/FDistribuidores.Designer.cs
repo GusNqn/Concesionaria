@@ -61,7 +61,7 @@ namespace Concesionaria
             this.tRazonSocial.Location = new System.Drawing.Point(95, 46);
             this.tRazonSocial.Name = "tRazonSocial";
             this.tRazonSocial.Size = new System.Drawing.Size(176, 20);
-            this.tRazonSocial.TabIndex = 3;
+            this.tRazonSocial.TabIndex = 2;
             // 
             // mtCuit
             // 
@@ -69,7 +69,7 @@ namespace Concesionaria
             this.mtCuit.Mask = "00-00000000-0";
             this.mtCuit.Name = "mtCuit";
             this.mtCuit.Size = new System.Drawing.Size(78, 20);
-            this.mtCuit.TabIndex = 2;
+            this.mtCuit.TabIndex = 1;
             this.mtCuit.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.mtCuit.Validating += new System.ComponentModel.CancelEventHandler(this.mtCuit_Validating);
             // 
@@ -79,7 +79,7 @@ namespace Concesionaria
             this.checkInternacional.Location = new System.Drawing.Point(86, 87);
             this.checkInternacional.Name = "checkInternacional";
             this.checkInternacional.Size = new System.Drawing.Size(87, 17);
-            this.checkInternacional.TabIndex = 1;
+            this.checkInternacional.TabIndex = 3;
             this.checkInternacional.Text = "Internacional";
             this.checkInternacional.UseVisualStyleBackColor = true;
             // 
@@ -106,17 +106,18 @@ namespace Concesionaria
             this.bAceptar.Location = new System.Drawing.Point(53, 158);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bAceptar.TabIndex = 1;
+            this.bAceptar.TabIndex = 4;
             this.bAceptar.Text = "button1";
             this.bAceptar.UseVisualStyleBackColor = true;
             this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
             // 
             // bCancelar
             // 
+            this.bCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bCancelar.Location = new System.Drawing.Point(185, 158);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bCancelar.TabIndex = 1;
+            this.bCancelar.TabIndex = 5;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);

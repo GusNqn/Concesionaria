@@ -350,11 +350,11 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") || (cbFiltroTipo.Text == "Auto"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                     if (esAuto)
                     {
-                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7);
-                        FAutos FormAuto = new FAutos(datos, codigo, codigoVehiculos);
+                        string patente = lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7);
+                        FAutos FormAuto = new FAutos(datos, patente, codigoVehiculos);
                         if (FormAuto.ShowDialog() == DialogResult.OK)
                         {
                             MessageBox.Show("Se ha modificado el auto correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -404,11 +404,11 @@ namespace Concesionaria
             {
                 if ((cbFiltroTipo.Text == "Todos") ||  (cbFiltroTipo.Text == "Camioneta"))
                 {
-                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7)));
+                    bool esAuto = datos.esAuto(datos.buscarIndice(lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7)));
                     if (!esAuto)
                     {
-                        string codigo = lbFiltroVehiculos.SelectedItem.ToString().Substring(13, 7);
-                        FCamionetas FormCamioneta = new FCamionetas(datos, codigo, codigoVehiculos);
+                        string patente = lbFiltroVehiculos.SelectedItem.ToString().Substring(15, 7);
+                        FCamionetas FormCamioneta = new FCamionetas(datos, patente, codigoVehiculos);
                         if (FormCamioneta.ShowDialog() == DialogResult.OK)
                         {
                             MessageBox.Show("Se ha modificado la camioneta correctamete", "Carga existosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -510,7 +510,7 @@ namespace Concesionaria
                         }
                         else
                         {
-                            MessageBox.Show("Se cancelo el Eliminado", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Se cancelo el proceso de eliminación", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
@@ -552,7 +552,7 @@ namespace Concesionaria
                         }
                         else
                         {
-                            MessageBox.Show("Se cancelo el Eliminado", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Se ha cancelado el proceso de eliminación", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
@@ -588,25 +588,25 @@ namespace Concesionaria
                 cantidadVehiculos = datos.cantidadVehiculosDelDistribuidor(cuitDistribuidor);
                 if (cantidadVehiculos > 0)
                 {
-                    verVehiculos = MessageBox.Show($"No se puede eliminar porque tiene {cantidadVehiculos} vehiculos asociados. \n ¿Desea ver los vehiculos en la Lista?", "¿Listar Vehiculos?", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    verVehiculos = MessageBox.Show($"No se puede eliminar \"{datos.getRazonSocial(cuitDistribuidor)}\" porque tiene {cantidadVehiculos} vehiculos asociados. \n ¿Desea ver los vehiculos en la Lista?", "¿Listar Vehiculos?", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                     if (verVehiculos == DialogResult.Yes)
                     {
                         cbFiltroTipo.SelectedIndex = 0;
                         cbFiltroMarca.SelectedIndex = 0;
                         if (rbTodos.Checked)
                         {
-                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbTodos.Text, cbFiltroDistribuidor.SelectedIndex);
+                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbTodos.Text, cbFiltroDistribuidor.SelectedIndex) + 1;
                         }
                         else if (rbNacional.Checked)
                         {
-                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbNacional.Text, cbFiltroDistribuidor.SelectedIndex);
+                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbNacional.Text, cbFiltroDistribuidor.SelectedIndex) + 1;
                         }
                         else if (rbInternacional.Checked)
                         {
-                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbInternacional.Text, cbFiltroDistribuidor.SelectedIndex);
+                            cbFiltroDistribuidor.SelectedIndex = datos.buscarIndiceDist(rbInternacional.Text, cbFiltroDistribuidor.SelectedIndex) + 1;
                         }
-                        checkFiltroUsado.Checked = false;
-                        checkFiltro4x4.Checked = false;
+                        checkFiltroUsado.Checked = true;
+                        checkFiltroNuevo.Checked = true;
                         rbGamaTodos.Checked = true;
                         List<string> vehiculosDelDistribuidor = new List<string>();
                         vehiculosDelDistribuidor = datos.mostrarVehiculosDist(lbFiltroDistribuidores.Text.Substring(6, 11));
@@ -618,7 +618,7 @@ namespace Concesionaria
                     }
                     else
                     {
-                        MessageBox.Show($"No se elimino el Distribuidor.", "Eliminado Cancelado", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        MessageBox.Show($"No se elimino el Distribuidor", "Eliminar Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -635,7 +635,7 @@ namespace Concesionaria
                     {
                         datos.eliminarDistribuidor(datos.buscarIndiceDist(rbInternacional.Text, lbFiltroDistribuidores.SelectedIndex));
                     }
-                    MessageBox.Show($"Se elimino el Distribuidor.", "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Se elimino el Distribuidor", "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     actualizarDistribuidores();
                     completarComboDistribuidores();
                 }
@@ -648,11 +648,16 @@ namespace Concesionaria
             if (cbFiltroTipo.Text == "Camioneta")
             {
                 checkFiltro4x4.Enabled = true;
+                checkFiltro4x4.Checked = true;
+                checkFiltroTraccionSimple.Enabled = true;
+                checkFiltroTraccionSimple.Checked = true;
             }
             else
             {
                 checkFiltro4x4.Enabled = false;
                 checkFiltro4x4.Checked = false;
+                checkFiltroTraccionSimple.Enabled = false;
+                checkFiltroTraccionSimple.Checked = false;
             }
             completarFiltroModelo();
         }

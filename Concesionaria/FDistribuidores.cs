@@ -13,19 +13,19 @@ namespace Concesionaria
     public partial class FDistribuidores : Form
     {
         clsBase_Datos datos;
-        bool agregarProveedor;
+        bool agregarDistribuidor;
         string cuitDistribuidor;
         public FDistribuidores(clsBase_Datos conexion)
         {
             InitializeComponent();
             datos = conexion;
-            agregarProveedor = true;
+            agregarDistribuidor = true;
         }
         public FDistribuidores(clsBase_Datos conexion, string cuit)
         {
             InitializeComponent();
             datos = conexion;
-            agregarProveedor = false;
+            agregarDistribuidor = false;
             cuitDistribuidor = cuit;
 
         }
@@ -33,15 +33,16 @@ namespace Concesionaria
         private void mtCuit_Validating(object sender, CancelEventArgs e)
         {
             epCuit.Clear();
-            if (!mtCuit.MaskCompleted)
+            if (!clsDistribuidores.esCuitValido(mtCuit.Text))
                 epCuit.SetError(mtCuit, "Debe completar el CUIT correctamente");
         }
         private void FDistribuidores_Load(object sender, EventArgs e)
         {
-            if (agregarProveedor)
+            if (agregarDistribuidor)
             {
                 Text = "Agregar";
                 bAceptar.Text = "Agregar";
+                mtCuit.Focus();
                 mtCuit.Clear();
                 tRazonSocial.Text = "";
                 checkInternacional.Checked = false;
@@ -60,27 +61,29 @@ namespace Concesionaria
 
         private void bAceptar_Click(object sender, EventArgs e)
         {
-            string nuevoCuit = mtCuit.MaskCompleted ? mtCuit.Text : "";
-            string nuevaRazSocial = tRazonSocial.Text.Trim() != "" ? tRazonSocial.Text : "";
+            string nuevoCuit = mtCuit.MaskCompleted ? mtCuit.Text : string.Empty;
+            string nuevaRazSocial = tRazonSocial.Text.Trim() != string.Empty ? tRazonSocial.Text : string.Empty;
             bool internacional = checkInternacional.Checked;
            
-            if (nuevoCuit == "")
+            if (nuevoCuit == string.Empty)
             {
-                MessageBox.Show("Complete el Cuit", "Cuit Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Complete el CUIT", "CUIT Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //else if (!clsDistribuidores.esCuitValido(nuevoCuit))
-            //{
-            // MessageBox.Show("El cuit ingresado no es valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            else if (nuevaRazSocial == "")
+            else if (!clsDistribuidores.esCuitValido(nuevoCuit))
+            {
+                MessageBox.Show("El CUIT ingresado no es valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mtCuit.Clear();
+                mtCuit.Focus();
+            }
+            else if (nuevaRazSocial == string.Empty)
             {
                 MessageBox.Show("Complete la Razon Social", "Razon Social Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (agregarProveedor)
+            else if (agregarDistribuidor)
             {
                 if (datos.existeCuitDistribuidor(nuevoCuit))
                 {
-                    MessageBox.Show("El Cuit ya Existe", "Cuit Existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El CUIT ya Existe", "CUIT Existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     mtCuit.Focus();
                 }
                 else if (datos.existeRazonDistribuidor(nuevaRazSocial))

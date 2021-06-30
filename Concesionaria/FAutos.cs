@@ -17,7 +17,7 @@ namespace Concesionaria
         bool agregarVehiculo;
         string codigoVehiculos;
         string formato = "0000";
-        string cod;
+        string pat;
         #endregion
 
         #region Metodos
@@ -97,12 +97,12 @@ namespace Concesionaria
             agregarVehiculo = true;
         }
 
-        public FAutos(clsBase_Datos conexion, string codigo, int codVehiculo)
+        public FAutos(clsBase_Datos conexion, string patente, int codVehiculo)
         {
             InitializeComponent();
             datos = conexion;
             agregarVehiculo = false;
-            cod = codigo;
+            pat = patente;
             codigoVehiculos = codVehiculo.ToString(formato);
         }
 
@@ -118,6 +118,7 @@ namespace Concesionaria
             {
                 Text = "Agregar";
                 bAceptar.Text = "Agregar";
+                tPatente.Focus();
                 tPatente.Text = "Ingrese patente...";
                 cbMarca.SelectedIndex = 0;
                 cbGama.SelectedIndex = 0;
@@ -130,12 +131,13 @@ namespace Concesionaria
             {
                 Text = "Modificar";
                 bAceptar.Text = "Modificar";
-                clsAutos auto = datos.datosAuto(cod);
+                clsAutos auto = datos.datosAuto(pat);
                 tPatente.Text = auto.PATENTE;
+                tPatente.Enabled = false;
                 cbMarca.Text = auto.MARCA;
                 cbGama.Text = auto.GAMA;
                 dtFechaFabricacion.Value = auto.FECHAFABRICACION;
-                string formatoPrecio = "000000000";
+                string formatoPrecio = "0000000.00";
                 mtPrecioCosto.Text = Convert.ToString(auto.PRECIOCOSTO.ToString(formatoPrecio));
                 checkUsado.Checked = auto.USADO;
                 cbDistribuidores.Text = auto.DISTRIBUIDOR.ToString();

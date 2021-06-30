@@ -31,7 +31,9 @@ namespace Concesionaria
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tPatente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.checkUsado = new System.Windows.Forms.CheckBox();
             this.cbModelo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbDistribuidores = new System.Windows.Forms.ComboBox();
@@ -44,10 +46,8 @@ namespace Concesionaria
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkUsado = new System.Windows.Forms.CheckBox();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
-            this.tPatente = new System.Windows.Forms.TextBox();
             this.epPatente = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPatente)).BeginInit();
@@ -76,6 +76,17 @@ namespace Concesionaria
             this.panel1.Size = new System.Drawing.Size(384, 243);
             this.panel1.TabIndex = 0;
             // 
+            // tPatente
+            // 
+            this.tPatente.Location = new System.Drawing.Point(134, 22);
+            this.tPatente.MaxLength = 7;
+            this.tPatente.Name = "tPatente";
+            this.tPatente.Size = new System.Drawing.Size(96, 20);
+            this.tPatente.TabIndex = 1;
+            this.tPatente.Text = "Ingrese patente...";
+            this.tPatente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tPatente_MouseClick);
+            this.tPatente.Validating += new System.ComponentModel.CancelEventHandler(this.tPatente_Validating);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -84,6 +95,16 @@ namespace Concesionaria
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 9;
             this.label7.Text = "Patente:";
+            // 
+            // checkUsado
+            // 
+            this.checkUsado.AutoSize = true;
+            this.checkUsado.Location = new System.Drawing.Point(304, 200);
+            this.checkUsado.Name = "checkUsado";
+            this.checkUsado.Size = new System.Drawing.Size(57, 17);
+            this.checkUsado.TabIndex = 8;
+            this.checkUsado.Text = "Usado";
+            this.checkUsado.UseVisualStyleBackColor = true;
             // 
             // cbModelo
             // 
@@ -97,7 +118,7 @@ namespace Concesionaria
             this.cbModelo.Location = new System.Drawing.Point(133, 80);
             this.cbModelo.Name = "cbModelo";
             this.cbModelo.Size = new System.Drawing.Size(228, 21);
-            this.cbModelo.TabIndex = 8;
+            this.cbModelo.TabIndex = 3;
             // 
             // label6
             // 
@@ -119,7 +140,7 @@ namespace Concesionaria
             this.cbDistribuidores.Location = new System.Drawing.Point(133, 140);
             this.cbDistribuidores.Name = "cbDistribuidores";
             this.cbDistribuidores.Size = new System.Drawing.Size(228, 21);
-            this.cbDistribuidores.TabIndex = 6;
+            this.cbDistribuidores.TabIndex = 5;
             // 
             // label5
             // 
@@ -135,8 +156,10 @@ namespace Concesionaria
             this.mtPrecioCosto.Location = new System.Drawing.Point(133, 201);
             this.mtPrecioCosto.Mask = "9999990.99";
             this.mtPrecioCosto.Name = "mtPrecioCosto";
+            this.mtPrecioCosto.PromptChar = '0';
             this.mtPrecioCosto.Size = new System.Drawing.Size(66, 20);
-            this.mtPrecioCosto.TabIndex = 4;
+            this.mtPrecioCosto.TabIndex = 7;
+            this.mtPrecioCosto.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
             // dtFechaFabricacion
             // 
@@ -144,7 +167,7 @@ namespace Concesionaria
             this.dtFechaFabricacion.Location = new System.Drawing.Point(133, 175);
             this.dtFechaFabricacion.Name = "dtFechaFabricacion";
             this.dtFechaFabricacion.Size = new System.Drawing.Size(97, 20);
-            this.dtFechaFabricacion.TabIndex = 3;
+            this.dtFechaFabricacion.TabIndex = 6;
             // 
             // cbGama
             // 
@@ -157,7 +180,7 @@ namespace Concesionaria
             this.cbGama.Location = new System.Drawing.Point(133, 109);
             this.cbGama.Name = "cbGama";
             this.cbGama.Size = new System.Drawing.Size(228, 21);
-            this.cbGama.TabIndex = 2;
+            this.cbGama.TabIndex = 4;
             // 
             // cbMarca
             // 
@@ -171,7 +194,7 @@ namespace Concesionaria
             this.cbMarca.Location = new System.Drawing.Point(133, 53);
             this.cbMarca.Name = "cbMarca";
             this.cbMarca.Size = new System.Drawing.Size(228, 21);
-            this.cbMarca.TabIndex = 1;
+            this.cbMarca.TabIndex = 2;
             this.cbMarca.SelectedIndexChanged += new System.EventHandler(this.cbMarca_SelectedIndexChanged);
             // 
             // label4
@@ -210,22 +233,12 @@ namespace Concesionaria
             this.label1.TabIndex = 0;
             this.label1.Text = "Marca:";
             // 
-            // checkUsado
-            // 
-            this.checkUsado.AutoSize = true;
-            this.checkUsado.Location = new System.Drawing.Point(304, 200);
-            this.checkUsado.Name = "checkUsado";
-            this.checkUsado.Size = new System.Drawing.Size(57, 17);
-            this.checkUsado.TabIndex = 1;
-            this.checkUsado.Text = "Usado";
-            this.checkUsado.UseVisualStyleBackColor = true;
-            // 
             // bAceptar
             // 
             this.bAceptar.Location = new System.Drawing.Point(180, 273);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bAceptar.TabIndex = 2;
+            this.bAceptar.TabIndex = 9;
             this.bAceptar.Text = "button1";
             this.bAceptar.UseVisualStyleBackColor = true;
             this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
@@ -236,20 +249,10 @@ namespace Concesionaria
             this.bCancelar.Location = new System.Drawing.Point(298, 273);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bCancelar.TabIndex = 2;
+            this.bCancelar.TabIndex = 10;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
-            // 
-            // tPatente
-            // 
-            this.tPatente.Location = new System.Drawing.Point(134, 22);
-            this.tPatente.Name = "tPatente";
-            this.tPatente.Size = new System.Drawing.Size(96, 20);
-            this.tPatente.TabIndex = 10;
-            this.tPatente.Text = "Ingrese patente...";
-            this.tPatente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tPatente_MouseClick);
-            this.tPatente.Validating += new System.ComponentModel.CancelEventHandler(this.tPatente_Validating);
             // 
             // epPatente
             // 

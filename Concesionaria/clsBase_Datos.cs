@@ -83,10 +83,9 @@ namespace Concesionaria
         }
         public bool existeAuto(string patente)
         {
-            clsAutos auto;
+            clsAutos auto = new clsAutos(patente);
             bool existe = false;
 
-            auto = new clsAutos(patente);
             if (listaVehiculos.Contains(auto))
             {
                 existe = true;
@@ -95,10 +94,9 @@ namespace Concesionaria
         }
         public bool existeCamioneta(string patente)
         {
-            clsCamionetas camioneta;
+            clsCamionetas camioneta = new clsCamionetas(patente);
             bool existe = false;
 
-            camioneta = new clsCamionetas(patente);
             if (listaVehiculos.Contains(camioneta))
             {
                 existe = true;
@@ -212,13 +210,13 @@ namespace Concesionaria
             return listaVehiculos[indice].GetType() == typeof(clsAutos); 
         }
 
-        public clsAutos datosAuto(string codigo)
+        public clsAutos datosAuto(string patente)
         {
             clsAutos autoBuscado = new clsAutos();
         
            foreach (clsVehiculos vehiculo in listaVehiculos)
             {
-                if (vehiculo.CODIGO == codigo)
+                if (vehiculo.PATENTE == patente)
                 {
                     if (vehiculo.GetType() == typeof(clsAutos))
                     {
@@ -228,12 +226,12 @@ namespace Concesionaria
             }
             return autoBuscado;
         }
-        public clsCamionetas datosCamionetas(string codigo)
+        public clsCamionetas datosCamionetas(string patente)
         {
             clsCamionetas camionetaBuscada = new clsCamionetas();
             foreach (clsVehiculos vehiculo in listaVehiculos)
             {
-                if (vehiculo.CODIGO == codigo)
+                if (vehiculo.PATENTE == patente)
                 {
                     if (vehiculo.GetType() == typeof(clsCamionetas))
                     {
