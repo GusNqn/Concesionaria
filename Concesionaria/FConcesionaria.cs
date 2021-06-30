@@ -324,7 +324,6 @@ namespace Concesionaria
             cbFiltroMarca.SelectedIndex = 0;
         }
 
-
         private void miAgregarAutos_Click(object sender, EventArgs e)
         {
             FAutos FormAuto = new FAutos(datos, ++codigoVehiculos); 

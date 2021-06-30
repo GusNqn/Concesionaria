@@ -119,7 +119,6 @@ namespace Concesionaria
 
         #region Constructores
         
-        
         public clsVehiculos()
         {
             _codigo = "";
@@ -135,7 +134,6 @@ namespace Concesionaria
             _distribuidor = null;
             _patente = patente;
         }
-
 
         public clsVehiculos(string codigo, string tipo, string patente, clsDistribuidores distribuidor)
         {

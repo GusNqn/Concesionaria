@@ -136,26 +136,6 @@ namespace Concesionaria
             return 1;
         }
 
-        //public override bool Equals(object autoPedido) //podemos usar el equals con el atributo de la clase padre?
-        //{
-        //    bool igual;
-
-        //    if (autoPedido == null)
-        //        igual = this == null;
-        //    else if (this.GetType() != autoPedido.GetType())
-        //        igual = false;
-        //    else
-        //    {
-        //        clsAutos auto = (clsAutos)autoPedido;
-        //        igual = this._codigo == auto.CODIGO;
-        //    }
-        //    return igual;
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    return (_codigo * 4);
-        //}
         #endregion
 
         #region Metodos Estaticos
@@ -192,9 +172,7 @@ namespace Concesionaria
             _marca = marca;
             _modelo = modelo;
             _gama = gama;
-            //if (clsFecha.esFechaValida(Convert.ToInt32(fechaFabricacion.Day), Convert.ToInt32(fechaFabricacion.Month), Convert.ToInt32(fechaFabricacion.Year)))
             _fechaFabricacion = fechaFabricacion;
-            //else _fechaFabricacion = new DateTime(1900, 01, 01);
             _usado = usado;
             if (Math.Abs(precioCosto) > 0)
                 _precioCosto = precioCosto;

@@ -78,6 +78,12 @@
     <Compile Include="FConcesionaria.Designer.cs">
       <DependentUpon>FConcesionaria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FVentas.Designer.cs">
+      <DependentUpon>FVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FAutos.resx">
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FConcesionaria.resx">
       <DependentUpon>FConcesionaria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FVentas.resx">
+      <DependentUpon>FVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
