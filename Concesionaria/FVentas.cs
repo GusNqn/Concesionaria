@@ -27,25 +27,16 @@ namespace Concesionaria
         }
         private void FVentas_Load(object sender, EventArgs e)
         {
-            lVehiculo.Text = datos.getToStringVehiculo(pat);
-            if (esAuto)
-            {
-                
-                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
-                dtFechaCompra.Enabled = false;
-            }
-            else 
-            {
-                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
-                dtFechaCompra.Enabled = false;
-            }
-        
+            int indice = datos.buscarIndiceVehiculo(pat);
+            lVehiculo.Text = datos.getToStringVehiculo(indice);
+            dtFechaCompra.Value = datos.datosAuto(pat).FECHACOMPRA;
+            dtFechaCompra.Enabled = false;        
         }
 
         private void bVender_Click(object sender, EventArgs e)
         {
             double ganancia;
-            double precioCosto = datos.getPrecioCostoVehiculo(pat);
+            double precioCosto = datos.datosAuto(pat).PRECIOCOSTO;
             if (esAuto)
             {
                 ganancia = datos.calcularGananciaAuto(pat ,dtFechaVenta.Value);

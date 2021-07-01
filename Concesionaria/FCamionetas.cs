@@ -172,16 +172,16 @@ namespace Concesionaria
                 bAceptar.Text = "Modificar";
                 tPatente.Text = pat;
                 tPatente.Enabled = false;
-                cbMarca.Text = datos.getMarcaVehiculo(pat);
-                cbGama.Text = datos.getGamaVehiculo(pat);
-                cbModelo.Text = datos.getModeloVehiculo(pat);
-                dtFechaFabricacion.Value = datos.getFechaFabricacionVehiculo(pat);
-                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
+                cbMarca.Text = datos.datosCamioneta(pat).MARCA;
+                cbGama.Text = datos.datosCamioneta(pat).GAMA;
+                cbModelo.Text = datos.datosCamioneta(pat).MODELO;
+                dtFechaFabricacion.Value = datos.datosCamioneta(pat).FECHAFABRICACION;
+                dtFechaCompra.Value = datos.datosCamioneta(pat).FECHACOMPRA;
                 string formatoPrecio = "0000000.00";
-                mtPrecioCosto.Text = Convert.ToString(datos.getPrecioCostoVehiculo(pat).ToString(formatoPrecio));
-                checkUsado.Checked = datos.getUsadoVehiculo(pat);
-                cbDistribuidores.Text = datos.getDistribuidorVehiculo(pat);
-                if (datos.getCuatroxCuatroCamioneta(pat))
+                mtPrecioCosto.Text = Convert.ToString(datos.datosCamioneta(pat).PRECIOCOSTO.ToString(formatoPrecio));
+                checkUsado.Checked = datos.datosCamioneta(pat).USADO;
+                cbDistribuidores.Text = datos.datosCamioneta(pat).DISTRIBUIDOR.ToString();
+                if (datos.datosCamioneta(pat).CUATROXCUATRO)
                 {
                     rbCuatroXCuatro.Checked = true;
                 }

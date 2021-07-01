@@ -153,15 +153,15 @@ namespace Concesionaria
                 bAceptar.Text = "Modificar";
                 tPatente.Text = pat;
                 tPatente.Enabled = false;
-                cbMarca.Text = datos.getMarcaVehiculo(pat);
-                cbGama.Text = datos.getGamaVehiculo(pat);
-                cbModelo.Text = datos.getModeloVehiculo(pat);
-                dtFechaFabricacion.Value = datos.getFechaFabricacionVehiculo(pat);
-                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
+                cbMarca.Text = datos.datosAuto(pat).MARCA;
+                cbGama.Text = datos.datosAuto(pat).GAMA;
+                cbModelo.Text = datos.datosAuto(pat).MODELO;
+                dtFechaFabricacion.Value = datos.datosAuto(pat).FECHAFABRICACION;
+                dtFechaCompra.Value = datos.datosAuto(pat).FECHACOMPRA;
                 string formatoPrecio = "0000000.00";
-                mtPrecioCosto.Text = Convert.ToString(datos.getPrecioCostoVehiculo(pat).ToString(formatoPrecio));
-                checkUsado.Checked = datos.getUsadoVehiculo(pat);
-                cbDistribuidores.Text = datos.getDistribuidorVehiculo(pat);
+                mtPrecioCosto.Text = Convert.ToString(datos.datosAuto(pat).PRECIOCOSTO.ToString(formatoPrecio));
+                checkUsado.Checked = datos.datosAuto(pat).USADO;
+                cbDistribuidores.Text = datos.datosAuto(pat).DISTRIBUIDOR.ToString();
             }
         }
 
