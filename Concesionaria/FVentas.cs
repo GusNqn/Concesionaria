@@ -27,18 +27,16 @@ namespace Concesionaria
         }
         private void FVentas_Load(object sender, EventArgs e)
         {
+            lVehiculo.Text = datos.getToStringVehiculo(pat);
             if (esAuto)
             {
-                clsAutos auto = datos.datosAuto(pat);
-                lVehiculo.Text = auto.ToString();
-                dtFechaCompra.Value = auto.FECHACOMPRA;
+                
+                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
                 dtFechaCompra.Enabled = false;
             }
             else 
             {
-                clsCamionetas camioneta = datos.datosCamionetas(pat);
-                lVehiculo.Text = camioneta.ToString();
-                dtFechaCompra.Value = camioneta.FECHACOMPRA;
+                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
                 dtFechaCompra.Enabled = false;
             }
         
@@ -46,18 +44,18 @@ namespace Concesionaria
 
         private void bVender_Click(object sender, EventArgs e)
         {
+            double ganancia;
+            double precioCosto = datos.getPrecioCostoVehiculo(pat);
             if (esAuto)
             {
-                clsAutos auto = datos.datosAuto(pat);
-                double ganancia = auto.calcularGanancia(dtFechaVenta.Value);
-                MessageBox.Show($"El vehiculo se vendio en: {auto.PRECIOCOSTO + ganancia} \nLa ganancia fue: {ganancia}", "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ganancia = datos.calcularGananciaAuto(pat ,dtFechaVenta.Value);
+                MessageBox.Show($"El vehiculo se vendio en: {precioCosto + ganancia} \nLa ganancia fue: {ganancia}", "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
             }
             else
             {
-                clsCamionetas camioneta = datos.datosCamionetas(pat);
-                double ganancia = camioneta.calcularGanancia(dtFechaVenta.Value);
-                MessageBox.Show($"El vehiculo se vendio en: {camioneta.PRECIOCOSTO + ganancia} \nLa ganancia fue: {ganancia}", "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ganancia = datos.calcularGananciaCamioneta(pat, dtFechaVenta.Value);
+                MessageBox.Show($"El vehiculo se vendio en: {precioCosto + ganancia} \nLa ganancia fue: {ganancia}", "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
             }
         }

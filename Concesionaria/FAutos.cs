@@ -151,17 +151,17 @@ namespace Concesionaria
             {
                 Text = "Modificar";
                 bAceptar.Text = "Modificar";
-                clsAutos auto = datos.datosAuto(pat);
-                tPatente.Text = auto.PATENTE;
+                tPatente.Text = pat;
                 tPatente.Enabled = false;
-                cbMarca.Text = auto.MARCA;
-                cbGama.Text = auto.GAMA;
-                dtFechaFabricacion.Value = auto.FECHAFABRICACION;
-                dtFechaCompra.Value = auto.FECHACOMPRA;
+                cbMarca.Text = datos.getMarcaVehiculo(pat);
+                cbGama.Text = datos.getGamaVehiculo(pat);
+                cbModelo.Text = datos.getModeloVehiculo(pat);
+                dtFechaFabricacion.Value = datos.getFechaFabricacionVehiculo(pat);
+                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
                 string formatoPrecio = "0000000.00";
-                mtPrecioCosto.Text = Convert.ToString(auto.PRECIOCOSTO.ToString(formatoPrecio));
-                checkUsado.Checked = auto.USADO;
-                cbDistribuidores.Text = auto.DISTRIBUIDOR.ToString();
+                mtPrecioCosto.Text = Convert.ToString(datos.getPrecioCostoVehiculo(pat).ToString(formatoPrecio));
+                checkUsado.Checked = datos.getUsadoVehiculo(pat);
+                cbDistribuidores.Text = datos.getDistribuidorVehiculo(pat);
             }
         }
 
@@ -179,8 +179,9 @@ namespace Concesionaria
             string tipoAuto = "Auto";
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
             string nuevaPatente = tPatente.Text.Trim().ToUpper();
-            clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
-            
+            string razonSocialDist = datos.getRazonSocial(cuitDist);
+            bool esInternacionalDist = datos.esDistribuidorInternacional(cuitDist);
+
             if (!clsVehiculos.patenteValida(nuevaPatente))
             {
                 MessageBox.Show("Ingrese una patente valida", "Patente Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -209,13 +210,13 @@ namespace Concesionaria
                 }
                 else
                 {
-                    datos.insertarAuto(cantPuertas, nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
+                    datos.insertarAuto(cantPuertas, nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, codigoVehiculos, tipoAuto, nuevaPatente, cuitDist, razonSocialDist, esInternacionalDist);
                     DialogResult = DialogResult.OK;
                 }
             }
             else
             {
-                datos.modificarAuto(cantPuertas, nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
+                datos.modificarAuto(cantPuertas, nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, codigoVehiculos, tipoAuto, nuevaPatente, cuitDist, razonSocialDist, esInternacionalDist);
                 DialogResult = DialogResult.OK;
             }
         }

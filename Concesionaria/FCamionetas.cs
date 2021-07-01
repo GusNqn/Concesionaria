@@ -99,7 +99,8 @@ namespace Concesionaria
             string tipoVehiculo = "Camioneta";
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
             string nuevaPatente = tPatente.Text.Trim().ToUpper();
-            clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
+            string razonSocialDist = datos.getRazonSocial(cuitDist);
+            bool esInternacionalDist = datos.esDistribuidorInternacional(cuitDist);
 
             if (!clsVehiculos.patenteValida(nuevaPatente))
             {
@@ -132,13 +133,13 @@ namespace Concesionaria
                 }
                 else
                 {
-                    datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, cuatroXcuatro, codigoVehiculos, tipoVehiculo, nuevaPatente, distribuidor);
+                    datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, cuatroXcuatro, codigoVehiculos, tipoVehiculo, nuevaPatente, cuitDist, razonSocialDist, esInternacionalDist);
                     DialogResult = DialogResult.OK;
                 }            
             }
             else
             {
-                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, cuatroXcuatro, codigoVehiculos, tipoVehiculo,  nuevaPatente, distribuidor);
+                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, cuatroXcuatro, codigoVehiculos, tipoVehiculo,  nuevaPatente, cuitDist, razonSocialDist, esInternacionalDist);
                 DialogResult = DialogResult.OK;
             }
         }
@@ -169,18 +170,25 @@ namespace Concesionaria
             {
                 Text = "Modificar";
                 bAceptar.Text = "Modificar";
-                clsCamionetas camioneta = datos.datosCamionetas(pat);
-                tPatente.Text = camioneta.PATENTE;
+                tPatente.Text = pat;
                 tPatente.Enabled = false;
-                cbMarca.Text = camioneta.MARCA;
-                cbGama.Text = camioneta.GAMA;
-                cbModelo.Text = camioneta.MODELO;
-                dtFechaFabricacion.Value = camioneta.FECHAFABRICACION;
-                dtFechaCompra.Value = camioneta.FECHACOMPRA;
+                cbMarca.Text = datos.getMarcaVehiculo(pat);
+                cbGama.Text = datos.getGamaVehiculo(pat);
+                cbModelo.Text = datos.getModeloVehiculo(pat);
+                dtFechaFabricacion.Value = datos.getFechaFabricacionVehiculo(pat);
+                dtFechaCompra.Value = datos.getFechaCompraVehiculo(pat);
                 string formatoPrecio = "0000000.00";
-                mtPrecioCosto.Text = Convert.ToString(camioneta.PRECIOCOSTO.ToString(formatoPrecio));
-                checkUsado.Checked = camioneta.USADO;
-                cbDistribuidores.Text = camioneta.DISTRIBUIDOR.ToString();
+                mtPrecioCosto.Text = Convert.ToString(datos.getPrecioCostoVehiculo(pat).ToString(formatoPrecio));
+                checkUsado.Checked = datos.getUsadoVehiculo(pat);
+                cbDistribuidores.Text = datos.getDistribuidorVehiculo(pat);
+                if (datos.getCuatroxCuatroCamioneta(pat))
+                {
+                    rbCuatroXCuatro.Checked = true;
+                }
+                else
+                {
+                    rbTraccionSimple.Checked = true;
+                }
             }
         }
 
