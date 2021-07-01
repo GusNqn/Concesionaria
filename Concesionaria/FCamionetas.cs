@@ -95,6 +95,8 @@ namespace Concesionaria
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
             bool usado = checkUsado.Checked;
             bool cuatroXcuatro = rbCuatroXCuatro.Checked;
+            double porcentajeGanancia = 0.45;
+            string tipoVehiculo = "Camioneta";
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
             string nuevaPatente = tPatente.Text.Trim().ToUpper();
             clsDistribuidores distribuidor = new clsDistribuidores(cuitDist, datos.getRazonSocial(cuitDist), datos.esDistribuidorInternacional(cuitDist));
@@ -130,14 +132,13 @@ namespace Concesionaria
                 }
                 else
                 {
-                    datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 45, cuatroXcuatro, codigoVehiculos, "Camioneta", nuevaPatente, distribuidor);
+                    datos.insertarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, cuatroXcuatro, codigoVehiculos, tipoVehiculo, nuevaPatente, distribuidor);
                     DialogResult = DialogResult.OK;
-                }
-                
+                }            
             }
             else
             {
-                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 45, cuatroXcuatro, codigoVehiculos, "Camioneta",  nuevaPatente, distribuidor);
+                datos.modificarCamioneta(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, cuatroXcuatro, codigoVehiculos, tipoVehiculo,  nuevaPatente, distribuidor);
                 DialogResult = DialogResult.OK;
             }
         }

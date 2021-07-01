@@ -88,6 +88,25 @@ namespace Concesionaria
 
             cbModelo.SelectedIndex = 0;
         }
+
+        private int calcularCantPuertas(string modelo)
+        {
+            int cantPuertas = 0;
+
+            if (modelo == "Agile" || modelo == "Corsa Classic" || modelo == "Onix" || modelo == "Clio" || modelo == "Kwid"
+                || modelo == "Sandero" || modelo == "Fiesta" || modelo == "Focus" || modelo == "Ka" || modelo == "Fox"
+                || modelo == "Gol" || modelo == "Golf" || modelo == "Polo")
+            {
+                cantPuertas = 5;
+            }
+            else 
+            {
+                cantPuertas = 4;
+            }
+
+            return cantPuertas;
+        }
+        
         #endregion
 
         public FAutos(clsBase_Datos conexion, int codVehiculo)
@@ -151,10 +170,12 @@ namespace Concesionaria
             string nuevaMarca = cbMarca.SelectedIndex != -1 ? cbMarca.Text : "";
             string nuevaGama = cbGama.SelectedIndex != -1 ? cbGama.Text : "";
             string nuevoModelo = cbModelo.SelectedIndex != -1 ? cbModelo.Text : "";
+            int cantPuertas = calcularCantPuertas(nuevoModelo);
             DateTime nuevaFechaFab = dtFechaFabricacion.Value.Date;
             DateTime nuevafechaCompra = dtFechaCompra.Value.Date;
             double nuevoPrecio = mtPrecioCosto.MaskCompleted ? Convert.ToDouble(mtPrecioCosto.Text) : 0;
             bool usado = checkUsado.Checked;
+            double porcentajeGanancia = 0.35;
             string tipoAuto = "Auto";
             string cuitDist = cbDistribuidores.SelectedItem.ToString().Substring(6, 11);
             string nuevaPatente = tPatente.Text.Trim().ToUpper();
@@ -188,13 +209,13 @@ namespace Concesionaria
                 }
                 else
                 {
-                    datos.insertarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 35, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
+                    datos.insertarAuto(cantPuertas, nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
                     DialogResult = DialogResult.OK;
                 }
             }
             else
             {
-                datos.modificarAuto(nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, 35, codigoVehiculos, "Auto", nuevaPatente, distribuidor);
+                datos.modificarAuto(cantPuertas, nuevaMarca, nuevoModelo, nuevaGama, nuevaFechaFab, nuevafechaCompra, usado, nuevoPrecio, porcentajeGanancia, codigoVehiculos, tipoAuto, nuevaPatente, distribuidor);
                 DialogResult = DialogResult.OK;
             }
         }

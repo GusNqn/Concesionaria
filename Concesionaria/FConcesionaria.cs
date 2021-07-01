@@ -233,11 +233,19 @@ namespace Concesionaria
             {
                 msAutos.Enabled = true;
                 msCamioneta.Enabled = true;
+                miAgregarAutos.Enabled = true;
+                miAgregarCamioneta.Enabled = true;
+                miModificarDistribuidor.Enabled = true;
+                miEliminarDistribuidor.Enabled = true;
             }
             else
             {
                 msAutos.Enabled = false;
                 msCamioneta.Enabled = false;
+                miAgregarAutos.Enabled = false;
+                miAgregarCamioneta.Enabled = false;
+                miModificarDistribuidor.Enabled = false;
+                miEliminarDistribuidor.Enabled = false;
             }
         }
         private void completarComboDistribuidores()
@@ -302,7 +310,6 @@ namespace Concesionaria
             actualizarCantidadesVehiculos(lista);
 
         }
-
         private void actualizarCantidadesVehiculos(List<string> lista)
         {
             lCantListadaVehiculos.Text = $"Cantidad Listado: {lista.Count}";
@@ -310,10 +317,18 @@ namespace Concesionaria
             if (datos.cantidadVehiculos() > 0)
             {
                 msVentas.Enabled = true;
+                miModificarAutos.Enabled = true;
+                miEliminarAutos.Enabled = true;
+                miModificarCamioneta.Enabled = true;
+                miEliminarCamioneta.Enabled = true;
             }
             else
             {
                 msVentas.Enabled = false;
+                miModificarAutos.Enabled = false;
+                miEliminarAutos.Enabled = false;
+                miModificarCamioneta.Enabled = false;
+                miEliminarCamioneta.Enabled = false;
             }
         }
         #endregion
@@ -641,7 +656,6 @@ namespace Concesionaria
         private void cbFiltroTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             completarFiltroModelo();
-            actualizarVehiculos();
             if (cbFiltroTipo.Text == "Camioneta")
             {
                 checkFiltro4x4.Enabled = true;
@@ -656,6 +670,7 @@ namespace Concesionaria
                 checkFiltroTraccionSimple.Enabled = false;
                 checkFiltroTraccionSimple.Checked = false;
             }
+            actualizarVehiculos();
         }
 
         private void checkFiltroNuevo_CheckedChanged(object sender, EventArgs e)
